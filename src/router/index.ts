@@ -1,0 +1,81 @@
+import { createRouter, createWebHistory } from 'vue-router'
+import About from '@/views/About.vue'
+import Index from '@/views/index.vue'
+import Login from '@/views/login.vue'
+import Signup from '@/views/signup.vue'
+import Hotels from '@/views/hotels/hotels.vue'
+import HotelId from '@/views/hotels/hotelId.vue'
+import Register_admin from '@/views/register_admin.vue'
+import Dashboard from '@/views/dashboard/dashboard.vue'
+import PocketBase from 'pocketbase'
+import Default from '@/views/layout/Default.vue'
+import Comments from '@/views/hotels/comments.vue'
+
+const pb = new PocketBase('http://localhost:8090/')
+
+const router = createRouter({
+	history: createWebHistory(),
+	routes: [
+		{
+			path: '/',
+			component: Default,
+			children: [
+				{
+					path: '/',
+					name: 'home',
+					component: Index,
+				},
+				{
+					path: '/about',
+					name: 'about',
+					component: About,
+				},
+				{
+					path: '/login',
+					name: 'login',
+					component: Login,
+				},
+				{
+					path: '/signup',
+					name: 'signup',
+					component: Signup,
+				},
+				{
+					path: '/hotels',
+					name: 'hotels',
+					component: Hotels,
+				},
+				{
+					path: '/hotels/:id',
+					component: HotelId,
+				},
+				{
+					name: 'register admin',
+					path: '/register_admin',
+					component: Register_admin,
+				},
+				{
+					name: "comments",
+					path: "/hotels/:id/comments",
+					component: Comments,
+				},
+				{
+					path: '/dashboard',
+					name: 'Dashboard',
+					component: Dashboard,
+					beforeEnter: (to, from, next) => {
+						const user = pb.authStore.record // Assuming you have PocketBase set up
+
+						if (!pb.authStore.isValid || user.role !== 'Admin') {
+							next({ name: 'login' }, alert('You are not a verified user or logged in'))
+						} else {
+							next() // Allow access
+						}
+					},
+				}
+			],
+		},
+	],
+})
+
+export default router
