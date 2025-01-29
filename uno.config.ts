@@ -297,6 +297,5 @@ export default defineConfig({
 				950: "#0c0a09"
 			}
 		},
-		}
-	}
+	},
 })
