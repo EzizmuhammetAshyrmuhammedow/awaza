@@ -112,6 +112,11 @@ const cancelEditing = () => {
 	FormValues.content = '';
 };
 
+async function markAsRead(commentId: string) {
+	const comment = await pb.collection('comments').getOne(commentId);
+	comment.read = true;
+	await pb.collection('comments').update(commentId, comment);
+}
 </script>
 
 <template>
@@ -122,6 +127,7 @@ const cancelEditing = () => {
 			</template>
 			<template #footer>
 				<Button v-if="comment.author_id == pb.authStore.record.id" variant="outlined" @click="startEditing(comment)">Edit</Button>
+				<Button v-if="comment.read != true" variant="outlined" severity="info" @click="markAsRead(comment.id)">Mark As Read</Button>
 			</template>
 		</Card>
 
