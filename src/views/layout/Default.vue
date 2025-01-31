@@ -5,8 +5,8 @@ import AppBar from '@/components/AppBar.vue'
 </script>
 
 <template>
-	<AppBar class="mb2"/>
-	<div p2>
+	<AppBar/>
+	<div p2 mt-20>
 		<RouterView/>
 	</div>
 </template>

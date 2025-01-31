@@ -10,6 +10,8 @@ import Dashboard from '@/views/dashboard/dashboard.vue'
 import PocketBase from 'pocketbase'
 import Default from '@/views/layout/Default.vue'
 import Comments from '@/views/hotels/comments.vue'
+import EmployeesView from '@/views/dashboard/EmployeesView.vue'
+import AnalyticsView from '@/views/dashboard/AnalyticsView.vue'
 
 const pb = new PocketBase('http://localhost:8090/')
 
@@ -72,6 +74,18 @@ const router = createRouter({
 							next() // Allow access
 						}
 					},
+					children: [
+						{
+							path: "/hotels/:id/employees",
+							name: "employees",
+							component: EmployeesView,
+						},
+						{
+							path: "",
+							name: "Analytics",
+							component: AnalyticsView,
+						}
+					]
 				}
 			],
 		},

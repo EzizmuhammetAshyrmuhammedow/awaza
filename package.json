@@ -14,6 +14,7 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@primevue/core": "^4.2.5",
     "@primevue/forms": "^4.2.5",
     "@primevue/themes": "^4.2.5",
     "@unocss/reset": "^65.4.3",

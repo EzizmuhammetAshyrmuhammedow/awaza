@@ -24,7 +24,7 @@ const items = ref([
 
 <template>
   <div class="m0">
-    <Toolbar class="m0 sticky top-0 left-0 w-full">
+    <Toolbar class="m0 fixed top-0 left-0 w-full">
       <template #start>
         <RouterLink class="text-2xl m0 no-underline" to="/">Awaza</RouterLink>
       </template>
