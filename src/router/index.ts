@@ -12,6 +12,8 @@ import Default from '@/views/layout/Default.vue'
 import Comments from '@/views/hotels/comments.vue'
 import EmployeesView from '@/views/dashboard/EmployeesView.vue'
 import AnalyticsView from '@/views/dashboard/AnalyticsView.vue'
+import SearchView from '@/views/SearchView.vue'
+import RoomsView from '@/views/RoomsView.vue'
 
 const pb = new PocketBase('http://localhost:8090/')
 
@@ -60,6 +62,27 @@ const router = createRouter({
 					name: "comments",
 					path: "/hotels/:id/comments",
 					component: Comments,
+				},
+				{
+					name: "rooms",
+					path: "/hotels/:id/rooms",
+					component: RoomsView,
+				},
+				{
+					name: "book",
+					path: "/hotels/:id/book",
+					component: ,
+				},
+				{
+					path: '/search',
+					name: 'Search',
+					component: SearchView,
+					props: (route) => ({
+						checkIn: route.query.checkIn,
+						checkOut: route.query.checkOut,
+						guests: route.query.guests,
+						rooms: route.query.rooms,
+					}),
 				},
 				{
 					path: '/dashboard',

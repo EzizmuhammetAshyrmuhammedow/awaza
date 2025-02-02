@@ -2,6 +2,7 @@
 import PocketBase from 'pocketbase';
 import { ref, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
+import { Button } from 'primevue';
 
 const route = useRoute();
 const id = route.params.id; // Accessing the ID from URL
@@ -21,25 +22,47 @@ onMounted(async () => {
 </script>
 
 <template>
-	<div v-if="hotel">
-		<h1>{{ hotel.name }}</h1>
-		<img :src="pb.files.getURL(hotel, hotel.thumbnail)" alt="Hotel Thumbnail" />
-		<div v-html="hotel.long_description"></div>
-		<h2>Short Description</h2>
-		<div v-html="hotel.short_description"></div>
-		<h3>Photos</h3>
-<!--		<img :src="pb.files.getURL(hotel, hotel.photos[1])" alt="">-->
-		<RouterLink :to="'/hotels/' + id + '/comments'" >Teswir Yav</RouterLink>
+	<div v-if="hotel" class="p-8 max-w-4xl mx-auto">
+		<!-- Hotel Name -->
+		<h1 class="text-4xl font-bold mb-6">{{ hotel.name }}</h1>
+
+		<!-- Hotel Thumbnail -->
+		<img
+			:src="pb.files.getURL(hotel, hotel.thumbnail)"
+			alt="Hotel Thumbnail"
+			class="w-full h-96 object-cover rounded-lg shadow-lg mb-8"
+		/>
+
+		<!-- Long Description -->
+		<div
+			class="prose prose-lg max-w-none mb-8"
+			v-html="hotel.long_description"
+		></div>
+
+		<div flex flex-row gap-5>
+			<RouterLink
+				:to="'/hotels/' + id + '/comments'"
+				class="no-underline"
+			>
+				<Button label="Teswir Yaz" severity="info"/>
+			</RouterLink>
+
+			<RouterLink
+				:to="'/hotels/' + id + '/rooms'"
+				class="no-underline"
+			>
+				<Button label="Otaglar" severity="primary"/>
+			</RouterLink>
+		</div>
+
 	</div>
-	<div v-else>
-		<p>Loading hotel details...</p>
+
+	<!-- Loading State -->
+	<div v-else class="p-8 text-center">
+		<p class="text-xl text-gray-600">Loading hotel details...</p>
 	</div>
 </template>
 
 <style scoped>
-/* Add any styles you need here */
-img {
-	max-width: 100%;
-	height: auto;
-}
+/* Add any custom styles here if needed */
 </style>
