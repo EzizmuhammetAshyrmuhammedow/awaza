@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import PocketBase from 'pocketbase'
-import type { TypedPocketBase } from 'pocketbase-types.ts'
+import type { TypedPocketBase } from '../../pocketbase-types.ts'
 import { ref, onMounted, computed } from 'vue'
 import { useBookingStore } from '@/stores/booking.ts'
 import{ Card, Button } from 'primevue'

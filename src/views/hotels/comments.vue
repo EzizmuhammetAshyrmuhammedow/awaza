@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import PocketBase from 'pocketbase';
-import { TypedPocketBase } from "pocketbase-types.ts"
+import { TypedPocketBase } from "../../../pocketbase-types.ts"
 import { onMounted, reactive, ref, onUnmounted, nextTick } from 'vue';
 import { useRoute } from 'vue-router';
 import { Button, Card } from 'primevue';

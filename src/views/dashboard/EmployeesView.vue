@@ -6,7 +6,7 @@ import Dialog from 'primevue/dialog';
 import Button from 'primevue/button';
 import { ref, onMounted, onUnmounted } from 'vue';
 import PocketBase from 'pocketbase';
-import type { TypedPocketBase } from 'pocketbase-types.ts';
+import type { TypedPocketBase } from '../../../pocketbase-types.ts';
 
 const pb = new PocketBase("http://localhost:8090") as TypedPocketBase;
 const employees = ref([]);

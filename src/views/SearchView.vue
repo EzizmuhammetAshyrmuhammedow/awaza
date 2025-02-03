@@ -2,7 +2,7 @@
 import { ref, onMounted, watch, onUnmounted } from 'vue'
 import { useRoute } from 'vue-router'
 import PocketBase from 'pocketbase'
-import type { TypedPocketBase } from 'pocketbase-types.js'
+import type { TypedPocketBase } from '../../pocketbase-types.js'
 import { Card, Button } from 'primevue'
 import { useBookingStore } from '@/stores/booking.ts'
 
