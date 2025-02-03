@@ -14,6 +14,7 @@ import EmployeesView from '@/views/dashboard/EmployeesView.vue'
 import AnalyticsView from '@/views/dashboard/AnalyticsView.vue'
 import SearchView from '@/views/SearchView.vue'
 import RoomsView from '@/views/RoomsView.vue'
+import BookHotel from '@/views/BookHotel.vue'
 
 const pb = new PocketBase('http://localhost:8090/')
 
@@ -71,7 +72,7 @@ const router = createRouter({
 				{
 					name: "book",
 					path: "/hotels/:id/book",
-					component: ,
+					component: BookHotel,
 				},
 				{
 					path: '/search',
