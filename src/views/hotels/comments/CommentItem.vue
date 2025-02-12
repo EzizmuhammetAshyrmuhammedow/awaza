@@ -54,7 +54,7 @@ import { defineProps, ref, onMounted } from 'vue'
 import CommentReact from '@/views/hotels/comments/CommentReact.vue'
 import { useI18n } from 'vue-i18n'
 import PocketBase from 'pocketbase'
-import { TypedPocketBase } from '../../../../pocketbase-types.js'
+import type { TypedPocketBase } from '../../../../pocketbase-types.ts'
 import { useAuthStore } from '@/stores/auth.js'
 import { computed, shallowRef } from 'vue';
 import ReplyForm from '@/views/hotels/comments/ReplyForm.vue'

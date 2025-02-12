@@ -2,7 +2,7 @@
 import { Button } from 'primevue'
 import { onMounted, ref } from 'vue'
 import PocketBase from 'pocketbase'
-import { TypedPocketBase } from '../../../../pocketbase-types.ts'
+import type { TypedPocketBase } from '../../../../pocketbase-types.ts'
 
 const pb = new PocketBase("http://localhost:8090") as TypedPocketBase;
 

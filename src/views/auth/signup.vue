@@ -10,7 +10,7 @@
 
 	  </div>
     <div v-show="!isHidden" class="card flex justify-center">
-      <Toast class="z-100"/>
+		<Toast @close="onToastClose" class="z-100"/>
 
       <Form v-slot="$form" :initialValues="initialValues" :resolver="resolver" @submit="onFormSubmit" class="flex flex-col gap-4 w-full sm:w-56">
         <div class="flex flex-col gap-5">
@@ -70,7 +70,7 @@ const authData = reactive({
 const initialValues = reactive({ ...authData });
 
 const resolver = ({ values }) => {
-  const errors = {};
+	const errors: Record<string, { message: string }[]> = {};
 
   if (!values.username) {
     errors.username = [{ message: 'Username is required.' }];
@@ -102,24 +102,28 @@ const onFormSubmit = async ({ valid }) => {
         severity: 'success',
         summary: 'Registration successful.',
         life: 3000,
-        onClose: () => {
-          router.push('/'); // Redirect after the toast is closed
-        }
       });
 
       // Clear form fields after successful registration
       Object.keys(authData).forEach(key => authData[key] = '');
+		setTimeout(() => {
+			router.push('/'); // Redirect after a successful login
+		}, 3000);
 
     } catch (error) {
-      toast.add({
-        severity: 'error',
-        summary: 'Registration failed.',
-        detail: error.message || 'An error occurred.',
-        life: 3000
-      });
-    }
+		toast.add({
+			severity: 'error',
+			summary: 'Login failed.',
+			detail: error.message,
+			life: 3000,
+			closable: true,
+		});
+	}
   } else {
     console.log('Form validation failed:', valid);
   }
+};
+const onToastClose = () => {
+	router.push('/')
 };
 </script>

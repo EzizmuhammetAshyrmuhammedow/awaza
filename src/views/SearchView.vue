@@ -18,10 +18,6 @@ const children = ref<number>(Number(route.query.children) || 0)
 const rooms = ref<number>(Number(route.query.rooms) || 1)
 const hotels = ref<any[]>([])
 
-watch(() => route.fullPath, () => {
-	fetchRoomTypes() // Re-fetch data when route changes
-})
-
 watch(hotels, (newHotels) => {
 	console.log('Updated hotels:', newHotels)
 })

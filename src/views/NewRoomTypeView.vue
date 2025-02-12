@@ -44,8 +44,8 @@ async function createRoom() {
 		formData.append('id', roomType.type.replace(/\s+/g, '').toLowerCase())
 		console.log(roomType.type.replace(/\s+/g, '').toLowerCase())
 		formData.append('room_type', roomType.type)
-		formData.append('price', roomType.price)
-		formData.append('capacity', roomType.capacity)
+		formData.append('price', roomType.price.toString())
+		formData.append('capacity', roomType.capacity.toString())
 		formData.append('features', roomType.features)
 		formData.append('extra_info', roomType.extra_info)
 

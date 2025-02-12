@@ -20,7 +20,6 @@ import RoomsDashboardView from '@/views/dashboard/rooms/RoomsDashboardView.vue'
 import RoomTypeID from '@/views/RoomTypeID.vue'
 import NewRoomTypeView from '@/views/NewRoomTypeView.vue'
 import BookingsDashboard from '@/views/dashboard/BookingsDashboard.vue'
-import ReviewView from '@/views/hotels/reviews/ReviewView.vue'
 
 const pb = new PocketBase('http://localhost:8090/')
 
@@ -71,11 +70,6 @@ const router = createRouter({
 					component: CommentsList,
 				},
 				{
-					name: "reviews",
-					path: "/hotels/:id/reviews/",
-					component: ReviewView,
-				},
-				{
 					name: "rooms",
 					path: "/hotels/:id/rooms",
 					component: RoomsView,
@@ -114,8 +108,9 @@ const router = createRouter({
 					beforeEnter: (to, from, next) => {
 						const user = pb.authStore.record // Assuming you have PocketBase set up
 
-						if (!pb.authStore.isValid || (user.role !== 'Admin')) {
-							next({ name: 'login' }, alert('You are not a verified user or logged in'))
+						if (!pb.authStore.isValid || (user.role !== 'Admin' && user.role !== 'Employee')) {
+							alert('You are not a verified user or logged in')
+							next({ name: 'login' })
 						} else {
 							next() // Allow access
 						}

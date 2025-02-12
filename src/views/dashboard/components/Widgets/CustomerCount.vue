@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import PocketBase from 'pocketbase'
-import type { TypedPocketBase } from '../../pocketbase-types'
+import type { TypedPocketBase } from '../../../../../pocketbase-types.ts'
 
 const props = defineProps({
 	hotelId: String,

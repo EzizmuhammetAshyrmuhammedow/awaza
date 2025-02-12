@@ -1,15 +1,30 @@
 import { defineStore } from 'pinia'
 import PocketBase from 'pocketbase'
 import { ref } from 'vue'
+import type { TypedPocketBase } from '../../pocketbase-types.ts'
 
-const pb = new PocketBase('http://127.0.0.1:8090') // Replace with your PocketBase URL
+const pb = new PocketBase('http://127.0.0.1:8090') as TypedPocketBase// Replace with your PocketBase URL
 
 export const useAuthStore = defineStore('auth', () => {
 	const isAuthenticated = ref(false) // Reactive state to track authentication status
 	const user = pb.authStore.record
 
+	const hotel= ref();
+	const hotelId = ref()
+	async function getHotelId() {
+		try {
+			hotel.value = await pb.collection('hotels').getFirstListItem(`owner_id = "${user.id}"`);
+			hotelId.value = hotel.value?.id || null;
+		} catch (error) {
+			console.error("Failed to fetch hotel:", error);
+			hotel.value = null;
+			hotelId.value = null;
+		}
+	}
+
 	function isAdmin() {
-		if(user.role === 'admin' && hotel.value.owner_id === `${user?.id}`){
+		getHotelId()
+		if(user.role === 'Admin' && hotel.value.owner_id === `${user?.id}`){
 			return true;
 		}
 		return false;
@@ -17,12 +32,6 @@ export const useAuthStore = defineStore('auth', () => {
 
 	const checkAuth = () => {
 		isAuthenticated.value = pb.authStore.isValid // Update local state based on auth store
-	}
-	const checkAdmin = () => {
-		if (pb.authStore.record.role === 'Admin') {
-			isAdmin.value = true
-		}
-		isAdmin.value = false
 	}
 
 	const login = async (email, password) => {
@@ -63,5 +72,5 @@ export const useAuthStore = defineStore('auth', () => {
 
 	checkAuth() // Initial check for authentication status on store creation
 
-	return { isAuthenticated, isAdmin, checkAuth, checkAdmin, login, logout, register }
+	return { isAuthenticated, isAdmin, checkAuth, login, logout, register }
 })

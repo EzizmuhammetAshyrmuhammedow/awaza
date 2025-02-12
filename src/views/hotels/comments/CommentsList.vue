@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import PocketBase from 'pocketbase'
 
-import { TypedPocketBase } from '../../../../pocketbase-types.ts'
+import type { TypedPocketBase } from '../../../../pocketbase-types.ts'
 
-import { onMounted, reactive, onUnmounted, h, nextTick, ref, computed } from 'vue'
+import { onMounted, reactive, onUnmounted, h, nextTick, ref, computed, useHost } from 'vue'
 
 import { useRoute } from 'vue-router'
 
@@ -25,13 +25,12 @@ import Editor from 'primevue/editor'
 
 import { useI18n } from 'vue-i18n'
 
-import { useAuthStore } from '@/stores/auth.ts'
-
 import Toast from 'primevue/toast'
 
 import CommentItem from '@/views/hotels/comments/CommentItem.vue'
 
 import { useToast } from 'primevue/usetoast'
+import { useHotelStore } from '@/stores/hotelStore.ts'
 
 const { t } = useI18n()
 
@@ -41,28 +40,38 @@ const pb = new PocketBase('http://localhost:8090') as TypedPocketBase
 
 const activeTab = ref(0)
 
-const authStore = useAuthStore()
+const hotelStore = useHotelStore()
 
 const route = useRoute()
 
 const hotelId = route.path.split('/')[2]
 
 const comments = ref<
-	Record<
-		string,
-		{
-			id: string
-			content: string
-			like_count: number
-			dislike_count: number
-			read: boolean
-			author: any
-			isLiked: boolean
-			isDisliked: boolean
-		}
-	>
+	{
+		id: string
+		content: string
+		like_count: number
+		dislike_count: number
+		read: boolean
+		author: object
+		isLiked: boolean
+		isDisliked: boolean
+	}[]
 >([])
-const reviews = ref()
+
+const reviews = ref<
+	{
+		id: string
+		content: string
+		like_count: number
+		dislike_count: number
+		read: boolean
+		author: object
+		isLiked: boolean
+		isDisliked: boolean
+	}[]
+>([])
+
 
 const editingCommentId = ref(null)
 
@@ -109,19 +118,63 @@ onMounted(async () => {
 	await getComents()
 	await getReviews()
 
-	await pb.collection('comments').subscribe('*', (e) => {
+	await pb.collection('comments').subscribe('*', async (e) => {
 		if (e.action === 'create' && e.record.hotel_id === hotelId) {
-			getComents()
-			getReviews()
+			if( e.record.overall_rating !== 0 && e.record.hotel_id === hotelId ) {
+				hotelStore.SetAverageHotelRating(hotelId)
+			}
+
+			// Fetch the author separately
+			const author = await pb.collection('users').getOne(e.record.author_id);
+
+			// Create the comment object with all required properties
+			const newComment = {
+				...e.record,
+				author: author, // Assign the fetched author
+				isLiked: false, // Set default value
+				isDisliked: false // Set default value
+			};
+
+			comments.value.push(newComment)
+			reviews.value.push(newComment)
+
 		} else if (e.action === 'update') {
-			getComents()
-			getReviews()
+			const index = comments.value.findIndex((c) => c.id === e.record.id)
+			const reviewIndex = reviews.value.findIndex((c) => c.id === e.record.id)
+
+			if (index !== -1) {
+				// Fetch the author separately
+				const author = await pb.collection('users').getOne(e.record.author_id);
+
+				// Create the comment object with all required properties
+				const updatedComment = {
+					...e.record,
+					author: author, // Assign the fetched author
+					isLiked: false, // Set default value
+					isDisliked: false // Set default value
+				};
+				comments.value[index] = updatedComment
+			}
+			if (reviewIndex !== -1) {
+				// Fetch the author separately
+				const author = await pb.collection('users').getOne(e.record.author_id);
+
+				// Create the comment object with all required properties
+				const updatedComment = {
+					...e.record,
+					author: author, // Assign the fetched author
+					isLiked: false, // Set default value
+					isDisliked: false // Set default value
+				};
+				reviews.value[reviewIndex] = updatedComment
+			}
 		} else if (e.action === 'delete') {
-			getComents()
-			getReviews()
+			comments.value = comments.value.filter((c) => c.id !== e.record.id)
+			reviews.value = reviews.value.filter((c) => c.id !== e.record.id)
 		}
 	})
 })
+
 
 onUnmounted(() => {
 	pb.collection('comments').unsubscribe('*')
@@ -263,29 +316,29 @@ async function markAsRead(commentId: string) {
 				<FloatLabel variant="on">
 					<InputNumber id="food-review" v-model="ratings.FoodRating" />
 
-					<label for="food-review">Food Rating</label>
+					<label for="food-review">{{ $t('food', 1) }} {{ $t('rating') }}</label>
 				</FloatLabel>
 
 				<FloatLabel variant="on">
 					<InputNumber id="service-review" v-model="ratings.ServiceRating" />
 
-					<label for="service-review">Service Rating</label>
+					<label for="service-review">{{ $t('service') }} {{ $t('rating') }}</label>
 				</FloatLabel>
 
 				<FloatLabel variant="on">
 					<InputNumber id="room-review" v-model="ratings.RoomRating" />
 
-					<label for="room-review">Room Rating</label>
+					<label for="room-review"> {{ $t('room') }} {{ $t('rating') }}</label>
 				</FloatLabel>
 
 				<FloatLabel variant="on">
 					<InputNumber id="entertainment-review" v-model="ratings.EntertainmentRating" />
 
-					<label for="entertainment-review">Entertainment Rating</label>
+					<label for="entertainment-review">{{ $t('entertainment') }} {{ $t('rating') }}</label>
 				</FloatLabel>
 			</div>
 
-			<h3>Overall Rating: {{ totalRating }}</h3>
+			<h3>{{ $t('overall_rating') }}: {{ totalRating }}</h3>
 
 			<div class="p-card !w-full">
 				<Editor
@@ -313,9 +366,9 @@ async function markAsRead(commentId: string) {
 
 		<Tabs value="0">
 			<TabList>
-				<Tab value="0">Comments</Tab>
+				<Tab value="0">{{ $t('comment', 5) }}</Tab>
 
-				<Tab value="1">Reviews</Tab>
+				<Tab value="1">{{ $t('review', 5) }}</Tab>
 			</TabList>
 
 			<TabPanels class="!bg-transparent">

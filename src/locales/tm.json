@@ -65,5 +65,12 @@
   "add_employee": "Işçi Gos",
   "no_subordinate": "Tabyny ýok",
   "no_superior": "Ýolbaşçysy ýok",
-  "review": "Syn | Synlar"
+  "review": "Syn | Synlar",
+  "overall_rating": "Ortaca Reyting",
+  "food": "Nahar | Naharlar",
+  "service": "Hyzmat | Hyzmatlar",
+  "entertainment": "Guymenje",
+  "rating": "Reyting",
+  "toggle_dark_mode": "Yapyk Plana Gec",
+  "user": "Ulanyjy | Ulanyjylar"
 }

@@ -1,5 +1,4 @@
 {
-  "types": ["unplugin-vue-router/client"],
   "files": [],
   "references": [
     {

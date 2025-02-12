@@ -15,6 +15,7 @@ export enum Collections {
 	Comments = "comments",
 	Employees = "employees",
 	Hotels = "hotels",
+	Reviews = "reviews",
 	RoomTypes = "room_types",
 	Rooms = "rooms",
 	Users = "users",
@@ -92,6 +93,7 @@ export type SuperusersRecord = {
 }
 
 export type BookingsRecord = {
+	cancelled?: boolean
 	check_in?: IsoDateString
 	check_out?: IsoDateString
 	created?: IsoDateString
@@ -108,9 +110,17 @@ export type CommentsRecord = {
 	author_id?: RecordIdString
 	content?: HTMLString
 	created?: IsoDateString
+	dislike_count?: number
+	entertainment_rating?: number
+	food_rating?: number
 	hotel_id?: RecordIdString
 	id: string
+	like_count?: number
+	overall_rating?: number
+	parent_id?: RecordIdString
 	read?: boolean
+	room_rating?: number
+	service_rating?: number
 	updated?: IsoDateString
 }
 
@@ -120,7 +130,11 @@ export type EmployeesRecord = {
 	id: string
 	name?: string
 	phone_number?: string
+	role?: string
+	subordinate?: RecordIdString[]
+	superior?: RecordIdString
 	updated?: IsoDateString
+	user?: RecordIdString
 	wage?: number
 }
 
@@ -131,22 +145,39 @@ export type HotelsRecord = {
 	name?: string
 	owner_id?: RecordIdString
 	photos?: string[]
+	rating?: number
 	short_description?: HTMLString
 	thumbnail?: string
 	updated?: IsoDateString
 }
 
+export type ReviewsRecord = {
+	content?: HTMLString
+	created?: IsoDateString
+	entertainment_rating: number
+	food_rating: number
+	hotel_id?: RecordIdString
+	id: string
+	overall_rating: number
+	room_rating: number
+	service_rating: number
+	updated?: IsoDateString
+	user_id?: RecordIdString
+}
+
 export enum RoomTypesRoomTypeOptions {
-	"Standart" = "Standart",
+	"Standard" = "Standard",
 	"VIP" = "VIP",
 	"VIP Deluxe" = "VIP Deluxe",
 	"Double" = "Double",
+	"VIP ULTRA LUXE" = "VIP ULTRA LUXE",
 }
 export type RoomTypesRecord = {
 	capacity?: number
 	created?: IsoDateString
 	extra_info?: HTMLString
 	features?: HTMLString
+	hotel?: RecordIdString
 	id: string
 	photos?: string[]
 	price?: number
@@ -167,15 +198,17 @@ export type RoomsRecord = {
 
 export enum UsersRoleOptions {
 	"Customer" = "Customer",
-	"Worker" = "Worker",
+	"Employee" = "Employee",
 	"Admin" = "Admin",
 }
 export type UsersRecord = {
 	avatar?: string
 	created?: IsoDateString
+	disliked_comments?: RecordIdString[]
 	email: string
 	emailVisibility?: boolean
 	id: string
+	liked_comments?: RecordIdString[]
 	name?: string
 	password: string
 	role?: UsersRoleOptions
@@ -194,6 +227,7 @@ export type BookingsResponse<Texpand = unknown> = Required<BookingsRecord> & Bas
 export type CommentsResponse<Texpand = unknown> = Required<CommentsRecord> & BaseSystemFields<Texpand>
 export type EmployeesResponse<Texpand = unknown> = Required<EmployeesRecord> & BaseSystemFields<Texpand>
 export type HotelsResponse<Texpand = unknown> = Required<HotelsRecord> & BaseSystemFields<Texpand>
+export type ReviewsResponse<Texpand = unknown> = Required<ReviewsRecord> & BaseSystemFields<Texpand>
 export type RoomTypesResponse<Texpand = unknown> = Required<RoomTypesRecord> & BaseSystemFields<Texpand>
 export type RoomsResponse<Texpand = unknown> = Required<RoomsRecord> & BaseSystemFields<Texpand>
 export type UsersResponse<Texpand = unknown> = Required<UsersRecord> & AuthSystemFields<Texpand>
@@ -210,6 +244,7 @@ export type CollectionRecords = {
 	comments: CommentsRecord
 	employees: EmployeesRecord
 	hotels: HotelsRecord
+	reviews: ReviewsRecord
 	room_types: RoomTypesRecord
 	rooms: RoomsRecord
 	users: UsersRecord
@@ -225,6 +260,7 @@ export type CollectionResponses = {
 	comments: CommentsResponse
 	employees: EmployeesResponse
 	hotels: HotelsResponse
+	reviews: ReviewsResponse
 	room_types: RoomTypesResponse
 	rooms: RoomsResponse
 	users: UsersResponse
@@ -243,6 +279,7 @@ export type TypedPocketBase = PocketBase & {
 	collection(idOrName: 'comments'): RecordService<CommentsResponse>
 	collection(idOrName: 'employees'): RecordService<EmployeesResponse>
 	collection(idOrName: 'hotels'): RecordService<HotelsResponse>
+	collection(idOrName: 'reviews'): RecordService<ReviewsResponse>
 	collection(idOrName: 'room_types'): RecordService<RoomTypesResponse>
 	collection(idOrName: 'rooms'): RecordService<RoomsResponse>
 	collection(idOrName: 'users'): RecordService<UsersResponse>

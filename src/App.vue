@@ -4,5 +4,7 @@ import AppBar from "@/components/AppBar.vue";
 </script>
 
 <template>
-	<router-view/>
+	<main>
+		<router-view/>
+	</main>
 </template>

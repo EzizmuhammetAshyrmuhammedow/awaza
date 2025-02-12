@@ -10,7 +10,7 @@ import { RouterLink } from 'vue-router'
 const pb = new PocketBase("http://localhost:8090") as TypedPocketBase;
 const user = pb.authStore.record
 function isAdmin() {
-	return user && user.role === 'Admin' || user.role === 'Employee';
+	return user && (user.role === 'Admin' || user.role === 'Employee');
 }
 
 const authStore = useAuthStore()
@@ -31,6 +31,10 @@ const items = ref([
 		icon: 'pi pi-times'
 	}
 ])
+function toggleDarkMode() {
+	document.documentElement.classList.toggle('my-app-dark')
+	document.documentElement.classList.toggle('dark')
+}
 </script>
 
 <template>
@@ -38,6 +42,7 @@ const items = ref([
 		<!-- Mobile Drawer -->
 		<Drawer v-model:visible="DrawerVisible" position="left" :baseZIndex="1000" class="!w-64">
 			<div class="flex flex-col gap-2 p-3">
+				<Button :label="$t('toggle_dark_mode')" @click="toggleDarkMode"/>
 				<!-- Drawer menu items -->
 				<RouterLink v-if="isAdmin()" to="/dashboard">
 					<Button variant="outlined" aria-label="dashboard" class="w-full">{{ $t("dashboard") }}</Button>
@@ -82,6 +87,7 @@ const items = ref([
 			<template #end>
 				<!-- Desktop menu (visible on medium screens and up) -->
 				<div class="hidden md:flex items-center gap-2 mr-2">
+					<Button :label="$t('toggle_dark_mode')" @click="toggleDarkMode"/>
 					<RouterLink v-if="isAdmin()" to="/dashboard">
 						<Button variant="outlined" aria-label="dashboard">{{ $t("dashboard") }}</Button>
 					</RouterLink>

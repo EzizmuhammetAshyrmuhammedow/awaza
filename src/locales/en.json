@@ -65,5 +65,12 @@
   "add_employee": "Add an Employee",
   "no_subordinate": "No Subordinate",
   "no_superior": "No Superior",
-  "review": "Review | Reviews"
+  "review": "Review | Reviews",
+  "overall_rating": "Overall Rating",
+  "food": "Food | Foods",
+  "service": "Service | Services",
+  "entertainment": "Entertainment",
+  "rating": "Rating",
+  "toggle_dark_mode": "Toggle Dark Mode",
+  "user": "User | Users"
 }

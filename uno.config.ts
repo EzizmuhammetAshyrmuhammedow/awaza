@@ -5,7 +5,9 @@ export default defineConfig({
 		presetAttributify({
 			/* preset options */
 		}),
-		presetWind(),
+		presetWind({
+			dark: 'media'
+		}),
 	],
 	theme: {
 		colors: {

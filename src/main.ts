@@ -54,29 +54,19 @@ app.use(router)
 // i18n.global.locale is usually a ref; use its .value
 const initialLocale = i18n.global.locale.value
 app.use(PrimeVue, {
-	theme: { preset: Aura },
+	theme: {
+		preset: Aura,
+		options: {
+			darkModeSelector: '.my-app-dark', // Explicitly disable dark mode switching
+		},
+	},
 	locale: initialLocale === 'tk' ? turkmenLocale : englishLocale,
 	ripple: true,
-})
+
+});
+
 
 app.use(i18n)
 app.use(ToastService, {})
 
 app.mount('#app')
-
-// --- Now watch for changes in the Vue I18n locale ---
-// When the i18n locale changes, update both PrimeVue and Chart.js locales.
-watch(
-	() => i18n.global.locale.value,
-	(newLocale) => {
-		// Map the new locale to a PrimeVue locale object.
-		const newPrimeVueLocale = newLocale === 'tk' ? turkmenLocale : englishLocale
-		// Update PrimeVue’s global locale configuration.
-		// PrimeVue stores its configuration on the globalProperties.
-		app.config.globalProperties.$primevue.locale = newPrimeVueLocale
-
-		// Update Chart.js default locale.
-		// Chart.js uses a locale string based on BCP 47; adjust as needed.
-		Chart.defaults.locale = newLocale === 'tk' ? 'tk' : 'en-US'
-	}
-)

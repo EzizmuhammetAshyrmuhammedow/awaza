@@ -10,7 +10,7 @@
 import { Textarea, Button } from 'primevue'
 import { ref } from 'vue';
 import PocketBase from 'pocketbase';
-import { TypedPocketBase } from '../../../../pocketbase-types.js'
+import type { TypedPocketBase } from '../../../../pocketbase-types.js'
 import { useAuthStore } from '@/stores/auth.ts'
 import { useI18n } from 'vue-i18n'
 

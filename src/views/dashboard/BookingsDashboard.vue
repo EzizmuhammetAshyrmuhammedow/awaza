@@ -7,6 +7,9 @@ import InputText from 'primevue/inputtext'
 import Column from 'primevue/column'
 import DataTable from 'primevue/datatable'
 import Dialog from 'primevue/dialog'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 
 const pb = new PocketBase("http://localhost:8090") as TypedPocketBase;
 
@@ -109,54 +112,53 @@ onUnmounted(() => {
 </script>
 
 <template>
-		<div>
-			<div class="flex justify-end mb-2">
-				<InputText v-model="filters.global.value" :placeholder="$t('global_search')" />
-			</div>
-
-			<DataTable
-				:value="formattedBookings"
-				:filters="filters"
-				:globalFilterFields="['expand.user.name', 'expand.hotel.name', 'guests', 'check_in', 'check_out']"
-				tableStyle="min-width: 50rem"
-				size="large"
-			>
-				<template #header>
-					<span class="text-xl font-medium">Bronlar</span>
-				</template>
-				<Column field="expand.user.name" header="User" sortable />
-				<Column field="expand.hotel.name" header="Hotel" sortable />
-				<Column field="guests" header="Guests" sortable />
-				<Column field="check_in" header="Check In" sortable />
-				<Column field="check_out" header="Check Out" sortable />
-				<Column header="Actions">
-					<template #body="{ data }">
-						<Button severity="warn" icon="pi pi-pencil" class="p-button-rounded" @click="openEditModal(data)" />
-					</template>
-				</Column>
-			</DataTable>
-
-			<!-- Edit Employee Modal -->
-			<Dialog v-model:visible="editDialog" header="Edit Employee" :modal="true">
-				<div class="p-fluid">
-					<label for="name">Name</label>
-					<InputText id="name" v-model="editedData.name" />
-
-					<label for="phone">Phone Number</label>
-					<InputText id="phone" v-model="editedData.phone_number" />
-
-					<label for="wage">Wage</label>
-					<InputText id="wage" v-model="editedData.wage" />
-
-					<div class="flex justify-end mt-3">
-						<Button label="Cancel" class="p-button-text" @click="editDialog = false" />
-						<Button label="Save" class="p-button-success ml-2" @click="updateEmployee" />
-					</div>
-				</div>
-			</Dialog>
+	<div>
+		<div class="flex justify-end mb-2">
+			<InputText v-model="filters.global.value" :placeholder="$t('global_search')" />
 		</div>
+
+		<DataTable
+			:value="formattedBookings"
+			:filters="filters"
+			:globalFilterFields="['expand.user.name', 'expand.hotel.name', 'guests', 'check_in', 'check_out']"
+			tableStyle="min-width: 50rem"
+			size="large"
+		>
+			<template #header>
+				<span class="text-xl font-medium">{{ $t('bookings') }}</span>
+			</template>
+			<Column field="expand.user.name" :header="$t('user')" sortable />
+			<Column field="expand.hotel.name" :header="$t('hotel')" sortable />
+			<Column field="guests" :header="$t('guest', 5)" sortable />
+			<Column field="check_in" :header="$t('check_in')" sortable />
+			<Column field="check_out" :header="$t('check_out')" sortable />
+			<Column :header="$t('actions')">
+				<template #body="{ data }">
+					<Button severity="warn" icon="pi pi-pencil" class="p-button-rounded" @click="openEditModal(data)" />
+				</template>
+			</Column>
+		</DataTable>
+
+		<!-- Edit Employee Modal -->
+		<Dialog v-model:visible="editDialog" :header="$t('edit_employee')" :modal="true">
+			<div class="p-fluid">
+				<label for="name">{{ $t('name') }}</label>
+				<InputText id="name" v-model="editedData.name" />
+
+				<label for="phone">{{ $t('phone_number') }}</label>
+				<InputText id="phone" v-model="editedData.phone_number" />
+
+				<label for="wage">{{ $t('wage') }}</label>
+				<InputText id="wage" v-model="editedData.wage" />
+
+				<div class="flex justify-end mt-3">
+					<Button label="{{ $t('cancel') }}" class="p-button-text" @click="editDialog = false" />
+					<Button label="{{ $t('save') }}" class="p-button-success ml-2" @click="updateEmployee" />
+				</div>
+			</div>
+		</Dialog>
+	</div>
 </template>
 
 <style scoped>
-
 </style>

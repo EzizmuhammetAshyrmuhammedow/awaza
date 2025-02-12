@@ -5,14 +5,15 @@
 		</div>
 		<Drawer v-model:visible="DrawerVisible" position="left" :baseZIndex="1000" class="p-4">
 			<PanelMenu :model="menuItems" class="p-4" />
-
 		</Drawer>
 		<!-- Sidebar -->
-		<aside class="w-64 bg-zinc-950 rounded-lg mr-2 fixed top-20 left-0 h-[calc(100vh-6rem)] overflow-y-auto hidden md:block">
-			<PanelMenu :model="menuItems" class="p-4" />
-		</aside>
+		<Card class="w-64 !p-0 rounded-lg mr-2 ml-2 fixed top-20 left-0 h-[calc(100vh-6rem)] overflow-y-auto hidden md:block">
+			<template #content>
+				<PanelMenu :model="menuItems" class="" />
+			</template>
+		</Card>
 		<div class="flex-1 md:ml-64">
-			<RouterView/>
+			<RouterView />
 		</div>
 	</div>
 </template>
@@ -22,10 +23,9 @@ import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
 
-// Your existing script setup code remains unchanged
-import { onMounted, ref } from 'vue';
+import { onMounted, ref, watch } from 'vue';
 import PanelMenu from 'primevue/panelmenu'
-import { Button, Drawer} from 'primevue'
+import { Button, Drawer, Card } from 'primevue'
 import PocketBase from 'pocketbase';
 import { useRouter } from 'vue-router'
 
@@ -56,34 +56,82 @@ async function getHotel(ownerId) {
 	}
 }
 
-const menuItems = [
+const user = pb.authStore.record
+const userRole = ref(user?.role || 'Customer'); // Fallback role if user is undefined
+
+const menuItems = ref([
 	{
-		label: 'Işçiler',//t('employee', 5),
+		label: t('employee'),
 		icon: 'pi pi-users',
 		command: () => router.push(`/hotels/${hotelId.value}/employees`),
+		visible: true, // Ensure explicit boolean value
 	},
 	{
-		label: 'Analitika',// t('analytics'),
+		label: t('analytics'),
 		icon: 'pi pi-chart-line',
 		command: () => router.push("/dashboard"),
+		visible: user.role !== 'Employee', // Ensure this always resolves to boolean
 	},
 	{
-		label: 'Otaglar', //t('room', 5),
+		label: t('room'),
 		icon: 'pi pi-building',
 		command: () => router.push("/dashboard/rooms"),
+		visible: true,
 	},
 	{
-		label: 'Bronlar',//t('bookings'),
+		label: t('bookings'),
 		icon: 'pi pi-book',
 		command: () => router.push("/dashboard/bookings"),
+		visible: true,
 	},
 	{
-		label: 'Sazlamalar', //'t('settings'),
+		label: t('settings'),
 		icon: 'pi pi-cog',
 		command: () => router.push("/dashboard/settings"),
+		visible: user.role !== 'Employee',
 	},
-]
+]);
+
+watch(
+	() => t('employee'), // Watch for language changes
+	() => {
+		menuItems.value = [
+			{
+				label: t('employee'),
+				icon: 'pi pi-users',
+				command: () => router.push(`/hotels/${hotelId.value}/employees`),
+				visible: true,
+			},
+			{
+				label: t('analytics'),
+				icon: 'pi pi-chart-line',
+				command: () => router.push("/dashboard"),
+				visible: userRole.value !== 'Employee',
+			},
+			{
+				label: t('room'),
+				icon: 'pi pi-building',
+				command: () => router.push("/dashboard/rooms"),
+				visible: true,
+			},
+			{
+				label: t('bookings'),
+				icon: 'pi pi-book',
+				command: () => router.push("/dashboard/bookings"),
+				visible: true,
+			},
+			{
+				label: t('settings'),
+				icon: 'pi pi-cog',
+				command: () => router.push("/dashboard/settings"),
+				visible: userRole.value !== 'Employee',
+			},
+		];
+	}
+);
+
 </script>
+
 
 <style>
 /* Additional styles if needed */

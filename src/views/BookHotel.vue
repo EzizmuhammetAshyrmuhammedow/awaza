@@ -5,6 +5,7 @@ import { ref, onMounted, computed, onUnmounted } from 'vue'
 import { useBookingStore } from '@/stores/booking.ts'
 import { Card, Button } from 'primevue'
 
+
 const pb = new PocketBase("http://localhost:8090") as TypedPocketBase;
 const bookingStore = useBookingStore();
 const guests = bookingStore.guest_amount + bookingStore.children_amount;
@@ -16,9 +17,6 @@ const roomTypes = ref<
 >([]);
 const assignedRooms = ref<{ type: string; count: number; guests: number; price: number }[]>([]);
 const bookingStatus = ref<string | null>(null);
-
-const userId = pb.authStore.record.id;
-const hotel = ref();
 
 const path = window.location.pathname
 const hotelId = String(path.split('/')[2])
@@ -34,17 +32,24 @@ async function fetchRoomTypes() {
 		expand: "room",
 	});
 
-	roomTypes.value = roomData.items.map(roomType => ({
-		id: roomType.id,
-		type: roomType.room_type,
-		capacity: roomType.capacity,
-		price: roomType.price,
-		thumbnail: roomType.expand?.room?.[0]?.thumbnail
-			? pb.files.getURL(roomType.expand.room[0], roomType.expand.room[0].thumbnail)
-			: undefined
-	}));
+	interface RoomExpand {
+		room?: { thumbnail: string }[];
+	}
 
-	assignRooms();
+	roomTypes.value = roomData.items.map(roomType => {
+		const expand = roomType.expand as RoomExpand | undefined;
+		return {
+			id: roomType.id,
+			type: roomType.room_type,
+			capacity: roomType.capacity,
+			price: roomType.price,
+			thumbnail: expand?.room?.[0]?.thumbnail
+				? pb.files.getURL(expand.room[0], expand.room[0].thumbnail)
+				: undefined
+		}
+	});
+
+	await assignRooms();
 }
 
 async function assignRooms() {

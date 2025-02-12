@@ -13,7 +13,7 @@ const hotel = ref(null); // Define hotel as a reactive reference
 
 onMounted(async () => {
 	try {
-		hotel.value = await pb.collection('hotels').getOne(id); // Fetch the hotel data
+		hotel.value = await pb.collection('hotels').getOne(id as string);
 		console.log(hotel.value);
 	} catch (error) {
 		console.error("Error fetching hotel:", error);
@@ -40,12 +40,6 @@ onMounted(async () => {
 		></div>
 
 		<div flex flex-row gap-5>
-			<RouterLink
-				:to="'/hotels/' + id + '/reviews/'"
-				class="no-underline"
-			>
-				<Button :label="$t('review', 5)" severity="contrast"/>
-			</RouterLink>
 			<RouterLink
 				:to="'/hotels/' + id + '/comments'"
 				class="no-underline"

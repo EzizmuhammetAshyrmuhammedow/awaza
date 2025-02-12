@@ -9,10 +9,14 @@
 			<template #header>
 				<span class="text-xl font-medium">{{ $t('room', 5) }}</span>
 			</template>
-			<Column field="id" header="ID" class="w-1/4" sortable="true"/>
-			<Column field="expand.room_type.room_type" :header="$t('room_type')" style="width: 25%" sortable="true"></Column>
-			<Column field="available" :header="$t('availability')" style="width: 25%" sortable="true"></Column>
-			<Column :header="$t('image')" style="width: 25%" sortable="true">
+			<Column field="id" header="ID" class="w-1/4" sortable />
+			<Column field="expand.room_type.room_type" :header="$t('room_type')" style="width: 25%" sortable></Column>
+			<Column :header="$t('availability')" style="width: 25%" sortable>
+				<template #body="slotProps">
+					<span class="w-full text-start" :class="slotProps.data.available ? 'pi pi-check-circle' : 'pi pi-times'" a></span>
+				</template>
+			</Column>
+			<Column :header="$t('image')" style="width: 25%" sortable>
 				<template #body="slotProps">
 					<img v-if="slotProps.data.thumbnail" :src="pb.files.getURL(slotProps.data, slotProps.data.thumbnail)" class="w-24 rounded" />
 				</template>
@@ -29,7 +33,7 @@
 				<InputText id="room_type" v-model="editedData.room_type" />
 
 				<label for="available">Room Availability</label>
-				<InputText id="available" v-model="editedData.available" />
+				<Checkbox id="available" v-model="editedData.available" />
 
 				<label for="thumbnail">Room Image</label>
 				<FileUpload mode="basic" name="thumbnail" accept="image/*" :auto="false" @select="handleEditFileUpload" />
@@ -61,7 +65,7 @@
 
 
 				<label for="available">{{ $t('availability') }}</label>
-				<InputText id="available" v-model="createdData.available"/>
+				<Checkbox id="available" v-model="createdData.available"/>
 
 				<label for="thumbnail">{{ $t('room_image') }}</label>
 				<FileUpload mode="basic" name="thumbnail" accept="image/*" :auto="false" @select="handleFileUpload" />
@@ -77,7 +81,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
-import { DataTable, Column, Dialog, Button, FileUpload, Select } from 'primevue'
+import { DataTable, Column, Dialog, Button, FileUpload, Select, Checkbox } from 'primevue'
 import PocketBase from 'pocketbase'
 import type { TypedPocketBase } from '../../../../pocketbase-types.ts'
 import InputText from 'primevue/inputtext'

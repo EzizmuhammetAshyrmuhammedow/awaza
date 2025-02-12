@@ -3,12 +3,24 @@ import PocketBase from 'pocketbase'
 import type { TypedPocketBase } from '../../../pocketbase-types.ts'
 import { ref, onMounted } from 'vue'
 import { Card, Button } from 'primevue'
-import { getRule } from '@primevue/themes'
+
+interface RoomType {
+	id: string;
+	room_type: string;
+	price: number;
+}
+
+interface Room {
+	id: string;
+	expand?: {
+		room_type?: RoomType;
+	};
+	thumbnail?: string;
+}
 
 const pb = new PocketBase("http://localhost:8090") as TypedPocketBase;
 
 const path = window.location.pathname;
-const hotel = ref();
 const hotelId = path.split('/')[2];
 const user = pb.authStore.record;
 console.log(user.id);
@@ -21,13 +33,13 @@ async function GetRooms() {
 	console.log(hotelId);
 
 	// Step 1: Fetch rooms that belong to the hotel
-	const rooms = await pb.collection("rooms").getList(1, 100, {
+	const rooms = await pb.collection("rooms").getList<Room>(1, 100, {
 		filter: `hotel = '${hotelId}'`,
 		expand: "room_type" // Expand room type
 	});
 
 	const grouped = rooms.items.reduce((acc, room) => {
-		const roomType = room.expand?.room_type;
+		const roomType = room.expand?.room_type as RoomType | undefined;
 		if (!roomType) return acc; // Skip if no room_type
 
 		if (!acc[roomType.id]) {
