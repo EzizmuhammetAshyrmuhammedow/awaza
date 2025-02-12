@@ -6,6 +6,7 @@ import LangSwitcher from '@/components/LangSwitcher.vue'
 import PocketBase from 'pocketbase'
 import type { TypedPocketBase } from '../../pocketbase-types'
 import { RouterLink } from 'vue-router'
+import { onMounted } from 'vue'
 
 const pb = new PocketBase("http://localhost:8090") as TypedPocketBase;
 const user = pb.authStore.record
@@ -31,10 +32,20 @@ const items = ref([
 		icon: 'pi pi-times'
 	}
 ])
-function toggleDarkMode() {
-	document.documentElement.classList.toggle('my-app-dark')
-	document.documentElement.classList.toggle('dark')
-}
+const isDarkMode = ref(false);
+
+const toggleDarkMode = () => {
+	isDarkMode.value = !isDarkMode.value;
+	document.documentElement.classList.toggle('my-app-dark');
+	localStorage.setItem('theme', isDarkMode.value ? 'dark' : 'light');
+};
+
+onMounted(() => {
+	if (localStorage.getItem('theme') === 'dark') {
+		isDarkMode.value = true;
+		document.documentElement.classList.add('my-app-dark');
+	}
+});
 </script>
 
 <template>

@@ -3,7 +3,7 @@ import { computed, ref } from 'vue'
 import AutoComplete from 'primevue/autocomplete'
 import Button from 'primevue/button'
 import Divider from 'primevue/divider'
-import { InputIcon, IconField, InputNumber, Card, Popover, DatePicker } from 'primevue'
+import { InputNumber, Card, Popover, DatePicker } from 'primevue'
 import { useRouter } from 'vue-router'
 import { useI18n } from "vue-i18n";
 
@@ -12,14 +12,12 @@ import { useI18n } from "vue-i18n";
 const router = useRouter();
 const { t } = useI18n();
 
-const destination = ref('')
 const checkIn = ref(null);
 const checkOut = ref(null);
 const guests = ref(1);
 const rooms = ref(1);
 const children = ref(0);
 const isGuestOpen = ref(false);
-const recentSearches = ref(['Istanbul', 'Ashgabat']);
 
 const today = new Date(); // Today's date
 const minCheckOutDate = computed(() => {
@@ -82,7 +80,7 @@ function search() {
 
 			<!-- Guests & Rooms -->
 			<div class="flex items-center border-r px-3 w-1/3 mr-2">
-				<Button variant="text" class="!w-full flex flex-row !p-0.5"">
+				<Button variant="text" class="!w-full flex flex-row !p-0.5">
 					<i class="pi pi-users"></i>
 					<div class="flex flex-col">
 						<sup class="text-xs">{{ $t("guest", 5) }} {{ $t("and") }} {{ $t("room",5) }}</sup>
