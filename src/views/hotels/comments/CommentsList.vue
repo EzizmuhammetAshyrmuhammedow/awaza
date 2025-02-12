@@ -1,20 +1,29 @@
 <script setup lang="ts">
 import PocketBase from 'pocketbase';
-import { TypedPocketBase } from "../../../pocketbase-types.ts"
-import { onMounted, reactive, ref, onUnmounted, nextTick } from 'vue';
+import { TypedPocketBase } from "../../../../pocketbase-types.ts";
+import { onMounted, reactive, onUnmounted, h, nextTick, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import { Button, Card } from 'primevue';
 import { Form } from '@primevue/forms';
 import Editor from 'primevue/editor';
+import { useI18n } from 'vue-i18n'
+import { useAuthStore } from '@/stores/auth.ts'
+
+import CommentItem from '@/views/hotels/comments/CommentItem.vue'
+
+const { t } = useI18n();
 
 const pb = new PocketBase("http://localhost:8090") as TypedPocketBase;
+
+const authStore = useAuthStore()
+
 
 const route = useRoute();
 const hotelId = route.path.split('/')[2];
 
-const comments = ref([]);
+const comments = ref<Record<string, { id: string, content: string, like_count: number, dislike_count: number, read: boolean, author: any, isLiked: boolean, isDisliked: boolean }>>([]);
 const editingCommentId = ref(null);
-const editingComment = ref(null);
+const editingComment = ref(false);
 const formRef = ref(null);
 const commentRefs = ref({}); // Stores references for comments
 
@@ -30,7 +39,7 @@ onMounted(async () => {
 		console.error("Error fetching comments:", error);
 	}
 
-	pb.collection('comments').subscribe('*', (e) => {
+	await pb.collection('comments').subscribe('*', (e) => {
 		if (e.action === 'create' && e.record.hotel_id === hotelId) {
 			comments.value.push(e.record);
 		}
@@ -64,9 +73,20 @@ const startEditing = async (comment) => {
 	FormValues.content = comment.content;
 
 	await nextTick();
-	scrollToElement(formRef.value?.$el); // Scroll to editor
-	formRef.value?.focus();
+
+	if (formRef.value) {
+		// Check if $el exists and has focus method
+		if (formRef.value.$el && typeof formRef.value.$el.focus === 'function') {
+			scrollToElement(formRef.value.$el);
+			formRef.value.$el.focus();
+		} else {
+			console.error('Editor element does not have focus method or $el is not available.');
+		}
+	} else {
+		console.error('formRef is not properly referencing the Editor component.');
+	}
 };
+
 
 // Update comment
 const updateComment = async () => {
@@ -81,6 +101,7 @@ const updateComment = async () => {
 		FormValues.content = '';
 		const commentId = editingCommentId.value;
 		editingCommentId.value = null;
+		editingComment.value = false;
 
 		await nextTick();
 		scrollToElement(commentRefs.value[commentId]?.$el); // Scroll back to comment
@@ -107,36 +128,42 @@ const onSubmit = async () => {
 	}
 };
 
+
 const cancelEditing = () => {
-	editingComment.value = null;
+	editingComment.value = false;
 	FormValues.content = '';
 };
+
 
 async function markAsRead(commentId: string) {
 	const comment = await pb.collection('comments').getOne(commentId);
 	comment.read = true;
 	await pb.collection('comments').update(commentId, comment);
 }
+
 </script>
 
 <template>
 	<ul class="flex flex-col gap-3">
-		<Card v-for="comment in comments" :key="comment.id" ref="commentRefs">
-			<template #content>
-				<p v-html="comment.content"></p>
-			</template>
-			<template #footer>
-				<Button v-if="comment.author_id == pb.authStore.record.id" variant="outlined" @click="startEditing(comment)">Edit</Button>
-				<Button v-if="comment.read != true" variant="outlined" severity="info" @click="markAsRead(comment.id)">Mark As Read</Button>
-			</template>
-		</Card>
 
 		<Form @submit="onSubmit" class="flex flex-col gap-4 w-56 lg:w-full">
 			<div class="p-card !w-full">
 				<Editor v-model="FormValues.content" editorStyle="height: 320px" class="!w-full" ref="formRef" />
 			</div>
-			<Button type="submit" :label="editingComment? 'Update' : 'Submit'" severity="secondary" />
-			<Button v-if="editingComment" variant="outlined" severity="danger" label="Cancel" @click="cancelEditing" />
+			<Button type="submit" :label="editingComment ? t('update') : t('submit')" severity="secondary" />
+			<Button v-if="editingComment" variant="outlined" severity="danger" :label="t('cancel')" @click="cancelEditing" />
 		</Form>
+		<CommentItem
+			v-for="comment in comments"
+			:key="comment.id"
+			:comment="comment"
+			:hotel-id="hotelId"
+			:editingComment="editingComment"
+			:editingCommentId="editingCommentId"
+			:FormValues="FormValues"
+			:startEditing="startEditing"
+			:cancelEditing="cancelEditing"
+			:markAsRead="markAsRead"
+		/>
 	</ul>
 </template>

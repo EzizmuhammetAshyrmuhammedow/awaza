@@ -1,20 +1,25 @@
 <template>
-  <div v-for="(hotel, index) in hotels" :key="hotel.id"> <!-- Use hotel.id as key -->
-    <Card style="width: 25rem; overflow: hidden">
-      <template #header>
-        <img class="w-full" alt="hotel thumbnail" :src="pb.files.getURL(hotel, hotel.thumbnail)" /> <!-- Ensure correct usage of getUrl -->
-      </template>
-      <template #title>{{ hotel.name }}</template>
-      <template #content>
-        <p v-html="hotel.short_description" class="m0"></p>
-      </template>
-      <template #footer>
-        <div class="flex gap-4 mt-1">
-          <RouterLink :to = "'/hotels/' + hotel.id"  class="w-full"><Button label="Bar" class="w-full" /></RouterLink>
-        </div>
-      </template>
-    </Card>
-  </div>
+	<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+		<div v-for="(hotel, index) in hotels" :key="hotel.id">
+			<Card class="h-full flex flex-col" style="width: 25rem; overflow: hidden">
+				<template #header>
+					<img class="w-full h-48 object-cover" alt="hotel thumbnail" :src="pb.files.getURL(hotel, hotel.thumbnail)" />
+				</template>
+				<template #title>{{ hotel.name }}</template>
+				<template #content>
+					<div class="flex-grow min-h-[4rem]">  <p v-html="hotel.short_description" class="m0"></p>
+					</div>
+				</template>
+				<template #footer>
+					<div class="flex gap-4 mt-2">
+						<RouterLink :to="'/hotels/' + hotel.id" class="w-full">
+							<Button :label="$t('view')" class="w-full" />
+						</RouterLink>
+					</div>
+				</template>
+			</Card>
+		</div>
+	</section>
 </template>
 
 <script setup lang="ts">

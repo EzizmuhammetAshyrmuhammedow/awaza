@@ -6,7 +6,14 @@ const pb = new PocketBase('http://127.0.0.1:8090') // Replace with your PocketBa
 
 export const useAuthStore = defineStore('auth', () => {
 	const isAuthenticated = ref(false) // Reactive state to track authentication status
-	const isAdmin = ref(false)
+	const user = pb.authStore.record
+
+	function isAdmin() {
+		if(user.role === 'admin' && hotel.value.owner_id === `${user?.id}`){
+			return true;
+		}
+		return false;
+	}
 
 	const checkAuth = () => {
 		isAuthenticated.value = pb.authStore.isValid // Update local state based on auth store
@@ -21,6 +28,7 @@ export const useAuthStore = defineStore('auth', () => {
 	const login = async (email, password) => {
 		try {
 			await pb.collection('users').authWithPassword(email, password)
+
 			isAuthenticated.value = true // Update authentication status
 		} catch (error) {
 			console.error('Login failed:', error)
@@ -33,14 +41,16 @@ export const useAuthStore = defineStore('auth', () => {
 		isAuthenticated.value = false // Update local state to reflect logout
 	}
 
-	const register = async (username, email, password) => {
+	const register = async (username, email, password, role) => {
 		try {
+			// Add the role during user creation
 			await pb.collection('users').create({
 				name: username,
 				email,
 				password,
 				passwordConfirm: password,
-				emailVisibility: true
+				emailVisibility: true,
+				role: role
 			})
 
 			await login(email, password) // Automatically log in after registration

@@ -44,14 +44,14 @@ onMounted(async () => {
 				:to="'/hotels/' + id + '/comments'"
 				class="no-underline"
 			>
-				<Button label="Teswir Yaz" severity="info"/>
+				<Button :label="$t('comment')" severity="info"/>
 			</RouterLink>
 
 			<RouterLink
 				:to="'/hotels/' + id + '/rooms'"
 				class="no-underline"
 			>
-				<Button label="Otaglar" severity="primary"/>
+				<Button :label="$t('room', 5)" severity="primary"/>
 			</RouterLink>
 		</div>
 

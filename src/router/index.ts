@@ -1,20 +1,25 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import About from '@/views/About.vue'
 import Index from '@/views/index.vue'
-import Login from '@/views/login.vue'
-import Signup from '@/views/signup.vue'
+import Login from '@/views/auth/login.vue'
+import Signup from '@/views/auth/signup.vue'
 import Hotels from '@/views/hotels/hotels.vue'
 import HotelId from '@/views/hotels/hotelId.vue'
-import Register_admin from '@/views/register_admin.vue'
+import Register_admin from '@/views/auth/register_admin.vue'
 import Dashboard from '@/views/dashboard/dashboard.vue'
 import PocketBase from 'pocketbase'
 import Default from '@/views/layout/Default.vue'
-import Comments from '@/views/hotels/comments.vue'
+import CommentsList from '@/views/hotels/comments/CommentsList.vue'
 import EmployeesView from '@/views/dashboard/EmployeesView.vue'
 import AnalyticsView from '@/views/dashboard/AnalyticsView.vue'
 import SearchView from '@/views/SearchView.vue'
-import RoomsView from '@/views/RoomsView.vue'
+import RoomsView from '@/views/hotels/RoomsView.vue'
 import BookHotel from '@/views/BookHotel.vue'
+import SettingsView from '@/views/dashboard/SettingsView.vue'
+import RoomsDashboardView from '@/views/dashboard/rooms/RoomsDashboardView.vue'
+import RoomTypeID from '@/views/RoomTypeID.vue'
+import NewRoomTypeView from '@/views/NewRoomTypeView.vue'
+import BookingsDashboard from '@/views/dashboard/BookingsDashboard.vue'
 
 const pb = new PocketBase('http://localhost:8090/')
 
@@ -62,12 +67,27 @@ const router = createRouter({
 				{
 					name: "comments",
 					path: "/hotels/:id/comments",
-					component: Comments,
+					component: CommentsList,
+				},
+				{
+					name: "reviews",
+					path: "/hotels/:id/reviews",
+
 				},
 				{
 					name: "rooms",
 					path: "/hotels/:id/rooms",
 					component: RoomsView,
+				},
+				{
+					name: "new room",
+					path: "/hotels/:id/rooms/new",
+					component: NewRoomTypeView,
+				},
+				{
+					name: "roomType",
+					path: "/hotels/:id/rooms/:roomId",
+					component: RoomTypeID,
 				},
 				{
 					name: "book",
@@ -82,6 +102,7 @@ const router = createRouter({
 						checkIn: route.query.checkIn,
 						checkOut: route.query.checkOut,
 						guests: route.query.guests,
+						children: route.query.children,
 						rooms: route.query.rooms,
 					}),
 				},
@@ -92,7 +113,7 @@ const router = createRouter({
 					beforeEnter: (to, from, next) => {
 						const user = pb.authStore.record // Assuming you have PocketBase set up
 
-						if (!pb.authStore.isValid || user.role !== 'Admin') {
+						if (!pb.authStore.isValid || (user.role !== 'Admin')) {
 							next({ name: 'login' }, alert('You are not a verified user or logged in'))
 						} else {
 							next() // Allow access
@@ -108,6 +129,21 @@ const router = createRouter({
 							path: "",
 							name: "Analytics",
 							component: AnalyticsView,
+						},
+						{
+							path: "/dashboard/settings",
+							name: "Settings",
+							component: SettingsView,
+						},
+						{
+							path: "/dashboard/rooms",
+							name: "Rooms",
+							component: RoomsDashboardView,
+						},
+						{
+							path: "/dashboard/bookings",
+							name: "Bookings",
+							component: BookingsDashboard,
 						}
 					]
 				}

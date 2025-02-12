@@ -1,15 +1,17 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
-  </div>
+	<div>
+		<h1>{{ $t("welcome") }}</h1>
+		<button @click="changeLanguage('en')">English</button>
+		<button @click="changeLanguage('tm')">Türkmen</button>
+	</div>
 </template>
 
-<style>
-@media (min-width: 1024px) {
-  .about {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-  }
-}
-</style>
+<script setup>
+import { useI18n } from 'vue-i18n';
+
+const { locale } = useI18n();
+
+const changeLanguage = (lang) => {
+	locale.value = lang;
+};
+</script>

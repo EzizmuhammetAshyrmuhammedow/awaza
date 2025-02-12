@@ -11,8 +11,11 @@ export enum Collections {
 	Mfas = "_mfas",
 	Otps = "_otps",
 	Superusers = "_superusers",
+	Bookings = "bookings",
 	Comments = "comments",
+	Employees = "employees",
 	Hotels = "hotels",
+	RoomTypes = "room_types",
 	Rooms = "rooms",
 	Users = "users",
 }
@@ -88,13 +91,37 @@ export type SuperusersRecord = {
 	verified?: boolean
 }
 
+export type BookingsRecord = {
+	check_in?: IsoDateString
+	check_out?: IsoDateString
+	created?: IsoDateString
+	guests?: number
+	hotel?: RecordIdString
+	id: string
+	room?: RecordIdString[]
+	total_price?: number
+	updated?: IsoDateString
+	user?: RecordIdString
+}
+
 export type CommentsRecord = {
 	author_id?: RecordIdString
 	content?: HTMLString
 	created?: IsoDateString
 	hotel_id?: RecordIdString
 	id: string
+	read?: boolean
 	updated?: IsoDateString
+}
+
+export type EmployeesRecord = {
+	created?: IsoDateString
+	hotel_id?: RecordIdString
+	id: string
+	name?: string
+	phone_number?: string
+	updated?: IsoDateString
+	wage?: number
 }
 
 export type HotelsRecord = {
@@ -109,16 +136,31 @@ export type HotelsRecord = {
 	updated?: IsoDateString
 }
 
-export enum RoomsRoomTypeOptions {
+export enum RoomTypesRoomTypeOptions {
 	"Standart" = "Standart",
-	"Masgala" = "Masgala",
 	"VIP" = "VIP",
+	"VIP Deluxe" = "VIP Deluxe",
+	"Double" = "Double",
 }
+export type RoomTypesRecord = {
+	capacity?: number
+	created?: IsoDateString
+	extra_info?: HTMLString
+	features?: HTMLString
+	id: string
+	photos?: string[]
+	price?: number
+	room?: RecordIdString[]
+	room_type?: RoomTypesRoomTypeOptions
+	updated?: IsoDateString
+}
+
 export type RoomsRecord = {
+	available?: boolean
 	created?: IsoDateString
 	hotel?: RecordIdString
 	id: string
-	room_type?: RoomsRoomTypeOptions
+	room_type?: RecordIdString
 	thumbnail?: string
 	updated?: IsoDateString
 }
@@ -148,8 +190,11 @@ export type ExternalauthsResponse<Texpand = unknown> = Required<ExternalauthsRec
 export type MfasResponse<Texpand = unknown> = Required<MfasRecord> & BaseSystemFields<Texpand>
 export type OtpsResponse<Texpand = unknown> = Required<OtpsRecord> & BaseSystemFields<Texpand>
 export type SuperusersResponse<Texpand = unknown> = Required<SuperusersRecord> & AuthSystemFields<Texpand>
+export type BookingsResponse<Texpand = unknown> = Required<BookingsRecord> & BaseSystemFields<Texpand>
 export type CommentsResponse<Texpand = unknown> = Required<CommentsRecord> & BaseSystemFields<Texpand>
+export type EmployeesResponse<Texpand = unknown> = Required<EmployeesRecord> & BaseSystemFields<Texpand>
 export type HotelsResponse<Texpand = unknown> = Required<HotelsRecord> & BaseSystemFields<Texpand>
+export type RoomTypesResponse<Texpand = unknown> = Required<RoomTypesRecord> & BaseSystemFields<Texpand>
 export type RoomsResponse<Texpand = unknown> = Required<RoomsRecord> & BaseSystemFields<Texpand>
 export type UsersResponse<Texpand = unknown> = Required<UsersRecord> & AuthSystemFields<Texpand>
 
@@ -161,8 +206,11 @@ export type CollectionRecords = {
 	_mfas: MfasRecord
 	_otps: OtpsRecord
 	_superusers: SuperusersRecord
+	bookings: BookingsRecord
 	comments: CommentsRecord
+	employees: EmployeesRecord
 	hotels: HotelsRecord
+	room_types: RoomTypesRecord
 	rooms: RoomsRecord
 	users: UsersRecord
 }
@@ -173,8 +221,11 @@ export type CollectionResponses = {
 	_mfas: MfasResponse
 	_otps: OtpsResponse
 	_superusers: SuperusersResponse
+	bookings: BookingsResponse
 	comments: CommentsResponse
+	employees: EmployeesResponse
 	hotels: HotelsResponse
+	room_types: RoomTypesResponse
 	rooms: RoomsResponse
 	users: UsersResponse
 }
@@ -188,8 +239,11 @@ export type TypedPocketBase = PocketBase & {
 	collection(idOrName: '_mfas'): RecordService<MfasResponse>
 	collection(idOrName: '_otps'): RecordService<OtpsResponse>
 	collection(idOrName: '_superusers'): RecordService<SuperusersResponse>
+	collection(idOrName: 'bookings'): RecordService<BookingsResponse>
 	collection(idOrName: 'comments'): RecordService<CommentsResponse>
+	collection(idOrName: 'employees'): RecordService<EmployeesResponse>
 	collection(idOrName: 'hotels'): RecordService<HotelsResponse>
+	collection(idOrName: 'room_types'): RecordService<RoomTypesResponse>
 	collection(idOrName: 'rooms'): RecordService<RoomsResponse>
 	collection(idOrName: 'users'): RecordService<UsersResponse>
 }

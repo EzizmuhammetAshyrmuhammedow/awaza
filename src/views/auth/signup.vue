@@ -4,12 +4,13 @@
 		  <h3 class="text-align-center">What is your role</h3>
 		  <div class="flex flex-row items-center gap-5">
 			  <Button variant="outlined" label="Customer" @click="isHidden = !isHidden"/>
+			  <Button variant="outlined" label="Employee" @click="isHidden = !isHidden; isEmployee = !isEmployee"/>
 			  <RouterLink to="/register_admin"><Button variant="outlined" label="Hotel Owner"/></RouterLink>
 		  </div>
 
 	  </div>
     <div v-show="!isHidden" class="card flex justify-center">
-      <Toast />
+      <Toast class="z-100"/>
 
       <Form v-slot="$form" :initialValues="initialValues" :resolver="resolver" @submit="onFormSubmit" class="flex flex-col gap-4 w-full sm:w-56">
         <div class="flex flex-col gap-5">
@@ -49,8 +50,10 @@ import { reactive, ref } from 'vue'
 import { useToast } from 'primevue/usetoast';
 import { InputText, Message, Button, FloatLabel, Card } from 'primevue';
 import Toast from 'primevue/toast';
-import { useAuthStore } from '@/stores/auth.ts';
+import { useAuthStore } from '@/stores/auth';
 import router from "@/router";
+
+const isEmployee = ref<boolean>(false);
 
 const toast = useToast();
 const authStore = useAuthStore();
@@ -58,10 +61,10 @@ const authStore = useAuthStore();
 const isHidden = ref(true);
 
 const authData = reactive({
-  username: '',
-  email: '',
-  password: '',
-  password_confirm: '',
+	username: '',
+	email: '',
+	password: '',
+	password_confirm: '',
 });
 
 const initialValues = reactive({ ...authData });
@@ -91,7 +94,9 @@ const resolver = ({ values }) => {
 const onFormSubmit = async ({ valid }) => {
   if (valid) {
     try {
-      await authStore.register(authData.username, authData.email, authData.password); // Call register method from store
+		if (isEmployee.value === true) {
+			await authStore.register(authData.username, authData.email, authData.password, 'Employee');
+		}
 
       toast.add({
         severity: 'success',

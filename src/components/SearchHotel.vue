@@ -5,10 +5,12 @@ import Button from 'primevue/button'
 import Divider from 'primevue/divider'
 import { InputIcon, IconField, InputNumber, Card, Popover, DatePicker } from 'primevue'
 import { useRouter } from 'vue-router'
+import { useI18n } from "vue-i18n";
 
 // Data
 
 const router = useRouter();
+const { t } = useI18n();
 
 const destination = ref('')
 const checkIn = ref(null);
@@ -20,7 +22,14 @@ const isGuestOpen = ref(false);
 const recentSearches = ref(['Istanbul', 'Ashgabat']);
 
 const today = new Date(); // Today's date
-const minCheckOutDate = computed(() => checkIn.value ? new Date(checkIn.value) : today);
+const minCheckOutDate = computed(() => {
+	if (checkIn.value) {
+		const nextDay = new Date(checkIn.value);
+		nextDay.setDate(nextDay.getDate() + 1); // Add 1 day to the check-in date
+		return nextDay;
+	}
+	return today; // Fallback to today's date if no check-in date is selected
+});
 
 // Toggle guests popover
 const toggle = (event) => {
@@ -31,6 +40,7 @@ function search() {
 		checkIn: checkIn.value || '', // Fallback to empty string if null
 		checkOut: checkOut.value || '', // Fallback to empty string if null
 		guests: guests.value || 1, // Fallback to 1 if null
+		children: children.value,
 		rooms: guests.value || 1, // Fallback to 1 if null
 	};
 
@@ -38,15 +48,17 @@ function search() {
 		name: 'Search',
 		query: queryParams,
 	});
+	console.log(queryParams);
 }
 </script>
 
+
 <template>
-	<div class="bg-zinc-800 search-bar flex items-center border rounded-lg overflow-hidden shadow-md p-2 max-w-[1200px] relative">
+	<div class="bg-zinc-800 search-bar flex items-center border rounded-lg overflow-hidden shadow-md p-2 max-w-[2000px] relative">
 		<div class="flex items-center border-r px-3">
 			<DatePicker
 				v-model="checkIn"
-				placeholder="Check-in"
+				:placeholder="t('check_in')"
 				showIcon
 				dateFormat="dd/mm/yy"
 				:minDate="today"
@@ -58,7 +70,7 @@ function search() {
 		<div class="flex items-center border-r px-3">
 			<DatePicker
 				v-model="checkOut"
-				placeholder="Check-out"
+				:placeholder="t('check_out')"
 				showIcon
 				dateFormat="dd/mm/yy"
 				:minDate="minCheckOutDate"
@@ -69,12 +81,12 @@ function search() {
 		<Divider layout="vertical" class="!h-10 !m-0" />
 
 		<!-- Guests & Rooms -->
-		<div class="flex items-center border-r px-3 w-1/4 mr-2">
+		<div class="flex items-center border-r px-3 w-1/3 mr-2">
 			<Button variant="text" class="!w-full flex flex-row !p-0.5" @click="toggle">
 				<i class="pi pi-users"></i>
 				<div class="flex flex-col">
-					<sup class="text-xs">Guests and Rooms</sup>
-					<p class="m-0">{{ guests + children }} Guests, {{ rooms }} Rooms</p>
+					<sup class="text-xs">{{ $t("guest", 5) }} {{ $t("and") }} {{ $t("room",5) }}</sup>
+					<p class="m-0">{{ guests + children }} {{ $t("guest", 5) }}, {{ rooms }} {{ $t("room",5) }} </p>
 				</div>
 			</Button>
 
@@ -82,9 +94,9 @@ function search() {
 			<Popover ref="isGuestOpen">
 				<Card>
 					<template #content>
-						<main class="flex flex-col gap-3">
-							<div class="flex flex-row items-center gap-10">
-								<label for="adult_number">Adults</label>
+						<main class="grid grid-cols-[auto,1fr] gap-4">
+								<label for="adult_number">{{ $t("adult", 5) }}</label>
+							<div>
 								<InputNumber
 									v-model="guests"
 									inputId="adult_number"
@@ -101,8 +113,8 @@ function search() {
 									</template>
 								</InputNumber>
 							</div>
-							<div class="flex flex-row items-center gap-10">
-								<label for="child_number" class="mr-[-18px]">Children</label>
+								<label for="child_number">{{ $t("child", 5) }}</label>
+							<div>
 								<InputNumber
 									v-model="children"
 									inputId="child_number"
@@ -119,11 +131,10 @@ function search() {
 									</template>
 								</InputNumber>
 							</div>
-							<div class="flex flex-row items-center gap-10">
-								<label for="rooms_number" class="mr-[-6px]">Rooms</label>
+								<label for="rooms_number">{{ $t("room", 5) }}</label>
+							<div>
 								<InputNumber
 									v-model="rooms"
-									class=""
 									inputId="rooms_number"
 									showButtons
 									buttonLayout="horizontal"
@@ -145,6 +156,11 @@ function search() {
 		</div>
 
 		<!-- Search Button -->
-		<Button label="Search" class="w-1/6 ml-2" @click="search" />
+		<Button
+			:label="t('search')"
+			class="w-1/6 ml-2"
+			@click="search"
+			:disabled="!checkIn || !checkOut"
+		/>
 	</div>
 </template>

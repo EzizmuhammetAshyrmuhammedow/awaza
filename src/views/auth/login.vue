@@ -1,7 +1,7 @@
 <template>
   <div class="h-screen w-screen flex items-center justify-center">
     <div class="card flex justify-center">
-      <Toast @close="onToastClose"/>
+      <Toast @close="onToastClose" class="z-100"/>
 
       <Form v-slot="$form" :initialValues="initialValues" :resolver="resolver" @submit="onFormSubmit" class="flex flex-col gap-4 w-full sm:w-56">
         <div class="flex flex-col gap-5">

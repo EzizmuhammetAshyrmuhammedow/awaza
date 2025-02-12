@@ -8,6 +8,11 @@ export const useBookingStore = defineStore('booking', () => {
 			? JSON.parse(localStorage.getItem('guest_amount')!)
 			: undefined,
 	)
+	const children_amount = ref<number | undefined>(
+		localStorage.getItem('children_amount')
+			? JSON.parse(localStorage.getItem('children_amount')!)
+			: undefined,
+	)
 	const room_amount = ref<number | undefined>(
 		localStorage.getItem('room_amount')
 			? JSON.parse(localStorage.getItem('room_amount')!)
@@ -29,23 +34,31 @@ export const useBookingStore = defineStore('booking', () => {
 		guest_amount.value = amount
 		localStorage.setItem('guest_amount', JSON.stringify(amount))
 	}
+	function setChildrenAmount(amount: number) {
+		children_amount.value = amount
+		localStorage.setItem('children_amount', JSON.stringify(amount))
+	}
 
 	function setRoomAmount(amount: number) {
 		room_amount.value = amount
 		localStorage.setItem('room_amount', JSON.stringify(amount))
 	}
-	function setCheckIn(check_in) {
-		check_in.value = check_in
-		localStorage.setItem('check_in', JSON.stringify(check_in))
+	function setCheckIn(check_in_value) {
+		check_in.value = check_in_value
+		localStorage.setItem('check_in', JSON.stringify(check_in_value))
 	}
-	function setCheckOut(check_out) {
-		check_out.value = check_out
-		localStorage.setItem('check_in', JSON.stringify(check_out))
+	function setCheckOut(check_out_value) {
+		check_out.value = check_out_value
+		localStorage.setItem('check_out', JSON.stringify(check_out_value))
 	}
 	// Function to clear guest_amount from localStorage
 	function clearGuest() {
 		guest_amount.value = undefined
 		localStorage.removeItem('guest_amount')
+	}
+	function clearChildrenAmount() {
+		children_amount.value = undefined
+		localStorage.removeItem('children_amount')
 	}
 	function clearRoomAmount() {
 		guest_amount.value = undefined
@@ -65,11 +78,14 @@ export const useBookingStore = defineStore('booking', () => {
 		room_amount,
 		check_in,
 		check_out,
+		children_amount,
 		setGuestAmount,
+		setChildrenAmount,
 		setRoomAmount,
 		setCheckIn,
 		setCheckOut,
 		clearGuest,
+		clearChildrenAmount,
 		clearRoomAmount,
 		clearCheckIn,
 		clearCheckOut,

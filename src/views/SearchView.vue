@@ -14,8 +14,13 @@ const pb = new PocketBase('http://localhost:8090') as TypedPocketBase
 const checkIn = ref<string>(route.query.checkIn?.toString() || '')
 const checkOut = ref<string>(route.query.checkOut?.toString() || '')
 const guests = ref<number>(Number(route.query.guests) || 1)
+const children = ref<number>(Number(route.query.children) || 0)
 const rooms = ref<number>(Number(route.query.rooms) || 1)
 const hotels = ref<any[]>([])
+
+watch(() => route.fullPath, () => {
+	fetchRoomTypes() // Re-fetch data when route changes
+})
 
 watch(hotels, (newHotels) => {
 	console.log('Updated hotels:', newHotels)
@@ -26,6 +31,7 @@ async function performSearch() {
 		checkIn: checkIn.value,
 		checkOut: checkOut.value,
 		guests: guests.value,
+		children: children.value,
 		rooms: rooms.value,
 	})
 
@@ -62,6 +68,7 @@ async function performSearch() {
 	} catch (error) {
 		console.error('Error fetching available hotels:', error)
 	}
+	console.log(hotels.value)
 }
 
 onMounted(() => {
@@ -73,8 +80,9 @@ onMounted(() => {
 	})
 	bookingStore.setGuestAmount(guests.value)
 	bookingStore.setRoomAmount(rooms.value)
-	bookingStore.setCheckIn(checkIn.value)
+	bookingStore.setCheckIn(checkIn.value);
 	bookingStore.setCheckOut(checkOut.value)
+	bookingStore.setChildrenAmount(children.value)
 })
 
 onUnmounted(() => {
@@ -85,7 +93,7 @@ console.log(hotels.value)
 
 <template>
 	<div>
-		<h1>Su myhmanhanalarda size gora otaglar bar</h1>
+		<h1>Su myhmanhanalarda size görä otaglar bar</h1>
 		<div v-if="hotels.length > 0" class="p-card bg-zinc-9">
 			<div v-for="hotel in hotels" :key="hotel.id" class="!flex !flex-row gap-3">
 				<img

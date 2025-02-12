@@ -4,11 +4,11 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite && node src/scripts/checkBookings.js",
     "build": "run-p type-check \"build-only {@}\" --",
-    "preview": "vite preview",
+    "preview": "vite preview && node src/scripts/checkBookings.js",
     "test:unit": "vitest",
-    "build-only": "vite build",
+    "build-only": "vite build && node src/scripts/checkBookings.js",
     "type-check": "vue-tsc --build",
     "lint": "eslint . --fix",
     "format": "prettier --write src/"
@@ -24,7 +24,8 @@
     "primeicons": "^7.0.0",
     "primevue": "^4.2.5",
     "quill": "^2.0.3",
-    "vue": "^3.5.13"
+    "vue": "^3.5.13",
+    "vue-i18n": "10"
   },
   "devDependencies": {
     "@tsconfig/node22": "^22.0.0",
