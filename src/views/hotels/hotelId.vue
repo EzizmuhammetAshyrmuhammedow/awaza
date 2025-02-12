@@ -41,6 +41,12 @@ onMounted(async () => {
 
 		<div flex flex-row gap-5>
 			<RouterLink
+				:to="'/hotels/' + id + '/reviews/'"
+				class="no-underline"
+			>
+				<Button :label="$t('review', 5)" severity="contrast"/>
+			</RouterLink>
+			<RouterLink
 				:to="'/hotels/' + id + '/comments'"
 				class="no-underline"
 			>

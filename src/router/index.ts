@@ -20,6 +20,7 @@ import RoomsDashboardView from '@/views/dashboard/rooms/RoomsDashboardView.vue'
 import RoomTypeID from '@/views/RoomTypeID.vue'
 import NewRoomTypeView from '@/views/NewRoomTypeView.vue'
 import BookingsDashboard from '@/views/dashboard/BookingsDashboard.vue'
+import ReviewView from '@/views/hotels/reviews/ReviewView.vue'
 
 const pb = new PocketBase('http://localhost:8090/')
 
@@ -71,8 +72,8 @@ const router = createRouter({
 				},
 				{
 					name: "reviews",
-					path: "/hotels/:id/reviews",
-
+					path: "/hotels/:id/reviews/",
+					component: ReviewView,
 				},
 				{
 					name: "rooms",

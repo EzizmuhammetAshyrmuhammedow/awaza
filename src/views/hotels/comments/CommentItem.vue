@@ -2,7 +2,13 @@
 	<div class="flex flex-col gap-3">
 		<Card ref="commentRefs">
 			<template #content>
-				<p v-html="comment.content"></p>
+				<div class="flex flex-row justify-between items-center">
+					<p v-html="comment.content"></p>
+					<p v-if="comment.overall_rating != 0" @mouseover="isRatingPopoverOpen = true" @mouseleave="isRatingPopoverOpen = false">{{ comment.overall_rating }} <span class="pi pi-star-fill"></span></p>
+					<Popover ref="isRatingPopoverOpen">
+						<h1>Aha</h1>
+					</Popover>
+				</div>
 			</template>
 			<template #footer>
 				<div class="flex flex-row justify-between">
@@ -43,7 +49,7 @@
 </template>
 
 <script setup lang="ts">
-import { Card, Button } from 'primevue'
+import { Card, Button, Popover } from 'primevue'
 import { defineProps, ref, onMounted } from 'vue'
 import CommentReact from '@/views/hotels/comments/CommentReact.vue'
 import { useI18n } from 'vue-i18n'
@@ -56,6 +62,7 @@ import ReplyForm from '@/views/hotels/comments/ReplyForm.vue'
 const { t } = useI18n();
 
 const pb = new PocketBase("http://localhost:8090") as TypedPocketBase;
+const isRatingPopoverOpen = ref<boolean>(false);
 const isReplyOpen = ref(false);
 const authStore = useAuthStore()
 const isAdmin = authStore.isAdmin()
