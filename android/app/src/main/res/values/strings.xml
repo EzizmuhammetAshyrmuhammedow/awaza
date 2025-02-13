@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">awaza</string>
+    <string name="title_activity_main">awaza</string>
+    <string name="package_name">com.awaza.app</string>
+    <string name="custom_url_scheme">com.awaza.app</string>
+</resources>
