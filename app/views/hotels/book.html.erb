@@ -1,0 +1,31 @@
+<h1>Book a Room at <%= @hotel.name %></h1>
+
+<% if @room_combinations.is_a?(String) %>
+  <p class="text-red-500"><%= @room_combinations %></p>
+<% else %>
+  <h2>Optimal Room Selection:</h2>
+  <ul class="flex flex-row gap-3">
+    <% @room_combinations.each do |allocation| %>
+      <div class="flex flex-col p-4 shadow rounded-md max-w-72 min-h-64">
+        <%= image_tag allocation[:room].room_type.thumbnail, class: "max-w-full" if allocation[:room].room_type.thumbnail.attached? %>
+        <p class="">
+          <strong class="block font-medium mb-1">Name:</strong>
+          <%= allocation[:room].room_type.name %>
+        </p>
+        <p class="">
+          <strong class="block font-medium mb-1">Price:</strong>
+          <%= allocation[:room].room_type.price %>
+        </p>
+        <p class="">
+          <strong class="block font-medium mb-1">Room:</strong>
+          <%= allocation[:room].room_type.room_id %>
+        </p>
+        <p class="">
+          <strong class="block font-medium mb-1">Capacity:</strong>
+          <%= allocation[:room].room_type.capacity %>
+        </p>
+      </div>
+
+  <% end %>
+  </ul>
+<% end %>

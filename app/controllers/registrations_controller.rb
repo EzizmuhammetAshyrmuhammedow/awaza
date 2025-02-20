@@ -8,9 +8,10 @@ class RegistrationsController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    user.role = params[:role] if params[:role].present?
     if @user.save
       start_new_session_for @user
-      redirect_to root_path, notice: 'Successfully signed up!'
+      redirect_to root_path, notice: "Successfully signed up!"
     else
       render :new
     end
@@ -19,6 +20,6 @@ class RegistrationsController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email_address, :password, :password_confirmation)
+    params.require(:user).permit(:username, :email_address, :password, :password_confirmation, :role)
   end
 end

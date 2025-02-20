@@ -1,16 +1,22 @@
-<p style="color: green"><%= notice %></p>
-
 <% content_for :title, "Hotels" %>
-
-<h1>Hotels</h1>
-
-<div id="hotels">
-  <% @hotels.each do |hotel| %>
-    <%= render hotel %>
-    <p>
-      <%= link_to "Show this hotel", hotel %>
-    </p>
+<div class="w-full">
+  <% if notice.present? %>
+    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-md inline-block" id="notice"><%= notice %></p>
   <% end %>
-</div>
 
-<%= link_to "New hotel", new_hotel_path %>
+  <% if @user && (@user.hotel_owner? || @user.admin?) %>
+    <div class="flex justify-between items-center">
+      <h1 class="font-bold text-4xl">Hotels</h1>
+      <%= link_to "New hotel", new_hotel_path, class: "rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white block font-medium" %>
+    </div>
+  <% end %>
+  <div id="hotels" class="flex flex-row gap-3">
+    <% if @hotels.any? %>
+      <% @hotels.each do |hotel| %>
+        <%= render hotel %>
+      <% end %>
+    <% else %>
+      <p class="text-center my-10">No hotels found.</p>
+    <% end %>
+  </div>
+</div>

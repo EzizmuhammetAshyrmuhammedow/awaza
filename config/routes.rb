@@ -1,5 +1,20 @@
 Rails.application.routes.draw do
-  resources :hotels
+  resources :bookings
+  resources :rooms
+  resources :hotels do
+    resources :room_types
+    resources :comments, only: [:index, :create, :update, :edit, :destroy, :edit, :new] do
+      member do
+        post :like
+        post :dislike
+        post :unlike
+        post :undislike
+      end
+    end
+    member do
+      get :book
+    end
+  end
   resource :session
   resources :passwords, param: :token
   resource :registration, only: %i[new create]
@@ -15,4 +30,10 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "index#index"
+  get '/search', to: 'hotels#search', as: 'search_hotels'
+  get "/dashboard", to: "dashboard#index"
+namespace :dashboard do
+  resources :hotels
+  resources :rooms
+end
 end

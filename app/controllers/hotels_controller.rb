@@ -1,19 +1,34 @@
 class HotelsController < ApplicationController
-  allow_unauthenticated_access only: %i[ index]
   before_action :set_hotel, only: %i[ show edit update destroy ]
-
+  before_action :require_admin, only: [ :destroy, :edit, :create,  :new ]
+  allow_unauthenticated_access only: [:show, :index]
   # GET /hotels or /hotels.json
   def index
     @hotels = Hotel.all
+    @user = current_user
   end
+
+  def book
+    @hotel = Hotel.find(params[:id])
+    guests = params[:guests].to_i
+    rooms = params[:rooms].to_i
+    logger.debug "Guests: #{guests}"
+    logger.debug "Rooms: #{rooms}"
+
+    available_rooms = @hotel.rooms.includes(:room_type).select(&:available?)
+
+    @room_combinations = find_optimal_rooms(guests, rooms, available_rooms)
+  end
+
 
   # GET /hotels/1 or /hotels/1.json
   def show
+    @user = current_user
   end
 
   # GET /hotels/new
   def new
-  @hotel = Hotel.new
+    @hotel = Hotel.new
   end
 
   # GET /hotels/1/edit
@@ -23,6 +38,7 @@ class HotelsController < ApplicationController
   # POST /hotels or /hotels.json
   def create
     @hotel = Hotel.new(hotel_params)
+    @hotel.user = current_user
 
     respond_to do |format|
       if @hotel.save
@@ -58,6 +74,51 @@ class HotelsController < ApplicationController
     end
   end
 
+  def search
+    @check_in = params[:check_in]
+    @check_out = params[:check_out]
+    @guests = params[:guests].to_i
+    @rooms_count = params[:rooms].to_i
+
+    @hotels = Hotel.with_available_rooms(@check_in, @check_out)
+    logger.debug "HOTELS: #{@hotels}"
+
+    # Optionally, filter hotels by number of guests, room types, etc.
+    @rooms = @hotels.flat_map do |hotel|
+      hotel.rooms.select { |room| room.room_type.capacity >= @guests && room.available? }
+    end
+  end
+
+  def find_optimal_rooms(guests, room_count, available_rooms)
+    return "Invalid input" if guests <= 0 || room_count <= 0
+
+    # Sort by room capacity in descending order
+    available_rooms = available_rooms.sort_by { |room| -room.room_type.capacity }
+
+    selected_rooms = []
+    remaining_guests = guests
+
+    # Try to distribute guests across `room_count` rooms
+    if available_rooms.size < room_count
+      return "Not enough available rooms to match the requested room count."
+    end
+
+    available_rooms.first(room_count).each do |room|
+      break if remaining_guests <= 0
+
+      assigned_guests = [room.room_type.capacity, (remaining_guests / room_count.to_f).ceil].min
+      selected_rooms << { room: room, guests: assigned_guests }
+      remaining_guests -= assigned_guests
+      room_count -= 1
+    end
+
+    return selected_rooms if remaining_guests.zero?
+
+    "Not enough rooms available to accommodate all guests within the specified room count."
+  end
+
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_hotel
@@ -66,6 +127,11 @@ class HotelsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def hotel_params
-      params.fetch(:hotel, {})
+      params.expect(hotel: [ :user, :name, :description, :rating, :thumbnail ])
     end
+def require_admin
+  if current_user.nil? || !(current_user.admin? || current_user.hotel_owner?)
+    redirect_to root_path, alert: "Access Denied"
+  end
+end
 end
