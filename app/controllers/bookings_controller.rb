@@ -23,9 +23,17 @@ class BookingsController < ApplicationController
   # POST /bookings or /bookings.json
   def create
     @booking = Booking.new(booking_params)
+    @booking.user = current_user #added current user to the booking
+
+    room_ids = params[:room_ids]
 
     respond_to do |format|
       if @booking.save
+        room_ids.each do |room_id|
+          room = Room.find(room_id)
+          @booking.rooms << room unless @booking.rooms.include?(room)
+        end
+
         format.html { redirect_to @booking, notice: "Booking was successfully created." }
         format.json { render :show, status: :created, location: @booking }
       else
@@ -59,13 +67,13 @@ class BookingsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_booking
-      @booking = Booking.find(params.expect(:id))
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_booking
+    @booking = Booking.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def booking_params
-      params.expect(booking: [ :check_in, :check_out, :user_id, :hotel_id, :rooms_id, :total_price, :guests, :is_cancelled ])
-    end
+  # Only allow a list of trusted parameters through.
+  def booking_params
+    params.require(:booking).permit(:check_in, :check_out, :user_id, :hotel_id, :total_price, :guests, :is_cancelled)
+  end
 end

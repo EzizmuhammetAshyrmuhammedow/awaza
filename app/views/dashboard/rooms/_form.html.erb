@@ -19,11 +19,11 @@
   </div>
   <div class="my-5">
     <%= form.label :hotel_id %>
-    <%= form.select :hotel_id, @hotels.collect { |r| [r.name, r.id] }, { prompt: "Select Hotel" }, class: ["block shadow-sm rounded-md border outline-hidden px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": room.errors[:hotel_id].none?, "border-red-400 focus:outline-red-600": room.errors[:hotel_id].any?}] %>
+    <%= form.select :hotel_id, @hotels&.collect { |r| [r.name, r.id] } || [], { prompt: "Select Hotel" }, class: ["block shadow-sm rounded-md border outline-hidden px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": room.errors[:hotel_id].none?, "border-red-400 focus:outline-red-600": room.errors[:hotel_id].any?}] %>
   </div>
   <div class="my-5">
     <%= form.label :room_type_id %>
-    <%= form.select :room_type_id, @room_types.collect { |r| [r.name, r.id] }, { prompt: 'Select Room Type' }, class: ["block shadow-sm rounded-md border outline-hidden px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": room.errors[:room_type_id].none?, "border-red-400 focus:outline-red-600": room.errors[:room_type_id].any?}] %>
+    <%= form.select :room_type_id, @room_types&.collect { |r| [r.name, r.id] } || [], { prompt: 'Select Room Type' }, class: ["block shadow-sm rounded-md border outline-hidden px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": room.errors[:room_type_id].none?, "border-red-400 focus:outline-red-600": room.errors[:room_type_id].any?}] %>
   </div>
   <div class="my-5">
     <%= form.label :thumbnail, style: "display: block" %>

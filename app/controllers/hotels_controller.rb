@@ -10,15 +10,24 @@ class HotelsController < ApplicationController
 
   def book
     @hotel = Hotel.find(params[:id])
-    guests = params[:guests].to_i
-    rooms = params[:rooms].to_i
-    logger.debug "Guests: #{guests}"
-    logger.debug "Rooms: #{rooms}"
+    @guests = params[:guests].to_i
+    @rooms = params[:rooms].to_i
+    @check_in = Date.parse(params[:check_in]) # Ensure this is parsed to Date
+    @check_out = Date.parse(params[:check_out]) # Ensure this is parsed to Date
+
+    # Calculate the total number of days
+    @total_days = (@check_out - @check_in).to_i
 
     available_rooms = @hotel.rooms.includes(:room_type).select(&:available?)
 
-    @room_combinations = find_optimal_rooms(guests, rooms, available_rooms)
+    @room_combinations = find_optimal_rooms(@guests, @rooms, available_rooms)
+
+    # Calculate total price for all selected rooms
+    @total_price = @room_combinations.sum do |allocation|
+      allocation[:room].room_type.price * @total_days
+    end
   end
+
 
 
   # GET /hotels/1 or /hotels/1.json

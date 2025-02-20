@@ -66,6 +66,10 @@ class Dashboard::HotelsController < ApplicationController
       @hotel = Hotel.find(params.expect(:id))
     end
 
+  def set_room_and_room_type
+    @rooms = Room.all.where(hotel_id:  @hotel.id)
+    @room_types = RoomType.all.where(hotel_id: @hotel.id)
+  end
     # Only allow a list of trusted parameters through.
     def hotel_params
       params.expect(hotel: [ :name, :description, :rating, :thumbnail ])

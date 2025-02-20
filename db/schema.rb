@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_19_191506) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_20_102645) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -107,6 +107,10 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_19_191506) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
+    t.integer "room_id"
+    t.integer "room_type_id"
+    t.index ["room_id"], name: "index_hotels_on_room_id"
+    t.index ["room_type_id"], name: "index_hotels_on_room_type_id"
     t.index ["user_id"], name: "index_hotels_on_user_id"
   end
 
@@ -173,6 +177,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_19_191506) do
   add_foreign_key "bookings", "users"
   add_foreign_key "comments", "hotels"
   add_foreign_key "comments", "users"
+  add_foreign_key "hotels", "room_types"
+  add_foreign_key "hotels", "rooms"
   add_foreign_key "hotels", "users"
   add_foreign_key "like_dislike_relations", "comments"
   add_foreign_key "like_dislike_relations", "users"

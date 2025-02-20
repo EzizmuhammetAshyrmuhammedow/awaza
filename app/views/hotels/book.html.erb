@@ -3,29 +3,56 @@
 <% if @room_combinations.is_a?(String) %>
   <p class="text-red-500"><%= @room_combinations %></p>
 <% else %>
-  <h2>Optimal Room Selection:</h2>
+  <div class="flex flex-row gap-1 text-lg font-semibold">
+    <p>
+      <span>Jemi Myhmanlar: </span>
+      <%= @guests %>
+    </p>
+    |
+    <p>
+      <span>Jemi Otaglar: </span>
+      <%= @rooms %>
+    </p>
+    |
+    <p>
+      <span>Jemi Günler: </span>
+      <%= @total_days %>
+    </p>
+    |
+    <p>
+      <span>Total Price: </span>
+      <%= @total_price %> TMT
+    </p>
+  </div>
+
   <ul class="flex flex-row gap-3">
     <% @room_combinations.each do |allocation| %>
       <div class="flex flex-col p-4 shadow rounded-md max-w-72 min-h-64">
         <%= image_tag allocation[:room].room_type.thumbnail, class: "max-w-full" if allocation[:room].room_type.thumbnail.attached? %>
+        <%= content_tag :p, allocation[:room].room_type.name, class: "text-2xl font-semibold" %>
         <p class="">
-          <strong class="block font-medium mb-1">Name:</strong>
-          <%= allocation[:room].room_type.name %>
-        </p>
-        <p class="">
-          <strong class="block font-medium mb-1">Price:</strong>
-          <%= allocation[:room].room_type.price %>
-        </p>
-        <p class="">
-          <strong class="block font-medium mb-1">Room:</strong>
-          <%= allocation[:room].room_type.room_id %>
-        </p>
-        <p class="">
-          <strong class="block font-medium mb-1">Capacity:</strong>
+          <span>Myhmanlar: </span>
           <%= allocation[:room].room_type.capacity %>
         </p>
+        <p class="text-lg text-green-600">
+          <%= allocation[:room].room_type.price %>
+          <span>TMT / Night</span>
+        </p>
       </div>
-
-  <% end %>
+    <% end %>
   </ul>
+
+  <%= form_with(url: bookings_path, method: :post) do |form| %>
+    <%= form.hidden_field :hotel_id, value: @hotel.id %>
+    <%= form.hidden_field :check_in, value: @check_in %>
+    <%= form.hidden_field :check_out, value: @check_out %>
+    <%= form.hidden_field :guests, value: @guests %>
+    <%= form.hidden_field :total_price, value: @total_price %>
+    <% @room_combinations.each_with_index do |allocation, index| %>
+      <%= form.hidden_field "room_ids[#{index}]", value: allocation[:room].id %>
+    <% end %>
+    <div>
+      <%= form.submit "Book Now", class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %>
+    </div>
+  <% end %>
 <% end %>
