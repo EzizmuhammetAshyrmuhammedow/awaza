@@ -1,0 +1,38 @@
+<button id="comment-button" class="rounded-md px-3.5 py-2.5 bg-gray-400 hover:bg-gray-200 text-white font-medium cursor-pointer">Comment</button>
+<button id="review-button" class="rounded-md px-3.5 py-2.5 bg-gray-400 hover:bg-gray-200 text-white font-medium cursor-pointer">Review</button>
+<%= form_with(model: [@hotel, comment], id: dom_id(comment), data: { turbo: false }) do |form| %>
+  <% is_reply = comment.parent_id.present? %>
+  <!-- Hidden Field for parent_id if it's a reply -->
+  <% if is_reply %>
+    <%= form.hidden_field :parent_id, value: comment.parent_id %>
+  <% end %>
+  <div>
+    <%= form.label :content, "Your Comment" %>
+    <%= form.rich_text_area :content, placeholder: is_reply ? "Add a reply..." : "Your Comment" %>
+  </div>
+  <!-- Show rating fields only for reviews -->
+  <div id="rating-field" class="mt-4 hidden">
+  <%= form.hidden_field :isReview, value: true %>
+    <div class="flex flex-wrap gap-4">
+      <div>
+        <%= form.label :food_rating %>
+        <%= form.number_field :food_rating, min: 1, max: 5, class: "shadow-sm rounded-md border px-3 py-2 mt-2" %>
+      </div>
+      <div>
+        <%= form.label :room_rating %>
+        <%= form.number_field :room_rating, min: 1, max: 5, class: "shadow-sm rounded-md border px-3 py-2 mt-2" %>
+      </div>
+      <div>
+        <%= form.label :service_rating %>
+        <%= form.number_field :service_rating, min: 1, max: 5, class: "shadow-sm rounded-md border px-3 py-2 mt-2" %>
+      </div>
+      <div>
+        <%= form.label :entertainment_rating %>
+        <%= form.number_field :entertainment_rating, min: 1, max: 5, class: "shadow-sm rounded-md border px-3 py-2 mt-2" %>
+      </div>
+    </div>
+  </div>
+  <div class="mt-4">
+    <%= form.submit is_reply ? "Reply" : "Submit Comment", class: 'rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-medium cursor-pointer' %>
+  </div>
+<% end %>

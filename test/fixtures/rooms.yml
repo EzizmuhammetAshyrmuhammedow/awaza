@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  available: false
+  hotel: one
+  room_type: one
+
+two:
+  available: false
+  hotel: two
+  room_type: two

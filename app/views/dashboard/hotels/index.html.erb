@@ -1,0 +1,29 @@
+<div class="container mx-auto px-4 py-6">
+  <h1 class="text-2xl font-bold mb-4">Hotels</h1>
+  
+  <div class="overflow-x-auto">
+    <table class="min-w-full bg-white border border-gray-300 rounded-lg shadow">
+      <thead class="bg-gray-100 border-b">
+        <tr>
+          <th class="text-left p-3 font-medium">ID</th>
+          <th class="text-left p-3 font-medium">Name</th>
+          <th class="text-left p-3 font-medium">Manager</th>
+          <th class="text-left p-3 font-medium">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @hotels.each do |hotel| %>
+          <tr class="border-b hover:bg-gray-50">
+            <td class="p-3"><%= hotel.id %></td>
+            <td class="p-3"><%= hotel.name %></td>
+            <td class="p-3"><%= hotel.user&.username || "Unassigned" %></td>
+            <td class="p-3">
+              <%= link_to "Edit", edit_dashboard_hotel_path(hotel), class: "px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600" %>
+              <%= button_to "Destroy this hotel", hotel, method: :delete, class: "mt-2 rounded-md px-3.5 py-2.5 text-white bg-red-600 hover:bg-red-500 font-medium" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

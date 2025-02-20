@@ -1,0 +1,90 @@
+<div class="w-2xl mx-auto p-4">
+  <div class="w-auto bg-white rounded-md shadow flex flex-col sm:flex-row items-stretch sm:items-center justify-between space-y-2 sm:space-y-0 p-2">
+    <div
+      x-data="{
+        adults: 1,
+        children: 0,
+        rooms: 1,
+        checkIn: new Date().toISOString().split('T')[0],
+        checkOut: new Date(new Date().setDate(new Date().getDate() + 1)).toISOString().split('T')[0],
+        get guests() {
+          return this.adults + this.children;
+        }
+      }"
+      class="flex flex-row gap-3"
+    >
+
+      <!-- Check-in Field -->
+      <div class="flex flex-1 items-center space-x-2 border-r border-gray-200 px-2">
+        <input
+          type="date"
+          name="check_in"
+          x-model="checkIn"
+          @input="checkOut = new Date(new Date(checkIn).setDate(new Date(checkIn).getDate() + 1)).toISOString().split('T')[0]"
+          :min="new Date().toISOString().split('T')[0]"
+          class="w-full bg-transparent focus:outline-none text-gray-700 placeholder-gray-400"
+        />
+      </div>
+
+      <!-- Check-out Field -->
+      <div class="flex flex-1 items-center space-x-2 border-r border-gray-200 px-2">
+        <input
+          type="date"
+          name="check_out"
+          x-model="checkOut"
+          :min="new Date(new Date(checkIn).setDate(new Date(checkIn).getDate() + 1)).toISOString().split('T')[0]"
+          class="w-full bg-transparent focus:outline-none text-gray-700 placeholder-gray-400"
+        />
+      </div>
+
+      <!-- Popover Trigger Button -->
+      <div class="relative">
+        <button popovertarget="popover" type="button" class="px-4 py-2 rounded bg-gray-200">
+          <span x-text="Number(adults) + Number(children)"></span> guests, 
+          <span x-text="rooms"></span> rooms
+        </button>
+
+        <!-- Popover -->
+        <div id="popover" popover class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 mt-2 w-56 p-4 bg-white shadow-lg rounded border border-gray-200 z-10">
+          
+          <!-- Adults -->
+          <div class="flex justify-between items-center mt-2">
+            <span>Adults</span>
+            <div class="flex items-center">
+              <button @click="if(adults > 1) adults--" class="px-2 border rounded">-</button>
+              <input type="number" x-model.number="adults" name="adults" min="1" class="w-10 text-center border mx-2">
+              <button @click="adults++" class="px-2 border rounded">+</button>
+            </div>
+          </div>
+
+          <!-- Children -->
+          <div class="flex justify-between items-center mt-2">
+            <span>Children</span>
+            <div class="flex items-center">
+              <button @click="if(children > 0) children--" class="px-2 border rounded">-</button>
+              <input type="number" x-model.number="children" name="children" min="0" class="w-10 text-center border mx-2">
+              <button @click="children++" class="px-2 border rounded">+</button>
+            </div>
+          </div>
+
+          <!-- Rooms -->
+          <div class="flex justify-between items-center mt-2">
+            <span>Rooms</span>
+            <div class="flex items-center">
+              <button @click="if(rooms > 1) rooms--" class="px-2 border rounded">-</button>
+              <input type="number" x-model.number="rooms" name="rooms" min="1" class="w-10 text-center border mx-2">
+              <button @click="if(rooms < (adults + children)) rooms++" class="px-2 border rounded">+</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Search Button -->
+      <div class="flex justify-center px-2">
+        <a x-bind:href="'/search?check_in=' + checkIn + '&check_out=' + checkOut + '&guests=' + Number(guests) + '&rooms=' + Number(rooms)"
+           class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-5 py-2 rounded-md cursor-pointer">Search</a>
+      </div>
+    </div>
+  </form>
+</div>

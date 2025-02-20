@@ -1,0 +1,29 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  content: MyText
+  user_id: 1
+  hotel_id: 1
+  like_count: 1
+  dislike_count: 1
+  parent_id: 1
+  is_read: false
+  total_rating: 1
+  food_rating: 1
+  room_rating: 1
+  service_rating: 1
+  entertainment_rating: 1
+
+two:
+  content: MyText
+  user_id: 1
+  hotel_id: 1
+  like_count: 1
+  dislike_count: 1
+  parent_id: 1
+  is_read: false
+  total_rating: 1
+  food_rating: 1
+  room_rating: 1
+  service_rating: 1
+  entertainment_rating: 1

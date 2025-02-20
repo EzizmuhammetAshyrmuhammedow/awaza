@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  check_in: 2025-02-19
+  check_out: 2025-02-19
+  user: one
+  hotel: one
+  rooms: one
+  total_price: 1
+  guests: 1
+  is_cancelled: false
+
+two:
+  check_in: 2025-02-19
+  check_out: 2025-02-19
+  user: two
+  hotel: two
+  rooms: two
+  total_price: 1
+  guests: 1
+  is_cancelled: false

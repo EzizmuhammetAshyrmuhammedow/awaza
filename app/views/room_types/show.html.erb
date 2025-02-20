@@ -1,0 +1,40 @@
+<% content_for :title, "Showing room type" %>
+<div class="md:w-2/3 w-full mx-auto">
+  <% if notice.present? %>
+    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-md inline-block" id="notice"><%= notice %></p>
+  <% end %>
+  <div class="flex flex-col gap-5 p-4 shadow rounded-md max-w-full min-h-64">
+    <%= image_tag @room_type.thumbnail, class: "max-w-full" if @room_type.thumbnail.attached? %>
+    <div class="flex flex-row justify-around items-center mt-3">
+      <p class="text-center">
+        <strong class="block font-medium mb-1">Name:</strong>
+        <%= @room_type.name %>
+      </p>
+      <p class="text-center">
+        <strong class="block font-medium mb-1">Price:</strong>
+        <%= @room_type.price %>
+      </p>
+      <p class="text-center">
+        <strong class="block font-medium mb-1">Capacity:</strong>
+        <%= @room_type.capacity %>
+      </p>
+    </div>
+    <hr>
+    <div class="flex flex-row justify-between gap-4">
+      <div class="flex flex-col">
+        <strong class="block font-medium mb-1">Features:</strong>
+        <%= @room_type.features %>
+      </div>
+      <div class="w-px h-auto bg-gray-400"></div>
+      <div class="flex flex-col">
+        <strong class="block font-medium mb-1">Extra info:</strong>
+        <%= content_tag :span, @room_type.extra_info, class: 'text-green-600' %>
+      </div>
+    </div>
+  </div>
+  <%= link_to "Edit this room type", edit_hotel_room_type_path(), class: "mt-2 rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
+  <%= link_to "Back to room types", hotel_room_types_path, class: "ml-2 rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
+  <div class="inline-block ml-2">
+    <%= button_to "Destroy this room type", hotel_room_type_path(@hotel, @room_type), method: :delete, class: "mt-2 rounded-md px-3.5 py-2.5 text-white bg-red-600 hover:bg-red-500 font-medium" %>
+  </div>
+</div>

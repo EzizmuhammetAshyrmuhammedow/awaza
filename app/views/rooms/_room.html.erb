@@ -1,0 +1,15 @@
+<div class="flex flex-col p-4 shadow rounded-md max-w-72 min-h-64" id="<%= dom_id room %>">
+  <%= image_tag room.thumbnail, class: "max-w-full" if room.thumbnail.attached? %>
+  <p class="">
+    <strong class="block font-medium mb-1">Available:</strong>
+    <%= room.available %>
+  </p>
+  <p class="">
+    <strong class="block font-medium mb-1">Hotel:</strong>
+    <%= room.hotel_id %>
+  </p>
+  <p class="">
+    <strong class="block font-medium mb-1">Room type:</strong>
+    <%= room.room_type_id %>
+  </p>
+</div>
