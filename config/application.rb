@@ -18,6 +18,15 @@ module Awaza
 config.autoload_paths << Rails.root.join("app/components")
 config.eager_load_paths << Rails.root.join("app/components")
 
+config.middleware.insert_before 0, Rack::Cors do
+  allow do
+    origins '*' # Allow all origins (or specify your Flutter app's origin, e.g., 'http://localhost:8080')
+    resource '*',
+      headers: :any,
+      methods: [:get, :post, :put, :patch, :delete, :options, :head]
+  end
+end
+
     #
     # These settings can be overridden in specific environments using the files
     # in config/environments, which are processed later.

@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  namespace :api, defaults: { format: :json } do
+    namespace :v1 do
+      resources :hotels, only: [:index, :show]
+    end
+  end
   resources :bookings
   resources :rooms
   resources :hotels do

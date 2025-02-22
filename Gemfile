@@ -1,4 +1,6 @@
 source "https://rubygems.org"
+
+gem 'rack-cors'
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 8.0.1"
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
@@ -7,8 +9,7 @@ gem "propshaft"
 gem "sqlite3", ">= 2.1"
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", ">= 5.0"
-# Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
-gem "importmap-rails"
+
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem "turbo-rails"
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
@@ -68,3 +69,4 @@ gem "tailwindcss-rails", "~> 4.0"
 gem "view_component"
 gem "normalizer"
 
+gem 'vite_rails' # vite_rails_legacy if using Rails 4

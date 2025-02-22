@@ -17,8 +17,10 @@
     <%= turbo_refreshes_with method: :morph, scroll: :preserve %>
     <meta name="turbo-refresh-scroll" content="preserve">
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
-    <%= javascript_include_tag "comments", defer: true %>
-    <%= javascript_importmap_tags %>
+    <%= vite_javascript_tag "comments", defer: true %>
+    <%= vite_client_tag %>
+    <%= vite_javascript_tag "application", defer: true %>
+
   </head>
   <body>
     <%= render(NavBarComponent.new) %>

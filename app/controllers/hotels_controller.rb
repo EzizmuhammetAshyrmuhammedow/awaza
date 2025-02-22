@@ -6,6 +6,7 @@ class HotelsController < ApplicationController
   def index
     @hotels = Hotel.all
     @user = current_user
+
   end
 
   def book

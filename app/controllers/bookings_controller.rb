@@ -22,23 +22,17 @@ class BookingsController < ApplicationController
 
   # POST /bookings or /bookings.json
   def create
-    @booking = Booking.new(booking_params)
-    @booking.user = current_user #added current user to the booking
+    ActiveRecord::Base.transaction do
+      @booking = Booking.new(booking_params)
+      @booking.user = current_user
 
-    room_ids = params[:room_ids]
+      # Assign rooms to the booking
+      room_id = params[:room_id]
 
-    respond_to do |format|
       if @booking.save
-        room_ids.each do |room_id|
-          room = Room.find(room_id)
-          @booking.rooms << room unless @booking.rooms.include?(room)
-        end
-
-        format.html { redirect_to @booking, notice: "Booking was successfully created." }
-        format.json { render :show, status: :created, location: @booking }
+        redirect_to bookings_path, notice: "Booking successfully created!"
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @booking.errors, status: :unprocessable_entity }
+        redirect_to root_path, alert: "Booking failed: #{@booking.errors.full_messages.join(", ")}"
       end
     end
   end
@@ -67,13 +61,24 @@ class BookingsController < ApplicationController
   end
 
   private
+
   # Use callbacks to share common setup or constraints between actions.
   def set_booking
-    @booking = Booking.find(params[:id])
+    @booking = Booking.find(params.expect(:id))
   end
 
   # Only allow a list of trusted parameters through.
   def booking_params
-    params.require(:booking).permit(:check_in, :check_out, :user_id, :hotel_id, :total_price, :guests, :is_cancelled)
+    params.require(:booking).permit(
+      :check_in,
+      :check_out,
+      :guests,
+      :hotel_id,
+      :total_price,
+      :is_cancelled,
+      booking_rooms_attributes: [:room_id]
+    )
   end
+
+
 end

@@ -19,7 +19,9 @@ class CommentsController < ApplicationController
   def new
     @comment = Comment.new
     @hotel = Hotel.find(params[:hotel_id])
+    @is_review = params[:is_review] == "true"
   end
+
 
 
   # app/controllers/comments_controller.rb
@@ -27,32 +29,30 @@ class CommentsController < ApplicationController
     @hotel = Hotel.find(params[:hotel_id])
     @comment = @hotel.comments.new(comment_params)
     @comment.user = current_user
+    @is_review = params[:comment][:isReview] == "true"
 
     if @comment.save
       respond_to do |format|
         format.html { redirect_to hotel_comments_path(@hotel), notice: "Comment created successfully." }
         format.turbo_stream do
           if @comment.parent_id.present?
-            # Append to the parent's replies container
             render turbo_stream: turbo_stream.append("comment-#{@comment.parent_id}-replies", partial: "comments/comment", locals: { comment: @comment })
           else
-            render turbo_stream: turbo_stream.append("comments-container", partial: "comments/comment", locals: { comment: @comment })
+            render turbo_stream: turbo_stream.replace("comments-container", partial: "comments/comment", locals: { comment: @comment })
           end
         end
       end
     else
       Rails.logger.error "Comment creation failed: #{@comment.errors.full_messages.join(", ")}"
-    @active_filter = params[:filter] || 'comments'
-    @comments = @hotel.comments.includes(:user).order(created_at: :desc) # Ensure @comments is set
+      @active_filter = params[:filter] || 'comments'
+      @comments = @hotel.comments.includes(:user).order(created_at: :desc)
 
-    respond_to do |format|
-      format.html { render :index, status: :unprocessable_entity }
-      format.turbo_stream # Ensure Turbo Stream is handled correctly
-    end
+      respond_to do |format|
+        format.html { render :index, status: :unprocessable_entity }
+        format.turbo_stream
+      end
     end
   end
-
-
 
   def edit
 
