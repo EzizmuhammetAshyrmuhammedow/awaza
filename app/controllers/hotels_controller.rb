@@ -13,7 +13,7 @@ class HotelsController < ApplicationController
     @hotel = Hotel.find(params[:id])
     @guests = params[:guests].to_i
     @rooms = params[:rooms].to_i
-    @check_in = Date.parse(params[:check_in]) # Ensure this is parsed to Dat
+    @check_in = Date.parse(params[:check_in]) # Ensure this is parsed to Date
     @check_out = Date.parse(params[:check_out]) # Ensure this is parsed to Date
 
     # Calculate the total number of days
