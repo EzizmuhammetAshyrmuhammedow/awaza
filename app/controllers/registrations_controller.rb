@@ -11,7 +11,7 @@ class RegistrationsController < ApplicationController
     user.role = params[:role] if params[:role].present?
     if @user.save
       start_new_session_for @user
-      redirect_to root_path, notice: "Successfully signed up!"
+      redirect_to root_path, notice: I18n.t("flash.auth.account_created")
     else
       render :new
     end

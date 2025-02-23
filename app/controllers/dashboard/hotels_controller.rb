@@ -28,7 +28,7 @@ class Dashboard::HotelsController < ApplicationController
 
     respond_to do |format|
       if @hotel.save
-        format.html { redirect_to @hotel, notice: "Hotel was successfully created." }
+        format.html { redirect_to @hotel, notice: I18n.t("flash.hotel_created") }
         format.json { render :show, status: :created, location: @hotel }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -41,7 +41,7 @@ class Dashboard::HotelsController < ApplicationController
   def update
     respond_to do |format|
       if @hotel.update(hotel_params)
-        format.html { redirect_to @hotel, notice: "Hotel was successfully updated." }
+        format.html { redirect_to @hotel, notice: I18n.t("flash.hotel_updated") }
         format.json { render :show, status: :ok, location: @hotel }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -55,7 +55,7 @@ class Dashboard::HotelsController < ApplicationController
     @hotel.destroy!
 
     respond_to do |format|
-      format.html { redirect_to hotels_path, status: :see_other, notice: "Hotel was successfully destroyed." }
+      format.html { redirect_to hotels_path, status: :see_other, notice: I18n.t("flash.hotel_deleted") }
       format.json { head :no_content }
     end
   end

@@ -27,7 +27,7 @@ class Dashboard::RoomsController < ApplicationController
 
       respond_to do |format|
         if @room.save
-          format.html { redirect_to @room, notice: "Room was successfully created." }
+          format.html { redirect_to @room, notice: I18n.t("flash.room_created") }
           format.json { render :show, status: :created, location: @room }
         else
           format.html { render :new, status: :unprocessable_entity }
@@ -40,7 +40,7 @@ class Dashboard::RoomsController < ApplicationController
     def update
       respond_to do |format|
         if @room.update(room_params)
-          format.html { redirect_to dashboard_rooms_path, notice: "Room was successfully updated." }
+          format.html { redirect_to dashboard_rooms_path, notice: I18n.t("flash.room_updated") }
           format.json { render :index, status: :ok, location: dashboard_rooms_path }
         else
           format.html { render :edit, status: :unprocessable_entity }
@@ -54,7 +54,7 @@ class Dashboard::RoomsController < ApplicationController
       @room.destroy!
 
       respond_to do |format|
-        format.html { redirect_to dashboard_rooms_path, status: :see_other, notice: "Room was successfully destroyed." }
+        format.html { redirect_to dashboard_rooms_path, status: :see_other, notice: I18n.t("flash.room_deleted") }
         format.json { head :no_content }
       end
     end

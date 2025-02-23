@@ -33,7 +33,7 @@ class CommentsController < ApplicationController
 
     if @comment.save
       respond_to do |format|
-        format.html { redirect_to hotel_comments_path(@hotel), notice: "Comment created successfully." }
+        format.html { redirect_to hotel_comments_path(@hotel), notice: I18n.t("flash.comment_created") }
         format.turbo_stream do
           if @comment.parent_id.present?
             render turbo_stream: turbo_stream.append("comment-#{@comment.parent_id}-replies", partial: "comments/comment", locals: { comment: @comment })
@@ -61,7 +61,7 @@ class CommentsController < ApplicationController
   def update
     if @comment.update(comment_params)
       respond_to do |format|
-        format.html { redirect_to hotel_comments_path(@hotel), notice: "Comment updated successfully." }
+        format.html { redirect_to hotel_comments_path(@hotel), notice: I18n.t("flash.comment_updated") }
         format.turbo_stream do
           # Render a Turbo Stream to replace the updated comment
           render turbo_stream: turbo_stream.replace(@comment, partial: "comments/comment", locals: { comment: @comment })
@@ -76,7 +76,7 @@ class CommentsController < ApplicationController
   def destroy
     @comment.soft_delete
     respond_to do |format|
-      format.html { redirect_to hotel_comments_path(@hotel), notice: "Comment deleted successfully." }
+      format.html { redirect_to hotel_comments_path(@hotel), notice: I18n.t("flash.comment_deleted") }
       format.turbo_stream do
         # Render a Turbo Stream to remove the deleted comment
         render turbo_stream: turbo_stream.remove(@comment)
