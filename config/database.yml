@@ -16,4 +16,4 @@ test:
 
 production:
   <<: *default
-  database: rails_prod
+  database: awaza_prod
