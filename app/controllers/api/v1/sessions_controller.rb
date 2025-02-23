@@ -1,7 +1,5 @@
 class Api::V1::SessionsController < Api::V1::BaseController
-    include Authentication
     before_action :require_authentication, only: :destroy
-    allow_unauthenticated_access only: [:create]
     rate_limit to: 10, within: 3.minutes, only: :create
   
     def create
