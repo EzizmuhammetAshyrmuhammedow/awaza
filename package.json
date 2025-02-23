@@ -1,16 +1,7 @@
 {
-  "private": true,
-  "type": "module",
-  "devDependencies": {
-    "vite": "^5.4.14",
-    "vite-plugin-ruby": "^5.1.1"
-  },
   "dependencies": {
-    "@hotwired/turbo-rails": "^8.0.12",
     "@rails/actiontext": "^8.0.100",
-    "alpine-turbo-drive-adapter": "^2.1.0",
-    "alpinejs": "^3.14.8",
-    "trix": "^2.1.12",
-    "vite-plugin-rails": "^0.5.0"
+    "flatpickr": "^4.6.13",
+    "trix": "^2.1.12"
   }
 }

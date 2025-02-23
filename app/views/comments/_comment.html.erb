@@ -1,5 +1,5 @@
 <!-- app/views/comments/_comment.html.erb -->
-<div id="<%= dom_id(comment) %>" class="w-full bg-white rounded-lg shadow-md p-4 mb-4 transition-all duration-200 hover:shadow-lg">
+<div id="<%= dom_id(comment) %>" class="w-full rounded-lg shadow-md p-4 mb-4 transition-all duration-200 hover:shadow-lg">
   <div class="flex items-start gap-4">
     <!-- User Avatar Section -->
     <div class="flex-shrink-0">
@@ -12,44 +12,44 @@
       <!-- User Info and Time -->
       <div class="flex items-baseline justify-between mb-2">
         <div>
-          <h3 class="font-semibold text-gray-800"><%= comment.user.username %></h3>
-          <span class="text-sm text-gray-500"><%= time_ago_in_words(comment.created_at) %> ago</span>
+          <h3 class="font-semibold text-gray-800 dark:text-gray-300"><%= comment.user.username %></h3>
+          <span class="text-sm text-gray-500 dark:text-gray-200"><%= time_ago_in_words(comment.created_at) %></span>
         </div>
       </div>
       <!-- Comment Content -->
-      <p class="text-gray-700"><%= sanitize comment.content %></p>
+      <p class="text-gray-700 dark:text-white"><%= sanitize comment.content %></p>
       <% if comment.isReview %>
         <!-- Only display ratings for reviews -->
         <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-1 mt-5">
           <div class="flex items-center">
-            <span class="text-sm font-medium text-gray-600 mr-2">Food:</span>
+            <span class="text-sm font-medium text-gray-600 dark:text-gray-300 mr-2"><%= t('comments.reviews.food') %>:</span>
             <span class="text-blue-600 font-semibold"><%= comment.food_rating %></span>
           </div>
           <div class="flex items-center">
-            <span class="text-sm font-medium text-gray-600 mr-2">Room:</span>
+            <span class="text-sm font-medium text-gray-600 dark:text-gray-300 mr-2"><%= t('comments.reviews.room') %>:</span>
             <span class="text-blue-600 font-semibold"><%= comment.room_rating %></span>
           </div>
           <div class="flex items-center">
-            <span class="text-sm font-medium text-gray-600 mr-2">Service:</span>
+            <span class="text-sm font-medium text-gray-600 dark:text-gray-300 mr-2"><%= t('comments.reviews.service') %>:</span>
             <span class="text-blue-600 font-semibold"><%= comment.service_rating %></span>
           </div>
           <div class="flex items-center">
-            <span class="text-sm font-medium text-gray-600 mr-2">Entertainment:</span>
+            <span class="text-sm font-medium text-gray-600 dark:text-gray-300 mr-2"><%= t('comments.reviews.entertainment') %>:</span>
             <span class="text-blue-600 font-semibold"><%= comment.entertainment_rating %></span>
           </div>
         </div>
         <div class="flex items-center mb-3">
-          <span class="text-lg font-bold text-gray-800 mr-2">Overall Rating:</span>
+          <span class="text-lg font-bold text-gray-800 dark:text-gray-200 mr-2"><%= t('comments.overall_rating') %>:</span>
           <span class="text-2xl font-bold text-green-600"><%= comment.total_rating.round(1) if comment.total_rating %></span>
-          <span class="text-gray-500 ml-1">/5</span>
+          <span class="text-gray-500 dark:text-gray-200 ml-1">/5</span>
         </div>
       <% end %>
       <!-- Action Buttons -->
-      <div class="flex items-center justify-between gap-2 border-t pt-3">
+      <div class="flex items-center justify-between gap-2 border-t dark:border-t-gray-500 pt-3">
         <div class="flex flex-row gap-3">
-          <%= link_to "Edit", edit_hotel_comment_path(@hotel, comment),
+          <%= link_to t('comments.edit_comment'), edit_hotel_comment_path(@hotel, comment),
               class: 'px-3 py-1.5 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700 transition-colors' %>
-          <%= link_to "Delete", hotel_comment_path(@hotel, comment),
+          <%= link_to t('comments.delete_comment'), hotel_comment_path(@hotel, comment),
               method: :delete,
               data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
               class: 'px-3 py-1.5 text-sm font-medium text-red-600 bg-red-50 rounded-md hover:bg-red-100 transition-colors' %>
@@ -57,15 +57,15 @@
           <button type="button"
                   class="px-3 py-1.5 text-sm font-medium text-gray-600 bg-gray-50 rounded-md hover:bg-gray-100 transition-colors"
                   onclick="document.getElementById('reply-form-<%= comment.id %>').classList.toggle('hidden');">
-            Reply
+            <%= t('comments.reply') %>
           </button>
         </div>
         <div class="flex flex-row gap-3">
-          <%= button_to like_hotel_comment_path(@hotel, comment), method: :post, class: "rounded-full hover:bg-gray-200 p-2 cursor-pointer" do %>
+          <%= button_to like_hotel_comment_path(@hotel, comment), method: :post, class: "rounded-full hover:bg-gray-200 dark:hover:bg-zinc-800 p-2 cursor-pointer" do %>
             <i class="bi bi-hand-thumbs-up<%= '-fill' if comment.liked_by?(current_user) %>"></i>
             <span class="text-sm ml-1"><%= comment.liked_users.count %></span>
           <% end %>
-          <%= button_to dislike_hotel_comment_path(@hotel, comment), method: :post, class: "rounded-full hover:bg-gray-200 p-2 cursor-pointer" do %>
+          <%= button_to dislike_hotel_comment_path(@hotel, comment), method: :post, class: "rounded-full hover:bg-gray-200 dark:hover:bg-zinc-800 p-2 cursor-pointer" do %>
             <i class="bi bi-hand-thumbs-down<%= '-fill' if comment.disliked_by?(current_user) %>"></i>
             <span class="text-sm ml-1"><%= comment.disliked_users.count %></span>
           <% end %>
@@ -76,12 +76,12 @@
           <!-- Hidden Field for parent_id -->
           <%= form.hidden_field :parent_id, value: comment.id %>
           <%= form.text_area :content,  class: ["block shadow-sm rounded-md border outline-hidden px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": comment.errors[:content].none?, "border-red-400 focus:outline-red-600": comment.errors[:content].any?}], placeholder: "Add a reply..." %>
-          <%= form.submit "Reply", class: "rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white inline-block font-medium cursor-pointer" %>
+          <%= form.submit t('comments.reply'), class: "rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white inline-block font-medium cursor-pointer" %>
         <% end %>
       </div>
     </div>
   </div>
-  <div id="comment-<%= comment.id %>-replies" class="mt-4 ml-8 border-l pl-4">
+  <div id="comment-<%= comment.id %>-replies" class="mt-4 ml-8 border-l dark:border-l-gray-500 pl-4">
     <%= render comment.replies.active %>
   </div>
 </div>

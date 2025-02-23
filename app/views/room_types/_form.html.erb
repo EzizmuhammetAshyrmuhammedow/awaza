@@ -9,40 +9,39 @@
       </ul>
     </div>
   <% end %>
+  <div class="my-5">
+    <%= form.label t('general.name') %>
+    <%= form.text_field :name, class: ["block shadow-sm rounded-md border outline-hidden px-3 py-2 mt-2 w-full", { "border-gray-400 focus:outline-blue-600": room_type.errors[:name].none?, "border-red-400 focus:outline-red-600": room_type.errors[:name].any? }] %>
   </div>
   <div class="my-5">
-    <%= form.label :name %>
-    <%= form.text_field :name, class: ["block shadow-sm rounded-md border outline-hidden px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": room_type.errors[:name].none?, "border-red-400 focus:outline-red-600": room_type.errors[:name].any?}] %>
+    <%= form.label t('general.price') %>
+    <%= form.number_field :price, class: ["block shadow-sm rounded-md border outline-hidden px-3 py-2 mt-2 w-full", { "border-gray-400 focus:outline-blue-600": room_type.errors[:price].none?, "border-red-400 focus:outline-red-600": room_type.errors[:price].any? }] %>
   </div>
   <div class="my-5">
-    <%= form.label :price %>
-    <%= form.number_field :price, class: ["block shadow-sm rounded-md border outline-hidden px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": room_type.errors[:price].none?, "border-red-400 focus:outline-red-600": room_type.errors[:price].any?}] %>
+    <%= form.label t('general.features') %>
+    <%= form.rich_text_area :features, rows: 4, class: ["block shadow-sm rounded-md border outline-hidden px-3 py-2 mt-2 w-full", { "border-gray-400 focus:outline-blue-600": room_type.errors[:features].none?, "border-red-400 focus:outline-red-600": room_type.errors[:features].any? }] %>
   </div>
   <div class="my-5">
-    <%= form.label :features %>
-    <%= form.rich_text_area :features, rows: 4, class: ["block shadow-sm rounded-md border outline-hidden px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": room_type.errors[:features].none?, "border-red-400 focus:outline-red-600": room_type.errors[:features].any?}] %>
+    <%= form.label t('general.extra_info') %>
+    <%= form.rich_text_area :extra_info, rows: 4, class: ["block shadow-sm rounded-md border outline-hidden px-3 py-2 mt-2 w-full", { "border-gray-400 focus:outline-blue-600": room_type.errors[:extra_info].none?, "border-red-400 focus:outline-red-600": room_type.errors[:extra_info].any? }] %>
   </div>
   <div class="my-5">
-    <%= form.label :extra_info %>
-    <%= form.rich_text_area :extra_info, rows: 4, class: ["block shadow-sm rounded-md border outline-hidden px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": room_type.errors[:extra_info].none?, "border-red-400 focus:outline-red-600": room_type.errors[:extra_info].any?}] %>
-  </div>
-  <div class="my-5">
-    <%= form.label :hotel_id %>
+    <%= form.label t('hotel.hotel_id') %>
     <%= form.select :hotel_id, @hotels.collect { |r| [r.name, r.id] }, { prompt: 'Select Hotel' }, class: 'form-control' %>
   </div>
   <div class="my-5">
-    <%= form.label :room_id %>
+    <%= form.label t('rooms.room_id') %>
     <%= form.select :room_id, @rooms.collect { |r| [r.actual_room_id, r.id] }, { prompt: 'Select Room' }, class: 'form-control' %>
   </div>
   <div class="my-5">
-    <%= form.label :capacity %>
-    <%= form.number_field :capacity, class: ["block shadow-sm rounded-md border outline-hidden px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": room_type.errors[:capacity].none?, "border-red-400 focus:outline-red-600": room_type.errors[:capacity].any?}] %>
+    <%= form.label t('room_types.capacity') %>
+    <%= form.number_field :capacity, class: ["block shadow-sm rounded-md border outline-hidden px-3 py-2 mt-2 w-full", { "border-gray-400 focus:outline-blue-600": room_type.errors[:capacity].none?, "border-red-400 focus:outline-red-600": room_type.errors[:capacity].any? }] %>
   </div>
   <div class="my-5">
-    <%= form.label :thumbnail, style: "display: block" %>
+    <%= form.label t('general.thumbnail'), style: "display: block" %>
     <%= form.file_field :thumbnail, accept: "image/*" %>
   </div>
   <div class="inline">
-    <%= form.submit class: "rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white inline-block font-medium cursor-pointer" %>
+    <%= form.submit t("room_types.form.submit.#{form_action}"), class: "rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white inline-block font-medium cursor-pointer" %>
   </div>
 <% end %>

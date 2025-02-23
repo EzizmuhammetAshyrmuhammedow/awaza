@@ -23,7 +23,7 @@ config.middleware.insert_before 0, Rack::Cors do
     origins '*' # Allow all origins (or specify your Flutter app's origin, e.g., 'http://localhost:8080')
     resource '*',
       headers: :any,
-      methods: [:get, :post, :put, :patch, :delete, :options, :head]
+      methods: [ :get, :post, :put, :patch, :delete, :options, :head ]
   end
 end
 
@@ -33,5 +33,10 @@ end
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    I18n.available_locales = [ :en, :tk ]
+
+    # Set default locale to something other than :en
+    I18n.default_locale = :tk
+
   end
 end

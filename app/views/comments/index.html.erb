@@ -1,15 +1,15 @@
 <!-- app/views/comments/index.html.erb -->
-<h1 class="text-2xl font-bold mb-4">Comments & Reviews</h1>
+<h1 class="text-2xl font-bold mb-4"><%= t('comments.comments.plural')%> <%= t('general.and') %> <%= t('comments.reviews.plural') %></h1>
 <% if notice.present? %>
   <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-md inline-block" id="notice"><%= notice %></p>
 <% end %>
-<div class="tabs flex gap-4 border-b mb-4">
+<div class="tabs flex gap-4 border-b dark:border-b-gray-500 mb-4 pb-1">
   <!-- Clicking these links reloads the page with the corresponding filter -->
-  <%= link_to "Casual Comments", hotel_comments_path(@hotel, filter: 'comments'), class: "p-2 #{@active_filter == 'comments' ? 'bg-gray-200 font-bold' : ''}" %>
-  <%= link_to "Reviews", hotel_comments_path(@hotel, filter: 'reviews'), class: "p-2 #{@active_filter == 'reviews' ? 'bg-gray-200 font-bold' : ''}" %>
+  <%= link_to t('comments.comments.plural'), hotel_comments_path(@hotel, filter: 'comments'), class: "p-2 rounded-md #{@active_filter == 'comments' ? 'bg-gray-200 dark:bg-zinc-800 font-bold' : ''}" %>
+  <%= link_to t('comments.reviews.plural'), hotel_comments_path(@hotel, filter: 'reviews'), class: "p-2 rounded-md #{@active_filter == 'reviews' ? 'bg-gray-200 dark:bg-zinc-800 font-bold' : ''}" %>
 </div>
 
-<%= link_to "New Comment", new_hotel_comment_path, class: 'rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-medium cursor-pointer' %>
+<%= link_to t('comments.new_comment'), new_hotel_comment_path, class: 'rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-medium cursor-pointer' %>
 <!-- comments/index.html.erb -->
 <div id="comments-container">
   <%= render @comments.where(parent_id: nil, deleted_at: nil) %>

@@ -1,3 +1,19 @@
-<%= link_to "Hotels", dashboard_hotels_path, class: "ml-2 rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
-<%= link_to "Rooms", dashboard_rooms_path, class: "ml-2 rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
-<%= link_to "Room Types", dashboard_room_types_path, class: "ml-2 rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
+<%= link_to t('hotel.hotels.plural'), dashboard_hotels_path, class: "ml-2 rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 dark:bg-zinc-800 dark:hover:bg-zinc-700 inline-block font-medium" %>
+<%= link_to t('rooms.rooms.plural'), dashboard_rooms_path, class: "ml-2 rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 dark:bg-zinc-800 dark:hover:bg-zinc-700 inline-block font-medium" %>
+<%= link_to t('room_types.room_types.plural'), dashboard_room_types_path, class: "ml-2 rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 dark:bg-zinc-800 dark:hover:bg-zinc-700 inline-block font-medium" %>
+<canvas id="myChart"></canvas>
+<script type="module">
+    import { createChart } from "../../javascript/components/chart.js";
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const canvas = document.getElementById("myChart");
+
+        const chartData = {
+            labels: ["Hotel A", "Hotel B", "Hotel C"],
+            label: "Bookings",
+            values: [12, 19, 7],
+        };
+
+        createChart(canvas, chartData);
+    });
+</script>

@@ -1,0 +1,173 @@
+tk:
+  english_html: "&#127482;&#127480; Inlis dili"
+  turkmen_html: "&#127481;&#127474; Turkmen Dili"
+  page:
+    editing_hotel: "Myhmanhana Redaktirlenyar"
+    editing_room_type: "Otag Gornusi Redaktirlenyar"
+    room_types: "Otag Gornusleri"
+  language: "Dil"
+  home: "Esasy Sahypa"
+  dashboard: "Kontrol Paneli"
+  search: "Gozle"
+  guests:
+    zero: "0 Myhman"
+    one: "1 Myhman"
+    other: "%{count} Myhman"
+    plural: "Myhmanlar"
+  children:
+    zero: "Caga Yok"
+    plural: "Cagalar"
+    one: "1 Caga"
+    other: "%{count} Cagalar"
+  adults:
+    zero: "0 Uly Yasly"
+    plural: "Uly Yaslylar"
+    one: "1 Uly Yasly"
+    other: "%{count} Uly Yasly"
+  activerecord:
+    errors:
+      messages:
+        record_invalid: "Tassyklayys Sowsuz: %{errors}"
+        restrict_dependent_destroy:
+          has_one: "Maglumaty Pozup bolonok sebabi ona bagly maglumat %{record} bar"
+          has_many: "Maglumaty pozup bolonok sebabi bagly %{record} bar"
+
+    time:
+      formats:
+        default: "%Y-%m-%d %H:%M:%S"
+        short: "%d %b %H:%M"
+        long: "%B %d, %Y %H:%M"
+
+    models:
+      user: "Ulanyjy"
+      post: "Yazgy"
+      comment: "Teswir"
+  booking:
+    new_booking: 'Taze Bron'
+    edit_booking: "Brony Redaktirle"
+    delete_booking: "Brony Poz"
+    show_booking: "Brona seret"
+    bookings:
+      zero: "Bron yok"
+      one: "1 Bron"
+      other: "%{count} Bron"
+    check_in: "Giris Sene"
+    check_out: "Cykys Sene"
+    book_now: "Bron Et"
+    you_are_booking_in: "%{hotel} Myhmanhanasynda bron etyarsiniz"
+    total_guests: "Jemi Myhmanlar %{count}"
+    total_rooms: "Jemi Otaglar: %{count}"
+    total_days: "Jemi Gunler: %{count}"
+    total_price: "Jemi Baha: %{count}"
+  hotel:
+    new_hotel: "Taze myhmanhana"
+    edit_hotel: "Myhmanhanany Redaktirle"
+    delete_hotel: "Myhmanhanany Poz"
+    show_hotel: "Myhmanhanany Gorkez"
+    update_hotel: "Myhmanhanany Uytget"
+    hotel_id: "Myhmanhana ID"
+    hotels:
+      zero: "Myhmanhana Yok"
+      plural: "Myhmanhanalar"
+      one: "1 Myhmanhana"
+      other: "%{count} Myhmanhana"
+    no_hotels_available: "Elyeterly Myhmanhana yok"
+    back_to_hotels: "Yza gayt"
+    form:
+      submit:
+        new: "Myhmanhana doret"
+        create: "Myhmanhana doret"
+        edit: "Myhmanhanany Redaktirle"
+        update: "Myhmanhanany Uytget"
+    name: "Myhmanhananyn Ady"
+  rooms:
+    new_room: "Taze Otag"
+    edit_room: "Otagy redaktirle"
+    delete_room: "Otagy Poz"
+    show_room: "Otagy Gorkez"
+    room_id: "Otag ID"
+    rooms:
+      zero: "Otag Yok"
+      plural: "Otaglar"
+      one: "1 Otag"
+      other: "%{count} Otag"
+    back_to_rooms: "Yza Gayt"
+    available: "Elyeterli mi?"
+  room_types:
+    new_room_type: "Taze Otag Gornusi"
+    edit_room_type: "Otag Gornusini Redaktirle"
+    delete_room_type: "Otag Gornusini Poz"
+    show_room_type: "Otag Gornusini Gorkez"
+    capacity: "Cak"
+    room_types:
+      zero: "Otag Gornusi yok"
+      plural: "Otag Gornusleri"
+      one: "1 Otag Gornusi"
+      other: "%{count} Otag Gornusi"
+    back_to_room_types: "Yza gayt"
+    form:
+      submit:
+        new: "Otag Gornusi doret"
+        create: "Otag Gornusi doret"
+        edit: "Otag Gornusini Redaktirle"
+        update: "Otag Gornusini Uytget"
+    room_type: "Otag gornusi"
+  comments:
+    new_comment: "Taze Teswir"
+    edit_comment: "Uytget"
+    reply: "Jogap Ber"
+    delete_comment: "Teswiri Poz"
+    is_review: "Syn my?"
+    food_rating: "Nahar Reyting"
+    service_rating: "Hyzmat Reyting"
+    room_rating: "Otag Reyting"
+    entertainment_rating: "Guymenje Reyting"
+    overall_rating: "Ortaca Reyting"
+    comments:
+      zero: "Teswir Yok"
+      plural: "Teswirler"
+      one: "1 Teswir"
+      other: "%{count} Teswir"
+    reviews:
+      zero: "Syn Yok"
+      plural: "Synlar"
+      one: "1 Syn"
+      other: "%{count} Syn"
+      food: "Nahar"
+      service: "Hyzmat"
+      room: "Otag"
+      entertainment: "Guymenje"
+  auth:
+    log_in: "Giris"
+    sign_up: "Agza Bol"
+    log_out: "Cykys"
+  general:
+    name: "Ady"
+    description: "Dusundiris"
+    rating: "Reyting"
+    price: "Baha"
+    thumbnail: "Kici Surat"
+    extra_info: "Gosmaca Maglumat"
+    features: "Ayratynlyklar"
+    and: "we"
+    manager: "Yolbasycy"
+    actions: "Hereketler"
+    are_you_sure: "Eminmi?"
+    delete: "Poz"
+    edit: "Redaktirle"
+  datetime:
+    distance_in_words:
+      x_seconds: "%{count} sekunt öň"
+      x_minutes: "%{count} minut öň"
+      x_hours: "%{count} sagat öň"
+      x_days: "%{count} gün öň"
+      x_months: "%{count} aý öň"
+      x_years: "%{count} ýyl öň"
+      about_x_hours: "takmynan %{count} sagat öň"
+      about_x_days: "takmynan %{count} gün öň"
+      about_x_months: "takmynan %{count} aý öň"
+      about_x_years: "takmynan %{count} ýyl öň"
+      less_than_x_minutes: "%{count} minutdan az öň"
+      less_than_x_seconds: "%{count} sekuntdan az öň"
+      almost_x_years: "deňeşdirilende %{count} ýyl öň"
+  night: "Gije"

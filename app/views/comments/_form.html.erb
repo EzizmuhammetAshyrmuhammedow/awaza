@@ -1,31 +1,31 @@
 <%= form_with model: comment, url: hotel_comments_path(@hotel), data: { turbo: false } do |f| %>
   <div class="mb-4">
     <%= f.label :content, "Your Comment/Review", class: "block font-semibold text-gray-700" %>
-    <%= f.rich_text_area :content, class: "form-input w-full", class: 'w-full border-gray-300 rounded-lg shadow-sm'%>
+    <%= f.rich_text_area :content, class: 'w-full border-gray-300 rounded-lg shadow-sm'%>
   </div>
 
   <div class="mb-4">
-    <%= f.label :isReview, "Is this a review?", class: "h-5 w-5 text-blue-600 border-gray-300 rounded" %>
+    <%= f.label :isReview, t('comments.is_review'), class: "h-5 w-5 text-blue-600 border-gray-300 rounded" %>
     <%= f.check_box :isReview, class: "ml-2 text-gray-700 font-medium" %>
   </div>
 
   <!-- Show rating fields only if it's a review -->
   <div id="review-fields" style="display: none;">
     <div class="mb-4">
-      <%= f.label :food_rating, "Food Rating", class: "block font-semibold text-gray-700" %>
-      <%= f.number_field :food_rating, min: 1, max: 5, class: "w-full border-gray-300 rounded-lg shadow-sm" %>
+      <%= f.label :food_rating, t('comments.food_rating'), class: "block font-semibold text-gray-700 dark:text-white" %>
+      <%= f.number_field :food_rating, min: 1, max: 5, class: "w-full border-1 border-gray-800 dark:border-gray-500  rounded-lg shadow-sm p-3" %>
     </div>
     <div class="mb-4">
-      <%= f.label :room_rating, "Room Rating", class: "block font-semibold text-gray-700" %>
-      <%= f.number_field :room_rating, min: 1, max: 5, class: "w-full border-gray-300 rounded-lg shadow-sm" %>
+      <%= f.label :room_rating, t('comments.room_rating'), class: "block font-semibold text-gray-700 dark:text-white" %>
+      <%= f.number_field :room_rating, min: 1, max: 5, class: "w-full border-1 border-gray-800 dark:border-gray-500 rounded-lg shadow-sm p-3" %>
     </div>
     <div class="mb-4">
-      <%= f.label :service_rating, "Service Rating" , class: "block font-semibold text-gray-700"%>
-      <%= f.number_field :service_rating, min: 1, max: 5, class: "w-full border-gray-300 rounded-lg shadow-sm" %>
+      <%= f.label :service_rating, t('comments.service_rating'), class: "block font-semibold text-gray-700 dark:text-white"%>
+      <%= f.number_field :service_rating, min: 1, max: 5, class: "w-full border-1 border-gray-800 dark:border-gray-500 rounded-lg shadow-sm p-3" %>
     </div>
     <div class="mb-4">
-      <%= f.label :entertainment_rating, "Entertainment Rating", class: "block font-semibold text-gray-700" %>
-      <%= f.number_field :entertainment_rating, min: 1, max: 5, class: "w-full border-gray-300 rounded-lg shadow-sm" %>
+      <%= f.label :entertainment_rating, t('comments.entertainment_rating'), class: "block font-semibold text-gray-700 dark:text-white" %>
+      <%= f.number_field :entertainment_rating, min: 1, max: 5, class: "w-full border-1 border-gray-800 dark:border-gray-500 rounded-lg shadow-sm p-3" %>
     </div>
   </div>
 

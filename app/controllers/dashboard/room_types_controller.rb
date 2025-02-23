@@ -30,7 +30,7 @@ class Dashboard::RoomTypesController < ApplicationController
 
     respond_to do |format|
       if @room_type.save
-        format.html { redirect_to dashboard_room_type_path, notice: "Room type was successfully created." }
+        format.html { redirect_to dashboard_room_type_path(@room_type), notice: "Room type was successfully created." }
         format.json { render :show, status: :created, location: @room_type }
       else
         format.html { render :new, status: :unprocessable_entity }

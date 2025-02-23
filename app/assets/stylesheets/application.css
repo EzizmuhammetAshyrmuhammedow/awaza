@@ -8,5 +8,7 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
-@import "tailwindcss";
+/*
+ *= require flatpickr
+ */
 @import "./actiontext.css";

@@ -1,18 +1,20 @@
-<div class="flex flex-col p-4 shadow rounded-md max-w-72 min-h-64" id="<%= dom_id hotel %>">
+<div class="flex flex-col p-4 shadow dark:shadow-gray-500 rounded-md max-w-72 min-h-64" id="<%= dom_id hotel %>">
   <%= image_tag hotel.thumbnail, class: "max-w-full" if hotel.thumbnail.attached? %>
   <p class="">
-    <strong class="block font-medium mb-1">Name:</strong>
+    <strong class="block font-medium mb-1"><%= t('general.name') %>:</strong>
     <%= hotel.name %>
   </p>
   <p class="">
-    <strong class="block font-medium mb-1">Description:</strong>
+    <strong class="block font-medium mb-1"><%= t('general.description') %>:</strong>
     <%= hotel.description %>
   </p>
   <p class="">
-    <strong class="block font-medium mb-1">Rating:</strong>
+    <strong class="block font-medium mb-1"><%= t('general.rating') %>:</strong>
     <%= hotel.rating %>
   </p>
   <p>
-    <%= link_to "Show this hotel", hotel, class: "text-center rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium w-full" %>
+    <%= link_to t('hotel.show_hotel'), hotel,
+                class: "text-center rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 dark:bg-zinc-900 dark:hover:bg-zinc-800 inline-block font-medium w-full"
+    %>
   </p>
 </div>

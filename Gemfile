@@ -1,12 +1,11 @@
 source "https://rubygems.org"
 
-gem 'rack-cors'
+gem "rack-cors"
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 8.0.1"
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
 gem "propshaft"
 # Use sqlite3 as the database for Active Record
-gem "sqlite3", ">= 2.1"
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", ">= 5.0"
 
@@ -69,4 +68,10 @@ gem "tailwindcss-rails", "~> 4.0"
 gem "view_component"
 gem "normalizer"
 
-gem 'vite_rails' # vite_rails_legacy if using Rails 4
+gem "http_accept_language"
+gem "chartkick"
+gem "groupdate" # For grouping data by time (optional)
+
+gem "importmap-rails", "~> 2.1"
+gem 'flatpickr'
+gem 'pg'

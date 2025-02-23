@@ -1,0 +1,20 @@
+<div x-data="{ open: false }" class="relative inline-block text-left">
+  <button @click="open = !open" class="flex items-center gap-2 px-4 py-2 border rounded-lg shadow-sm bg-white hover:bg-gray-100 dark:bg-zinc-950 dark:hover:bg-zinc-900 focus:outline-none">
+    <%= image_tag("flags/#{I18n.locale}.svg.png", alt: "#{I18n.locale} flag", class: "w-5 h-3") %>
+    <%= t("language") %>
+    <svg class="w-4 h-4 ml-1 transition-transform" :class="{ 'rotate-180': open }" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+    </svg>
+  </button>
+  <div x-show="open" @click.outside="open = false" class="absolute left-0 mt-2 p-1 w-30 bg-white dark:bg-zinc-950 border rounded-lg shadow-md">
+    <%= link_to url_for(request.params.merge(locale: :en)), class: "flex items-center gap-2 px-2 py-2 hover:bg-gray-100 dark:hover:bg-zinc-900" do %>
+      <%= image_tag("flags/en.svg.png", alt: "English flag", class: "w-5 h-3") %>
+      English
+    <% end %>
+
+    <%= link_to url_for(request.params.merge(locale: :tk)), class: "flex items-center gap-2 px-2 py-2 hover:bg-gray-100 dark:hover:bg-zinc-900" do %>
+      <%= image_tag("flags/tk.svg.png", alt: "Turkmen flag", class: "w-5 h-3") %>
+      Turkmen
+    <% end %>
+  </div>
+</div>

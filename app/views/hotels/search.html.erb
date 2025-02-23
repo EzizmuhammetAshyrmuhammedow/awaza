@@ -16,12 +16,12 @@
           <%= hotel.rating %>
         </p>
         <p>
-          <%= link_to "Show this hotel", book_hotel_path(hotel, guests: @guests, rooms: @rooms_count, check_in: @check_in, check_out: @check_out), class: "text-center rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium w-full" %>
+          <%= link_to t('hotel.show_hotel'), book_hotel_path(hotel, guests: @guests, rooms: @rooms_count, check_in: @check_in, check_out: @check_out), class: "text-center rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 dark:bg-zinc-800 dark:hover:bg-zinc-700 inline-block font-medium w-full" %>
         </p>
       </div>
     <% end %>
   </div>
 
 <% else %> <!-- If @hotels is nil or empty -->
-  <p>No hotels available</p>
+  <%= t('hotel.no_hotels_available') %>
 <% end %>

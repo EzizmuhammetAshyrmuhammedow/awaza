@@ -29,10 +29,12 @@ class BookingsController < ApplicationController
       # Assign rooms to the booking
       room_id = params[:room_id]
 
+      Rails.logger.debug "Received params: #{params.inspect}"
       if @booking.save
         redirect_to bookings_path, notice: "Booking successfully created!"
       else
         redirect_to root_path, alert: "Booking failed: #{@booking.errors.full_messages.join(", ")}"
+        Rails.logger.debug "Received params: #{params.inspect}"
       end
     end
   end
@@ -76,9 +78,8 @@ class BookingsController < ApplicationController
       :hotel_id,
       :total_price,
       :is_cancelled,
+      :user_id,
       booking_rooms_attributes: [:room_id]
     )
   end
-
-
 end
