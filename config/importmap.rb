@@ -11,3 +11,6 @@ pin "@rails/actiontext", to: "actiontext.esm.js"
 pin "@hotwired/turbo-rails", to: "turbo.min.js"
 pin "pikaday" # @1.8.2
 pin "moment" # @2.30.1
+pin "chartkick", to: "chartkick.js"
+pin "Chart.bundle", to: "Chart.bundle.js"
+pin "room_selector", to: "components/room_selector.js"

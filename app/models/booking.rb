@@ -27,4 +27,7 @@ class Booking < ApplicationRecord
       mark_rooms_as_available
     end
   end
+  def self.guests_by_date
+    group_by_day(:check_in).sum(:guests)
+  end
 end

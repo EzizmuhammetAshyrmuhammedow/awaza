@@ -16,5 +16,10 @@
       <%= image_tag("flags/tk.svg.png", alt: "Turkmen flag", class: "w-5 h-3") %>
       Turkmen
     <% end %>
+
+    <%= link_to url_for(request.params.merge(locale: :ru)), class: "flex items-center gap-2 px-2 py-2 hover:bg-gray-100 dark:hover:bg-zinc-900" do %>
+      <%= image_tag("flags/ru.svg.png", alt: "Russian flag", class: "w-5 h-3") %>
+      Russian
+    <% end %>
   </div>
 </div>

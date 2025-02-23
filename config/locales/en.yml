@@ -139,6 +139,7 @@ en:
       entertainment: "Entertainment"
       manager: "Manager"
       actions: "Actions"
+    edit_comment: "Edit Comment"
   auth:
     log_in: "Log In"
     sign_up: "Sign Up"
@@ -185,3 +186,5 @@ en:
       password_changed: "Password was successfully changed."
       password_reset_sent: "A password reset link has been sent to your email."
       password_reset_successful: "Password was successfully reset."
+  toggle_dark_mode: "Toggle Theme"
+  select_room: "Select Room"

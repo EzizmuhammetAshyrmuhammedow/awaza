@@ -1,7 +1,8 @@
 // Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
 import "controllers"
 import "@hotwired/turbo-rails"
-
+import "chartkick"
+import "Chart.bundle"
 import "trix"
 import "@rails/actiontext"
 
@@ -82,13 +83,5 @@ function initFlatpickr() {
         }
     });
 }
-import Pikaday from "pikaday";
-
-document.addEventListener("turbo:load", () => {
-    new Pikaday({
-        field: document.getElementById("date-input"),
-        format: "YYYY-MM-DD"
-    });
-});
 document.addEventListener("turbo:load", initFlatpickr);
 document.addEventListener("DOMContentLoaded", initFlatpickr);import "@hotwired/turbo-rails"

@@ -1,32 +1,33 @@
-<!-- Visible on larger screens -->
+<!-- Desktop Navigation -->
 <div class="hidden md:flex space-x-2">
   <%= link_to t('hotel.hotels.plural'), dashboard_hotels_path, class: "rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 dark:bg-zinc-800 dark:hover:bg-zinc-700 font-medium" %>
   <%= link_to t('rooms.rooms.plural'), dashboard_rooms_path, class: "rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 dark:bg-zinc-800 dark:hover:bg-zinc-700 font-medium" %>
   <%= link_to t('room_types.room_types.plural'), dashboard_room_types_path, class: "rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 dark:bg-zinc-800 dark:hover:bg-zinc-700 font-medium" %>
 </div>
 
-<!-- Drawer Links (Visible on Mobile) -->
-<div class="md:hidden">
-  <%= link_to t('hotel.hotels.plural'), dashboard_hotels_path, class: "block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-zinc-700" %>
-  <%= link_to t('rooms.rooms.plural'), dashboard_rooms_path, class: "block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-zinc-700" %>
-  <%= link_to t('room_types.room_types.plural'), dashboard_room_types_path, class: "block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-zinc-700" %>
+<!-- Mobile Drawer -->
+<div x-data="{ open: false }" class="md:hidden">
+  <!-- Open Drawer Button -->
+  <button @click="open = true" class="p-2 bg-gray-200 dark:bg-zinc-800 rounded-md">
+    ☰ Open Menu
+  </button>
+
+  <!-- Drawer -->
+  <div x-show="open" x-transition class="fixed inset-0 bg-black bg-opacity-50 z-40"></div>
+  <div x-show="open" x-transition
+       class="fixed left-0 top-0 w-64 h-full bg-white dark:bg-zinc-900 p-4 z-50 shadow-lg"
+       @click.away="open = false">
+    <!-- Close Button -->
+    <button @click="open = false" class="mb-4 p-2 bg-gray-200 dark:bg-zinc-800 rounded-md">
+      ✕ Close
+    </button>
+
+    <!-- Drawer Links -->
+    <div class="space-y-2">
+      <%= link_to t('hotel.hotels.plural'), dashboard_hotels_path, class: "block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-zinc-700 rounded-md" %>
+      <%= link_to t('rooms.rooms.plural'), dashboard_rooms_path, class: "block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-zinc-700 rounded-md" %>
+      <%= link_to t('room_types.room_types.plural'), dashboard_room_types_path, class: "block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-zinc-700 rounded-md" %>
+    </div>
+  </div>
 </div>
-
-<!-- Chart -->
-<canvas id="myChart" class="mt-4 w-full"></canvas>
-
-<script type="module">
-    import { createChart } from "../../javascript/components/chart.js";
-
-    document.addEventListener("DOMContentLoaded", () => {
-        const canvas = document.getElementById("myChart");
-
-        const chartData = {
-            labels: ["Hotel A", "Hotel B", "Hotel C"],
-            label: "Bookings",
-            values: [12, 19, 7],
-        };
-
-        createChart(canvas, chartData);
-    });
-</script>
+<%= line_chart Booking.guests_by_date.count %>

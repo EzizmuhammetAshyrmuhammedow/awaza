@@ -2,7 +2,7 @@ class Comment < ApplicationRecord
     belongs_to :user
     belongs_to :hotel
     belongs_to :parent, class_name: "Comment", optional: true
-    has_many :replies, -> { active }, class_name: "Comment", foreign_key: "parent_id", dependent: :destroy    
+    has_many :replies, -> { active }, class_name: "Comment", foreign_key: "parent_id", dependent: :destroy
     has_many :like_dislike_relations
     has_many :liked_users, -> { where(like_dislike_relations: { liked: true }) }, through: :like_dislike_relations, source: :user
     has_many :disliked_users, -> { where(like_dislike_relations: { disliked: true }) }, through: :like_dislike_relations, source: :user

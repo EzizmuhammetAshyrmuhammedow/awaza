@@ -88,7 +88,7 @@
         <% end %>
         <li>
           <button data-controller="theme" data-action="click->theme#toggle" class="w-full text-left p-2 bg-gray-500 rounded-md dark:bg-gray-800 text-gray-800 dark:text-gray-200">
-            Toggle Dark Mode
+            <%= t('toggle_dark_mode') %>
           </button>
         </li>
         <% unless helpers.authenticated? %>

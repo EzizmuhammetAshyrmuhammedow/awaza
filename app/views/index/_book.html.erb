@@ -1,5 +1,5 @@
 <div class="w-full max-w-2xl mx-auto p-4" data-controller="hotel-search">
-  <div class="bg-white dark:bg-zinc-900 rounded-md shadow flex flex-col sm:flex-row items-stretch sm:items-center justify-between space-y-2 sm:space-y-0 p-2">
+  <div class="bg-white dark:bg-zinc-900 rounded-md shadow flex flex-col md:flex-row items-stretch md:items-center justify-between space-y-2 md:space-y-0 p-2">
     <%= form_with url: search_hotels_path, method: :get, local: true, turbo: true, html: { class: "flex flex-wrap gap-3 w-full" } do |f| %>
 
       <!-- Check-in Field -->
@@ -28,7 +28,7 @@
       <div class="relative w-full sm:w-auto">
         <button type="button"
                 popovertarget="popover"
-                class="w-full sm:w-auto px-4 py-2 rounded bg-gray-200 hover:bg-gray-300 dark:bg-zinc-800 hover:dark:bg-zinc-950 cursor-pointer transition ease-in-out duration-250"
+                class="w-full sm:w-auto px-2 py-2 rounded bg-gray-200 hover:bg-gray-300 dark:bg-zinc-800 hover:dark:bg-zinc-950 cursor-pointer transition ease-in-out duration-250"
                 data-hotel-search-target="popoverButton">
           <span data-hotel-search-target="guestCount"><%= t('guests.one') %></span>
           <span data-hotel-search-target="roomCount"><%= t('rooms.rooms.one') %></span>
@@ -43,7 +43,7 @@
             <div class="flex items-center">
               <button type="button" data-action="click->hotel-search#decrementAdults" class="px-2 border rounded">-</button>
               <input type="number" name="adults" min="1" value="1"
-                     data-hotel-search_target="adults"
+                     data-hotel-search-target="adults"
                      class="w-10 text-center border mx-2">
               <button type="button" data-action="click->hotel-search#incrementAdults" class="px-2 border rounded">+</button>
             </div>

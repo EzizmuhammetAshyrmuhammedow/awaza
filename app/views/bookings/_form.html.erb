@@ -10,24 +10,24 @@
     </div>
   <% end %>
   <div class="my-5">
-    <%= form.label :check_in %>
-    <%= form.date_field :check_in, class: ["block shadow-sm rounded-md border outline-hidden px-3 py-2 mt-2 w-full", { "border-gray-400 focus:outline-blue-600": booking.errors[:check_in].none?, "border-red-400 focus:outline-red-600": booking.errors[:check_in].any? }] %>
+    <%= form.label t('booking.check_in') %>
+    <%= form.text_field :check_in, id: "checkin",class: ["block shadow-sm rounded-md border outline-hidden px-3 py-2 mt-2 w-full", { "border-gray-400 focus:outline-blue-600": booking.errors[:check_in].none?, "border-red-400 focus:outline-red-600": booking.errors[:check_in].any? }] %>
   </div>
   <div class="my-5">
-    <%= form.label :check_out %>
-    <%= form.date_field :check_out, class: ["block shadow-sm rounded-md border outline-hidden px-3 py-2 mt-2 w-full", { "border-gray-400 focus:outline-blue-600": booking.errors[:check_out].none?, "border-red-400 focus:outline-red-600": booking.errors[:check_out].any? }] %>
+    <%= form.label t('booking.check_out') %>
+    <%= form.text_field :check_out, id: "checkout", class: ["block shadow-sm rounded-md border outline-hidden px-3 py-2 mt-2 w-full", { "border-gray-400 focus:outline-blue-600": booking.errors[:check_out].none?, "border-red-400 focus:outline-red-600": booking.errors[:check_out].any? }] %>
   </div>
 
     <%= form.hidden_field :user_id, value: current_user, class: ["block shadow-sm rounded-md border outline-hidden px-3 py-2 mt-2 w-full", { "border-gray-400 focus:outline-blue-600": booking.errors[:user_id].none?, "border-red-400 focus:outline-red-600": booking.errors[:user_id].any? }] %>
   <div class="my-5">
-    <%= form.label :hotel_id %>
+    <%= form.label t('hotel.hotel_id') %>
     <%= form.select :hotel_id, Hotel.all.collect { |r| [r.name, r.id] }, { prompt: 'Select Hotel' }, class: ["block shadow-sm rounded-md border outline-hidden px-3 py-2 mt-2 w-full", { "border-gray-400 focus:outline-blue-600": booking.errors[:hotel_id].none?, "border-red-400 focus:outline-red-600": booking.errors[:hotel_id].any? }] %>
   </div>
-  <div x-data="roomSelector()" class="space-y-4">
+  <div class="space-y-4">
     <!-- Room selection -->
     <div class="flex items-center space-x-2">
       <select id="roomSelect" class="block shadow-sm rounded-md border px-3 py-2">
-        <option value="">Select a room</option>
+        <option value=""><%= t('select_room') %></option>
         <% Room.all.where(available: true).each do |room| %>
           <option
             value="<%= room.id %>"
