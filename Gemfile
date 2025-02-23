@@ -75,3 +75,4 @@ gem "groupdate" # For grouping data by time (optional)
 gem "importmap-rails", "~> 2.1"
 gem 'flatpickr'
 gem 'pg'
+gem "net-smtp", "~> 0.5"
