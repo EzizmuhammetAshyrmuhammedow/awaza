@@ -24,9 +24,9 @@
       </li>
     <% end %>
     <li>
-      <button data-controller="theme" data-action="click->theme#toggle" class="p-2 bg-gray-500 rounded-md dark:bg-gray-800 text-gray-800 dark:text-gray-200">
-        Toggle Dark Mode
-      </button>
+      <div data-controller="theme" data-action="click->theme#toggle" class="cursor-pointer w-full text-left p-2 bg-gray-500 rounded-md dark:bg-gray-800 text-gray-800 dark:text-gray-200">
+        <%= t('toggle_dark_mode') %>
+      </div>
     </li>
     <% unless helpers.authenticated? %>
       <li>
@@ -87,9 +87,9 @@
           </li>
         <% end %>
         <li>
-          <button data-controller="theme" data-action="click->theme#toggle" class="cursor-pointer w-full text-left p-2 bg-gray-500 rounded-md dark:bg-gray-800 text-gray-800 dark:text-gray-200">
+          <div data-controller="theme" data-action="click->theme#toggle" class="cursor-pointer w-full text-left p-2 bg-gray-500 rounded-md dark:bg-gray-800 text-gray-800 dark:text-gray-200">
             <%= t('toggle_dark_mode') %>
-          </button>
+          </div>
         </li>
         <% unless helpers.authenticated? %>
           <li>

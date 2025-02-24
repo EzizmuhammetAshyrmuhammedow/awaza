@@ -9,11 +9,9 @@ class Hotel < ApplicationRecord
 
   scope :with_available_rooms, ->(check_in, check_out) {
     joins(:rooms)
-      .where('rooms.available = ?', true)
+      .where("rooms.available = ?", true)
       .where('rooms.id NOT IN (
-                SELECT room_id FROM bookings WHERE
-                (check_in BETWEEN ? AND ?) OR
-                (check_out BETWEEN ? AND ?)
+                SELECT room_id FROM bookings
               )', check_in, check_out, check_in, check_out)
       .distinct
   }

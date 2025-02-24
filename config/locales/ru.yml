@@ -187,3 +187,4 @@ ru:
       password_changed : "Пароль был успешно изменен."
       password_reset_sent : "Ссылка для сброса пароля была отправлена на вашу электронную почту."
       password_reset_successful : "Пароль был успешно сброшен."
+  toggle_dark_mode: "тёмный режим"

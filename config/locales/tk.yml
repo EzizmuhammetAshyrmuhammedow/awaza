@@ -195,3 +195,4 @@ tk:
     room_types:
       plural: "Otag Gornusleri"
     show_room_type: ""
+    room_type: "Otag Gornusi"
