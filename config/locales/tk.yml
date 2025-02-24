@@ -191,3 +191,7 @@ tk:
       password_reset_successful: "Parol üstünlikli dikeldildi."
   toggle_dark_mode: "Tema Uytget"
   select_room: "Otag sayla"
+  room_types:
+    room_types:
+      plural: "Otag Gornusleri"
+    show_room_type: ""

@@ -5,15 +5,15 @@ class CommentsController < ApplicationController
   # GET /hotels/:hotel_id/comments
   def index
     filter = params[:filter]
-    if filter == "reviews"
+    if filter == 'reviews'
       @comments = @hotel.comments.where(isReview: true, parent_id: nil).includes(:user, :replies)
     else
       # Load casual comments (isReview false or nil)
-      @comments = @hotel.comments.where("(\"isReview\" IS NULL OR \"isReview\" = ?) AND parent_id IS NULL", false).includes(:user, :replies)
+      @comments = @hotel.comments.where("(isReview IS NULL OR isReview = ?) AND parent_id IS NULL", false).includes(:user, :replies)
     end
 
     # Also pass along the current filter to the view.
-    @active_filter = filter || "comments"
+    @active_filter = filter || 'comments'
   end
 
   def new
@@ -44,7 +44,7 @@ class CommentsController < ApplicationController
       end
     else
       Rails.logger.error "Comment creation failed: #{@comment.errors.full_messages.join(", ")}"
-      @active_filter = params[:filter] || "comments"
+      @active_filter = params[:filter] || 'comments'
       @comments = @hotel.comments.includes(:user).order(created_at: :desc)
 
       respond_to do |format|
