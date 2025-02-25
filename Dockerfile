@@ -26,9 +26,11 @@ RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y libjemalloc2 libvips sqlite3 && \
     rm -rf /var/lib/apt/lists/* /var/cache/apt/archives/*
 
+# Install Yarn globally
+RUN corepack enable && corepack prepare yarn@stable --activate
+
 # Copy package.json and package-lock.json separately to improve Docker build caching
-COPY package.json package-lock.json ./
-RUN npm ci
+RUN yarn install --frozen-lockfile
 
 # Set production environment
 ENV RAILS_ENV="production" \
@@ -58,7 +60,7 @@ COPY . .
 RUN bundle exec bootsnap precompile app/ lib/
 
 # Precompiling assets for production without requiring secret RAILS_MASTER_KEY
-RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile && npm run build
+RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile && yarn build
 
 # Final stage for app image
 FROM base
