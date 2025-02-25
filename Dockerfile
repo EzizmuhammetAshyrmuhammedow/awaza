@@ -14,17 +14,19 @@ FROM docker.io/library/ruby:$RUBY_VERSION-slim AS base
 # Rails app lives here
 WORKDIR /rails
 
-# install Node JS
-RUN apt-get install -y curl && \
+# Install Node.js and Yarn
+RUN apt-get update -qq && \
+    apt-get install --no-install-recommends -y curl && \
     curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && \
     apt-get install --no-install-recommends -y nodejs && \
-    npm install -g yarn \
+    npm install -g yarn
 
 # Install base packages
 RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y build-essential git pkg-config libpq-dev && \
-    apt-get install --no-install-recommends -y curl libjemalloc2 libvips sqlite3 && \
+    apt-get install --no-install-recommends -y libjemalloc2 libvips sqlite3 && \
     rm -rf /var/lib/apt/lists/* /var/cache/apt/archives/*
+
 
 # Copy package.json and yarn.lock separately to improve Docker build caching
 COPY package.json yarn.lock ./
