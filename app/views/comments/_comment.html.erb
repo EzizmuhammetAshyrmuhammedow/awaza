@@ -18,7 +18,7 @@
       </div>
       <!-- Comment Content -->
       <p class="text-gray-700 dark:text-white"><%= sanitize comment.content %></p>
-      <% if comment.isReview %>
+      <% if comment.is_review %>
         <!-- Only display ratings for reviews -->
         <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-1 mt-5">
           <div class="flex items-center">

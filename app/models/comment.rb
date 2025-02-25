@@ -6,18 +6,18 @@ class Comment < ApplicationRecord
     has_many :like_dislike_relations
     has_many :liked_users, -> { where(like_dislike_relations: { liked: true }) }, through: :like_dislike_relations, source: :user
     has_many :disliked_users, -> { where(like_dislike_relations: { disliked: true }) }, through: :like_dislike_relations, source: :user
-  
+
     validates :content, presence: true
     validates :user_id, presence: true
     validates :hotel_id, presence: true
-  
+
     # Ensure ratings are within a valid range (e.g., 1 to 5)
     validates :food_rating, :room_rating, :service_rating, :entertainment_rating,
               numericality: { only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 5 }, allow_nil: true
 
 
     after_initialize :set_default_likes_dislikes, if: :new_record?
-    
+
     scope :active, -> { where(deleted_at: nil) }
 
     def soft_delete
@@ -60,19 +60,19 @@ class Comment < ApplicationRecord
   def disliked_by?(user)
     disliked_users.include?(user)
   end
-    
+
     before_save :calculate_total_rating
 
     private
 
     def calculate_total_rating
-        if self.isReview
+        if self.is_review
             ratings = [food_rating, room_rating, service_rating, entertainment_rating].compact
-            self.total_rating = ratings.sum.to_f / ratings.size if ratings.any? 
+            self.total_rating = ratings.sum.to_f / ratings.size if ratings.any?
         else
             self.total_rating = 0
         end
-    end          
+    end
     def set_default_likes_dislikes
         self.like_count ||= 0
         self.dislike_count ||= 0

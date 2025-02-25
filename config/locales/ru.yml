@@ -159,7 +159,21 @@ ru:
     edit: "Редактировать"
 
   night : "Ночь"
-
+  datetime:
+    distance_in_words:
+      x_seconds: "%{count} секунд назад"
+      x_minutes: "%{count} минут назад"
+      x_hours: "%{count} часов назад"
+      x_days: "%{count} дней назад"
+      x_months: "%{count} месяцев назад"
+      x_years: "%{count} лет назад"
+      about_x_hours: "примерно %{count} часов назад"
+      about_x_days: "примерно %{count} дней назад"
+      about_x_months: "примерно %{count} месяцев назад"
+      about_x_years: "примерно %{count} лет назад"
+      less_than_x_minutes: "меньше %{count} минут назад"
+      less_than_x_seconds: "меньше %{count} секунд назад"
+      almost_x_years: "почти %{count} лет назад"
   flash:
     success: "Успех!"
     error: "Ошибка!"

@@ -6,10 +6,10 @@ class CommentsController < ApplicationController
   def index
     filter = params[:filter]
     if filter == 'reviews'
-      @comments = @hotel.comments.where(isReview: true, parent_id: nil).includes(:user, :replies)
+      @comments = @hotel.comments.where(is_review: true, parent_id: nil).includes(:user, :replies)
     else
       # Load casual comments (isReview false or nil)
-      @comments = @hotel.comments.where("(isReview IS NULL OR isReview = ?) AND parent_id IS NULL", false).includes(:user, :replies)
+      @comments = @hotel.comments.where("(is_review IS NULL OR is_review = ?) AND parent_id IS NULL", false).includes(:user, :replies)
     end
 
     # Also pass along the current filter to the view.
@@ -29,7 +29,7 @@ class CommentsController < ApplicationController
     @hotel = Hotel.find(params[:hotel_id])
     @comment = @hotel.comments.new(comment_params)
     @comment.user = current_user
-    @is_review = params[:comment][:isReview] == "true"
+    @is_review = params[:comment][:is_review] == "true"
 
     if @comment.save
       respond_to do |format|
@@ -124,7 +124,7 @@ class CommentsController < ApplicationController
   end
 
   def comment_params
-    params.require(:comment).permit(:content, :parent_id, :isReview, :food_rating, :room_rating, :service_rating, :entertainment_rating)
+    params.require(:comment).permit(:content, :parent_id, :is_review, :food_rating, :room_rating, :service_rating, :entertainment_rating)
   end
 
 
