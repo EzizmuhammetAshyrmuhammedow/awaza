@@ -30,7 +30,7 @@ RUN apt-get update -qq && \
 # Install Yarn globally
 RUN corepack enable && corepack prepare yarn@stable --activate
 
-RUN yarn install --immutable
+RUN yarn install --mode=update-lockfile
 
 # Set production environment
 ENV RAILS_ENV="production" \
