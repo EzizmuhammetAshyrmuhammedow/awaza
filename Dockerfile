@@ -15,7 +15,8 @@ FROM docker.io/library/ruby:$RUBY_VERSION-slim AS base
 WORKDIR /rails
 
 # install Node JS
-RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && \
+RUN apt-get curl && \
+    curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && \
     apt-get install --no-install-recommends -y nodejs && \
     npm install -g yarn \
 
