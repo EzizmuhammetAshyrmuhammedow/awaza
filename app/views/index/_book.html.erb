@@ -1,11 +1,11 @@
-<div class="w-full max-w-2xl mx-auto p-4" data-controller="hotel-search">
+<div class="w-full max-w-2xl mx-auto p-4" data-controller="hotel">
   <div class="bg-white dark:bg-zinc-900 rounded-md shadow flex flex-col md:flex-row items-stretch md:items-center justify-between space-y-2 md:space-y-0 p-2">
     <%= form_with url: search_hotels_path, method: :get, local: true, turbo: true, html: { class: "flex flex-wrap gap-3 w-full" } do |f| %>
 
       <!-- Check-in Field -->
       <div class="flex flex-col w-full sm:flex-1 sm:border-r dark:border-zinc-700 border-gray-200 px-2">
         <%= f.text_field :check_in, id: "checkin", autocomplete: "off",
-                         data: { action: "change->hotel-search#updateCheckIn" },
+                         data: { action: "change->hotel#updateCheckIn" },
                          class: "w-full p-2 bg-transparent border border-gray-300 rounded-md placeholder-gray-400",
                          required: true,
                          placeholder: t('booking.check_in') %>
@@ -14,7 +14,7 @@
       <!-- Check-out Field -->
       <div class="flex flex-col w-full sm:flex-1 sm:border-r dark:border-zinc-700 border-gray-200 px-2">
         <%= f.text_field :check_out, id: "checkout", autocomplete: "off",
-                         data: { action: "change->hotel-search#updateCheckOut" },
+                         data: { action: "change->hotel#updateCheckOut" },
                          class: "w-full p-2 bg-transparent border border-gray-300 rounded-md placeholder-gray-400",
                          required: true,
                          placeholder: t('booking.check_out') %>
@@ -29,23 +29,23 @@
         <button type="button"
                 popovertarget="popover"
                 class="w-full sm:w-auto px-2 py-2 rounded bg-gray-200 hover:bg-gray-300 dark:bg-zinc-800 hover:dark:bg-zinc-950 cursor-pointer transition ease-in-out duration-250"
-                data-hotel-search-target="popoverButton">
-          <span data-hotel-search-target="guestCount"><%= t('guests.one') %></span>
-          <span data-hotel-search-target="roomCount"><%= t('rooms.rooms.one') %></span>
+                data-hotel-target="guests">
+          <span data-hotel-target="guestCount"><%= t('guests.one') %></span>
+          <span data-hotel-target="roomCount"><%= t('rooms.rooms.one') %></span>
         </button>
 
         <!-- Popover -->
-        <div id="popover" popover data-hotel-search-target="popover"
+        <div id="popover" popover data-hotel-target="popover"
              class="absolute left-0 sm:left-1/2 transform sm:-translate-x-1/2 mt-2 w-full sm:w-56 p-4 bg-white shadow-lg rounded border border-gray-200 z-10">
           <!-- Adults -->
           <div class="flex justify-between items-center mt-2">
             <%= t('adults.plural') %>
             <div class="flex items-center">
-              <button type="button" data-action="click->hotel-search#decrementAdults" class="px-2 border rounded">-</button>
+              <button type="button" data-action="hotel#decrementAdults" class="px-2 border rounded">-</button>
               <input type="number" name="adults" min="1" value="1"
-                     data-hotel-search-target="adults"
+                     data-hotel-target="adults"
                      class="w-10 text-center border mx-2">
-              <button type="button" data-action="click->hotel-search#incrementAdults" class="px-2 border rounded">+</button>
+              <button type="button" data-action="hotel#incrementAdults" class="px-2 border rounded">+</button>
             </div>
           </div>
 
@@ -53,11 +53,11 @@
           <div class="flex justify-between items-center mt-2">
             <%= t('children.plural') %>
             <div class="flex items-center">
-              <button type="button" data-action="click->hotel-search#decrementChildren" class="px-2 border rounded">-</button>
+              <button type="button" data-action="hotel#decrementChildren" class="px-2 border rounded">-</button>
               <input type="number" name="children" min="0" value="0"
-                     data-hotel-search-target="children"
+                     data-hotel-target="children"
                      class="w-10 text-center border mx-2">
-              <button type="button" data-action="click->hotel-search#incrementChildren" class="px-2 border rounded">+</button>
+              <button type="button" data-action="hotel#incrementChildren" class="px-2 border rounded">+</button>
             </div>
           </div>
 
@@ -65,11 +65,11 @@
           <div class="flex justify-between items-center mt-2">
             <%= t('rooms.rooms.plural') %>
             <div class="flex items-center">
-              <button type="button" data-action="click->hotel-search#decrementRooms" class="px-2 border rounded">-</button>
+              <button type="button" data-action="hotel#decrementRooms" class="px-2 border rounded">-</button>
               <input type="number" name="rooms_input" min="1" value="1"
-                     data-hotel-search-target="rooms"
+                     data-hotel-target="rooms"
                      class="w-10 text-center border mx-2">
-              <button type="button" data-action="click->hotel-search#incrementRooms" class="px-2 border rounded">+</button>
+              <button type="button" data-action="hotel#incrementRooms" class="px-2 border rounded">+</button>
             </div>
           </div>
         </div>

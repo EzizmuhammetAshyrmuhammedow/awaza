@@ -72,7 +72,11 @@ gem "http_accept_language"
 gem "chartkick"
 gem "groupdate" # For grouping data by time (optional)
 
-gem "importmap-rails", "~> 2.1"
-gem 'flatpickr'
-gem 'pg'
+gem "pg"
 gem "net-smtp"
+gem "rack-mini-profiler"
+gem "flamegraph"
+gem "stackprof"
+gem "memory_profiler"
+
+gem "vite_rails", "~> 3.0"

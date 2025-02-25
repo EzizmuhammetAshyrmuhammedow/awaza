@@ -4,7 +4,6 @@ export default class extends Controller {
   connect() {
     this.flatpickrDarkTheme = document.getElementById("flatpickr-dark");
     this.applyTheme();
-    console.log("Aha")
   }
 
   toggle() {

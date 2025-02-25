@@ -38,5 +38,9 @@ end
     # Set default locale to something other than :en
     I18n.default_locale = :tk
 
+    config.public_file_server.headers = {
+      'Cache-Control' => 'public, max-age=31536000, immutable'
+    }
+
   end
 end

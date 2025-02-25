@@ -1,8 +1,6 @@
-// Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
-import "controllers"
+import "./controllers/index.js"
 import "@hotwired/turbo-rails"
-import "chartkick"
-import "Chart.bundle"
+import flatpickr from "flatpickr";
 import "trix"
 import "@rails/actiontext"
 
@@ -36,7 +34,6 @@ function formatTurkmenDate(date) {
 function initFlatpickr() {
     const locale = new URLSearchParams(window.location.search).get("locale") || "en";
     const flatpickrLocale = locale === "tk" ? turkmenLocale : "en";
-    console.log("Aha")
     flatpickr("#date-input", {
         locale: flatpickrLocale,
         altInput: true,
