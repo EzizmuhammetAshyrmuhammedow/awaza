@@ -13,6 +13,7 @@ FROM docker.io/library/ruby:$RUBY_VERSION-slim AS base
 
 # Rails app lives here
 WORKDIR /rails
+COPY . .
 
 # Install Node.js and npm
 RUN apt-get update -qq && \
@@ -29,8 +30,7 @@ RUN apt-get update -qq && \
 # Install Yarn globally
 RUN corepack enable && corepack prepare yarn@stable --activate
 
-# Copy package.json and package-lock.json separately to improve Docker build caching
-RUN yarn install --frozen-lockfile
+RUN yarn install --immutable
 
 # Set production environment
 ENV RAILS_ENV="production" \
