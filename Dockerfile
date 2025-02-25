@@ -28,7 +28,7 @@ RUN apt-get update -qq && \
     rm -rf /var/lib/apt/lists/* /var/cache/apt/archives/*
 
 # Install Yarn globally
-RUN npm install -g yarn
+RUN npm install -g yarn vite
 
 RUN yarn install --mode=update-lockfile
 
