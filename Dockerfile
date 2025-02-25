@@ -28,7 +28,7 @@ RUN apt-get update -qq && \
     rm -rf /var/lib/apt/lists/* /var/cache/apt/archives/*
 
 # Install Yarn globally
-RUN corepack enable && corepack prepare yarn@stable --activate
+RUN npm install -g yarn
 
 RUN yarn install --mode=update-lockfile
 
