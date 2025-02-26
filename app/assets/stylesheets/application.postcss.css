@@ -1,4 +1,3 @@
-/* Entry point for your PostCSS build */
 @import "tailwindcss";
 @import "trix/dist/trix.css";
 @import "flatpickr/dist/flatpickr.css";
