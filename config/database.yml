@@ -1,0 +1,19 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  host: localhost
+  username: eziz
+  password: Eziz2010@
+  pool: 5
+
+development:
+  <<: *default
+  database: rails_dev
+
+test:
+  <<: *default
+  database: rails_test
+
+production:
+  <<: *default
+  database: awaza_prod

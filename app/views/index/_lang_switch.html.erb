@@ -1,0 +1,31 @@
+<div x-data="{ open: false }" class="dropdown dropdown-bottom">
+  <button @click="open = !open" class="btn btn-outline flex items-center gap-2">
+    <%= image_tag("flags/#{params[:locale] || I18n.default_locale}.svg.png", alt: "#{I18n.locale} flag", class: "w-5 h-3") %>
+    <%= t("language") %>
+    <svg class="w-4 h-4 transition-transform" :class="{ 'rotate-180': open }" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+    </svg>
+  </button>
+
+  <ul x-show="open" @click.outside="open = false" class="menu menu-sm dropdown-content z-[1] bg-base-100 rounded-box shadow-md w-36">
+    <li>
+      <%= link_to url_for(request.params.except(:locale).merge(locale: :en)), data: { turbo: false } do %>
+        <%= image_tag("flags/en.svg.png", alt: "English flag", class: "w-5 h-3") %>
+        English
+      <% end %>
+    </li>
+    <li>
+      <%= link_to url_for(request.params.except(:locale).merge(locale: :tk)), data: { turbo: false } do %>
+        <%= image_tag("flags/tk.svg.png", alt: "Turkmen flag", class: "w-5 h-3") %>
+        Turkmen
+      <% end %>
+    </li>
+    <li>
+      <%= link_to url_for(request.params.except(:locale).merge(locale: :ru)), data: { turbo: false } do %>
+        <%= image_tag("flags/ru.svg.png", alt: "Russian flag", class: "w-5 h-3") %>
+        Russian
+      <% end %>
+    </li>
+  </ul>
+</div>
+

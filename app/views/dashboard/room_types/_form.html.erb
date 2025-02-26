@@ -1,0 +1,56 @@
+<%= form_with(model: @room_type, url: dashboard_room_types_path, local: true, class: "contents") do |form| %>
+  <% if room_type.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-md mt-3">
+      <h2><%= pluralize(room_type.errors.count, "error") %> <%= t('activerecord.errors.messages.record_invalid', errors: room_type.errors.count) %>:</h2>
+      <ul class="list-disc ml-6">
+        <% room_type.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="my-5">
+    <%= form.label t('general.name'), class: "text-zinc-300" %>
+    <%= form.text_field :name, class: ["block shadow-sm rounded-md border outline-hidden px-3 py-2 mt-2 w-full bg-zinc-800 text-zinc-300", {"border-gray-400 focus:outline-blue-600": room_type.errors[:name].none?, "border-red-400 focus:outline-red-600": room_type.errors[:name].any?}] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label t('general.price'), class: "text-zinc-300" %>
+    <%= form.number_field :price, class: ["block shadow-sm rounded-md border outline-hidden px-3 py-2 mt-2 w-full bg-zinc-800 text-zinc-300", {"border-gray-400 focus:outline-blue-600": room_type.errors[:price].none?, "border-red-400 focus:outline-red-600": room_type.errors[:price].any?}] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label t('general.features'), class: "text-zinc-300" %>
+    <%= form.rich_text_area :features, rows: 4, class: ["block shadow-sm rounded-md border outline-hidden px-3 py-2 mt-2 w-full bg-zinc-800 text-zinc-300", {"border-gray-400 focus:outline-blue-600": room_type.errors[:features].none?, "border-red-400 focus:outline-red-600": room_type.errors[:features].any?}] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label t('general.extra_info'), class: "text-zinc-300" %>
+    <%= form.rich_text_area :extra_info, rows: 4, class: ["block shadow-sm rounded-md border outline-hidden px-3 py-2 mt-2 w-full bg-zinc-800 text-zinc-300", {"border-gray-400 focus:outline-blue-600": room_type.errors[:extra_info].none?, "border-red-400 focus:outline-red-600": room_type.errors[:extra_info].any?}] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label t('hotel.hotel_id'), class: "text-zinc-300" %>
+    <%= form.select :hotel_id, @hotels.collect { |r| [r.name, r.id] }, { prompt: t('hotel.select_hotel') }, class: ["block shadow-sm rounded-md border outline-hidden px-3 py-2 mt-2 w-full bg-zinc-800 text-zinc-300", {"border-gray-400 focus:outline-blue-600": room_type.errors[:hotel_id].none?, "border-red-400 focus:outline-red-600": room_type.errors[:hotel_id].any?}] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label t('rooms.room_id'), class: "text-zinc-300" %>
+    <%= form.select :room_id, @rooms.collect { |r| [r.actual_room_id, r.id] }, { prompt: t('rooms.select_room') }, class: ["block shadow-sm rounded-md border outline-hidden px-3 py-2 mt-2 w-full bg-zinc-800 text-zinc-300", {"border-gray-400 focus:outline-blue-600": room_type.errors[:room_id].none?, "border-red-400 focus:outline-red-600": room_type.errors[:room_id].any?}] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label t('room_types.capacity'), class: "text-zinc-300" %>
+    <%= form.number_field :capacity, class: ["block shadow-sm rounded-md border outline-hidden px-3 py-2 mt-2 w-full bg-zinc-800 text-zinc-300", {"border-gray-400 focus:outline-blue-600": room_type.errors[:capacity].none?, "border-red-400 focus:outline-red-600": room_type.errors[:capacity].any?}] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label t('general.thumbnail'), style: "display: block", class: "text-zinc-300" %>
+    <%= form.file_field :thumbnail, accept: "image/*", class: "block w-full text-sm text-zinc-300 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-zinc-700 file:text-zinc-300 hover:file:bg-zinc-600" %>
+  </div>
+
+  <div class="inline">
+    <%= form.submit class: "rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white inline-block font-medium cursor-pointer" %>
+  </div>
+<% end %>

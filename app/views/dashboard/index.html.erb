@@ -1,0 +1,20 @@
+<!-- Visible on larger screens -->
+<div class="hidden md:flex space-x-2">
+  <% [
+       { name: t('hotel.hotels.plural'), path: dashboard_hotels_path },
+       { name: t('rooms.rooms.plural'), path: dashboard_rooms_path },
+       { name: t('room_types.room_types.plural'), path: dashboard_room_types_path }
+     ].each do |item| %>
+    <button class="btn btn-soft">
+      <%= link_to item[:name], item[:path] %>
+    </button>
+  <% end %>
+</div>
+
+
+<!-- Drawer Links (Visible on Mobile) -->
+<div class="md:hidden">
+  <%= link_to t('hotel.hotels.plural'), dashboard_hotels_path, class: "block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-zinc-700" %>
+  <%= link_to t('rooms.rooms.plural'), dashboard_rooms_path, class: "block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-zinc-700" %>
+  <%= link_to t('room_types.room_types.plural'), dashboard_room_types_path, class: "block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-zinc-700" %>
+</div>

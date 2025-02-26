@@ -1,0 +1,10 @@
+<% content_for :title, "New hotel" %>
+
+<div class="md:w-2/3 w-full">
+  <h1 class="font-bold text-4xl">New hotel</h1>
+
+  <%= render "form", hotel: @hotel, form_action: "new" %>
+  <button class="btn btn-soft">
+    <%= link_to t('hotel.back_to_hotels'), hotels_path, class: "inline-block font-medium" %>
+  </button>
+</div>

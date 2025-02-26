@@ -1,0 +1,31 @@
+<%= form_with(model: hotel, class: "contents") do |form| %>
+  <% if hotel.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-md mt-3">
+      <h2><%= pluralize(hotel.errors.count, "error") %> prohibited this hotel from being saved:</h2>
+      <ul class="list-disc ml-6">
+        <% hotel.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="my-5 flex flex-col gap-1">
+    <%= form.label :name, t('general.name'), class: "font-medium min-w-[120px]" %>
+    <%= form.text_field :name, class: "input w-full border border-gray-400 focus:ring-2 focus:ring-blue-600 #{'border-red-400' if hotel.errors[:name].any?}" %>
+  </div>
+
+  <div class="my-5 flex flex-col gap-1">
+    <%= form.label :description, t('general.description'), class: "font-medium min-w-[120px]" %>
+    <%= form.textarea :description, rows: 4, class: "textarea w-full border border-gray-400 focus:ring-2 focus:ring-blue-600 #{'border-red-400' if hotel.errors[:description].any?}" %>
+  </div>
+
+  <div class="my-5 flex flex-col gap-1">
+    <%= form.label :thumbnail, t('general.thumbnail'), class: "font-medium min-w-[120px]" %>
+    <%= form.file_field :thumbnail, accept: "image/*", class: "file-input w-full border border-gray-400 focus:ring-2 focus:ring-blue-600" %>
+  </div>
+
+  <div class="mt-4">
+    <%= form.submit t("hotel.form.submit.#{form_action}"), class: "btn btn-primary" %>
+  </div>
+<% end %>

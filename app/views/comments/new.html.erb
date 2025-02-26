@@ -1,0 +1,10 @@
+<% content_for :title, "New Comment" %>
+
+<div class="md:w-2/3 w-full">
+  <h1 class="font-bold text-4xl">New Comment</h1>
+    <div id="new-comment" class="mb-8">
+      <!-- Pass the active filter to the form -->
+      <%= render partial: "comments/form", locals: { comment: Comment.new } %>
+    </div>
+  <%= link_to "Back to hotels", hotel_comments_path, class: "ml-2 rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
+</div>

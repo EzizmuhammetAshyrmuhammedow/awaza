@@ -1,0 +1,15 @@
+<div class="flex flex-col p-4 shadow rounded-md max-w-72 min-h-64 border-2 border-transparent peer-checked:border-blue-600">
+  <%= form.check_box :rooms_id, {
+    multiple: true,
+    class: "hidden peer",
+    id: "room_#{room.id}",
+    checked: booking.room_id&.include?(room.id.to_s)
+  }, room.id, nil %>
+
+  <%= label_tag "room_#{room.id}", class: "cursor-pointer" do %>
+    <%= image_tag room.room_type.thumbnail if room.room_type.thumbnail.attached? %>
+    <%= content_tag :p, room.room_type.name, class: "text-2xl font-semibold" %>
+    <p><span>Guests: </span><%= room.room_type.capacity %></p>
+    <p class="text-lg text-green-600"><%= room.room_type.price %> TMT / Night</p>
+  <% end %>
+</div>

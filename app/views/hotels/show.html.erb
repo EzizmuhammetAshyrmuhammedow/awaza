@@ -1,0 +1,40 @@
+<% content_for :title, "Showing hotel" %>
+<div class="md:w-2/3 w-full mx-auto p-3 shadow dark:shadow-gray-500">
+  <% if notice.present? %>
+    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-md inline-block" id="notice"><%= notice %></p>
+  <% end %>
+  <div class="flex flex-col p-4 shadow rounded-md min-h-64">
+    <%= image_tag @hotel.thumbnail, class: "max-w-full" if @hotel.thumbnail.attached? %>
+    <p class="text-4xl mx-auto">
+      <%= @hotel.name %>
+    </p>
+    <p class="text-xl font-semibold">
+      <%= @hotel.description %>
+    </p>
+    <p class="">
+      <strong class="block font-medium mb-1"><%= t('general.rating') %>:</strong>
+      <%= @hotel.rating %>
+    </p>
+  </div>
+  <div class="mt-2">
+    <button class="btn btn-soft">
+      <%= link_to t('hotel.back_to_hotels'), hotels_path, class: "inline-block font-medium my-3" %>
+    </button>
+    <button class="btn btn-secondary">
+      <%= link_to t('comments.comments.plural'), hotel_comments_path(@hotel), class: "inline-block font-medium my-3" %>
+    </button>
+    <button class="btn btn-primary">
+      <%= link_to t('room_types.room_types.plural'), hotel_room_types_path(@hotel), class: "inline-block font-medium my-3" %>
+    </button>
+    <% if @user && (@user.admin? || @user.hotel_owner?) %>
+      <h1><%= t('general.additional_actions') %></h1>
+      <div class="flex flex-row gap-3">
+        <button class="btn btn-warning">
+          <%= link_to t('hotel.edit_hotel'), edit_hotel_path(@hotel), class: "inline-block font-medium" %>
+        </button>
+        <%= button_to t('hotel.delete_hotel'), @hotel, method: :delete, class: "btn btn-error font-medium" %>
+      </div>
+    <% end %>
+  </div>
+
+</div>

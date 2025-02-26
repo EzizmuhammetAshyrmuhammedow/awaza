@@ -1,0 +1,61 @@
+<%= form_with model: [@hotel, comment], local: true, data: { turbo: false } do |f| %>
+  <div class="mb-4">
+    <%= f.label :content, "Your Comment/Review", class: "block font-semibold text-gray-700" %>
+    <%= f.rich_text_area :content, class: 'w-full border-gray-300 rounded-lg shadow-sm'%>
+  </div>
+
+  <div class="mb-4">
+    <%= f.label :is_review, t('comments.is_review'), class: "h-5 w-5 text-blue-600 border-gray-300 rounded"%>
+    <%= f.check_box :is_review, class: "ml-2 text-gray-700 font-medium" , id: "comment_isReview"%>
+  </div>
+
+  <!-- Show rating fields only if it's a review -->
+  <div id="review-fields" style="display: none;">
+    <div class="mb-4">
+      <%= f.label :food_rating, t('comments.food_rating'), class: "block font-semibold text-gray-700 dark:text-white" %>
+      <%= f.number_field :food_rating, min: 1, max: 5, class: "input" %>
+    </div>
+    <div class="mb-4">
+      <%= f.label :room_rating, t('comments.room_rating'), class: "block font-semibold text-gray-700 dark:text-white" %>
+      <%= f.number_field :room_rating, min: 1, max: 5, class: "input" %>
+    </div>
+    <div class="mb-4">
+      <%= f.label :service_rating, t('comments.service_rating'), class: "block font-semibold text-gray-700 dark:text-white"%>
+      <%= f.number_field :service_rating, min: 1, max: 5, class: "input" %>
+    </div>
+    <div class="mb-4">
+      <%= f.label :entertainment_rating, t('comments.entertainment_rating'), class: "block font-semibold text-gray-700 dark:text-white" %>
+      <%= f.number_field :entertainment_rating, min: 1, max: 5, class: "input" %>
+    </div>
+  </div>
+
+  <!-- Conditional Submit Buttons -->
+  <div class="flex space-x-4">
+    <%= f.submit "Submit Review", class: "btn btn-primary", id: "submit-review", style: "display: none;" %>
+    <%= f.submit "Submit Comment", class: "btn btn-primary", id: "submit-comment" %>
+  </div>
+<% end %>
+
+<script>
+    document.addEventListener("turbo:load", function() {
+        const isReviewCheckbox = document.querySelector("#comment_isReview");
+        const reviewFields = document.querySelector("#review-fields");
+        const submitReviewBtn = document.querySelector("#submit-review");
+        const submitCommentBtn = document.querySelector("#submit-comment");
+
+        function toggleReviewFields() {
+            if (isReviewCheckbox.checked) {
+                reviewFields.style.display = "block";
+                submitReviewBtn.style.display = "inline-block";
+                submitCommentBtn.style.display = "none";
+            } else {
+                reviewFields.style.display = "none";
+                submitReviewBtn.style.display = "none";
+                submitCommentBtn.style.display = "inline-block";
+            }
+        }
+
+        isReviewCheckbox.addEventListener("change", toggleReviewFields);
+        toggleReviewFields(); // Ensure proper state on page load
+    });
+</script>

@@ -1,0 +1,24 @@
+<div class="flex flex-col p-4 shadow dark:shadow-gray-500 rounded-md max-w-72 min-h-64" id="<%= dom_id hotel %>">
+  <%= image_tag hotel.thumbnail, class: "max-w-full h-full" if hotel.thumbnail.attached? %>
+
+  <!-- Make the text container grow to push the button down -->
+  <div class="flex-grow">
+    <p>
+      <strong class="block font-medium mb-1"><%= t('general.name') %>:</strong>
+      <%= hotel.name %>
+    </p>
+    <p>
+      <strong class="block font-medium mb-1"><%= t('general.description') %>:</strong>
+      <%= hotel.description %>
+    </p>
+    <p>
+      <strong class="block font-medium mb-1"><%= t('general.rating') %>:</strong>
+      <%= hotel.rating %>
+    </p>
+  </div>
+
+  <!-- Button stays at the bottom -->
+  <p class="btn btn-soft m-0! p-0!">
+    <%= link_to t('hotel.show_hotel'), hotel, class: "btn btn-soft flex items-center justify-center w-full p-2 font-medium text-center" %>
+  </p>
+</div>

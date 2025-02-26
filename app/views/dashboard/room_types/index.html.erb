@@ -1,0 +1,36 @@
+<div class="container mx-auto px-4 py-6 bg-zinc-950 text-zinc-300">
+  <% if notice.present? %>
+    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-md inline-block" id="notice"><%= notice %></p>
+  <% end %>
+
+  <div class="flex justify-between items-center">
+    <h1 class="font-bold text-4xl"><%= t('room_types.room_types.plural') %></h1>
+    <%= link_to t('room_types.new_room_type'), new_dashboard_room_type_path, class: "rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white block font-medium" %>
+  </div>
+
+  <div class="overflow-x-auto">
+    <table class="min-w-full bg-zinc-800 border border-zinc-700 rounded-lg shadow">
+      <thead class="bg-zinc-700 border-b">
+      <tr>
+        <th class="text-left p-3 font-medium">ID</th>
+        <th class="text-left p-3 font-medium"><%= t('general.name') %></th>
+        <th class="text-left p-3 font-medium"><%= t('hotel.name') %></th>
+        <th class="text-left p-3 font-medium"><%= t('general.actions') %></th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @room_types.each do |room_type| %>
+        <tr class="border-b border-zinc-700 hover:bg-zinc-750">
+          <td class="p-3"><%= room_type.id %></td>
+          <td class="p-3"><%= room_type.name %></td>
+          <td class="p-3"><%= room_type.hotel.name %></td>
+          <td class="p-3">
+            <%= link_to t('general.edit'), edit_dashboard_room_type_path(room_type, hotel_id: room_type.hotel.id), class: "px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600" %>
+            <%= button_to t('general.delete'), dashboard_room_type_path(room_type), method: :delete, class: "mt-2 rounded-md px-3.5 py-2.5 text-white bg-red-600 hover:bg-red-500 font-medium" %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

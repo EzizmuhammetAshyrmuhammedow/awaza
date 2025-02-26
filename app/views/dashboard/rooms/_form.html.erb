@@ -1,0 +1,41 @@
+<%= form_with(model: room, class: "contents") do |form| %>
+  <% if room.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 dark:text-red-500 px-3 py-2 font-medium rounded-md mt-3">
+      <h2><%= pluralize(room.errors.count, "error") %> <%= t('activerecord.errors.messages.record_invalid', errors: room.errors.count) %>:</h2>
+      <ul class="list-disc ml-6">
+        <% room.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="my-5">
+    <%= form.label t('rooms.room_id'), class: "dark:text-zinc-300" %>
+    <%= form.text_field :actual_room_id, class: ["block shadow-sm rounded-md border outline-hidden px-3 py-2 mt-2 w-full dark:bg-zinc-800 dark:text-zinc-300", {"border-gray-400 focus:outline-blue-600": room.errors[:actual_room_id].none?, "border-red-400 focus:outline-red-600": room.errors[:actual_room_id].any?}], placeholder: t('rooms.room_id') %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label t('rooms.available'), class: "dark:text-zinc-300" %>
+    <%= form.check_box :available, class: ["block shadow-sm rounded-md border outline-hidden mt-2 h-5 w-5 dar:bg-zinc-800 dark:text-zinc-300", {"border-gray-400 focus:outline-blue-600": room.errors[:available].none?, "border-red-400 focus:outline-red-600": room.errors[:available].any?}] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label t('hotel.hotel_id'), class: "dark:text-zinc-300" %>
+    <%= form.select :hotel_id, @hotels&.collect { |r| [r.name, r.id] } || [], { prompt: t('hotel.select_hotel') }, class: ["block shadow-sm rounded-md border outline-hidden px-3 py-2 mt-2 w-full dark:bg-zinc-800 dark:text-zinc-300", {"border-gray-400 focus:outline-blue-600": room.errors[:hotel_id].none?, "border-red-400 focus:outline-red-600": room.errors[:hotel_id].any?}] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label t('room_types.room_types.plural') + " ID", class: "dark:text-zinc-300" %>
+    <%= form.select :room_type_id, @room_types&.collect { |r| [r.name, r.id] } || [], { prompt: t('room_types.select_room_type') }, class: ["block shadow-sm rounded-md border outline-hidden px-3 py-2 mt-2 w-full dark:bg-zinc-800 dark:text-zinc-300", {"border-gray-400 focus:outline-blue-600": room.errors[:room_type_id].none?, "border-red-400 focus:outline-red-600": room.errors[:room_type_id].any?}] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label t('general.thumbnail'), style: "display: block", class: "dark:text-zinc-300" %>
+    <%= form.file_field :thumbnail, accept: "image/*", class: "block w-full text-sm text-zinc-300 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-zinc-700 file:text-zinc-300 hover:file:bg-zinc-600" %>
+  </div>
+
+  <div class="inline">
+    <%= form.submit class: "rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white inline-block font-medium cursor-pointer" %>
+  </div>
+<% end %>

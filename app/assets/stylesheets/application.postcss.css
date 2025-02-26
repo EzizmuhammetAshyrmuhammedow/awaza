@@ -1,0 +1,72 @@
+/* Entry point for your PostCSS build */
+@import "tailwindcss";
+@import "trix/dist/trix.css";
+@import "flatpickr/dist/flatpickr.css";
+@plugin "daisyui" {
+    themes: emerald --default, business --prefersdark;
+}
+
+[data-theme="business"] {
+    /* Dark Mode for Trix Editor */
+    trix-editor {
+        background-color: #1e1e1e; /* Dark background */
+        color: #ffffff; /* Light text */
+        border-color: #333; /* Darker border */
+        padding: 1rem;
+    }
+
+    /* Dark Mode for Trix Icons */
+    trix-toolbar button {
+        filter: invert(1); /* Invert colors to make them visible */
+        padding: 0.2rem;
+    }
+
+    /* Optional: Better contrast for selected buttons */
+    trix-toolbar button.trix-active {
+        background-color: #444;
+        color: #fff;
+    }
+
+    /* Improve readability */
+    trix-toolbar {
+        background-color: #2a2a2a;
+        border-color: #444;
+        padding: 0.5rem;
+    }
+
+    .trix-content a {
+        @apply text-blue-500 underline;
+    }
+
+    .trix-content blockquote {
+        @apply border-l-4 border-gray-300 pl-4 italic;
+    }
+
+    .trix-content pre {
+        @apply bg-gray-800 text-white p-4 rounded-md;
+    }
+
+    .trix-content ul {
+        @apply list-disc ml-5;
+    }
+
+    .trix-content ol {
+        @apply list-decimal ml-5;
+    }
+
+    .trix-content img {
+        @apply max-w-full h-auto;
+    }
+    .trix-content h1 {
+        @apply text-3xl font-bold mt-4 mb-2;
+    }
+
+    .trix-content h2 {
+        @apply text-2xl font-semibold mt-3 mb-2;
+    }
+
+    .trix-content h3 {
+        @apply text-xl font-medium mt-2 mb-1;
+    }
+
+}

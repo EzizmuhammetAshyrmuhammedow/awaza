@@ -1,0 +1,34 @@
+<div id="<%= dom_id booking %>">
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Check in:</strong>
+    <%= booking.check_in %>
+  </p>
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Check out:</strong>
+    <%= booking.check_out %>
+  </p>
+  <p class="my-5">
+    <strong class="block font-medium mb-1">User:</strong>
+    <%= booking.user_id %>
+  </p>
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Hotel:</strong>
+    <%= booking.hotel_id %>
+  </p>
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Rooms:</strong>
+    <%= booking.room_ids[0] %>
+  </p>
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Total price:</strong>
+    <%= booking.total_price %>
+  </p>
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Guests:</strong>
+    <%= booking.guests %>
+  </p>
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Is cancelled:</strong>
+    <%= booking.is_cancelled %>
+  </p>
+</div>

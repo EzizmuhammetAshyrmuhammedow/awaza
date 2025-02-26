@@ -1,0 +1,27 @@
+<% if @hotels.present? %> <!-- Check if @hotels is not nil or empty -->
+  <div class="flex flex-row gap-5">
+    <% @hotels.each do |hotel| %>
+      <div class="flex flex-col gap-3 p-4 shadow rounded-md max-w-72 min-h-64" id="<%= dom_id hotel %>">
+        <%= image_tag hotel.thumbnail, class: "max-w-full" if hotel.thumbnail.attached? %>
+        <p class="">
+          <strong class="block font-medium mb-1">Name:</strong>
+          <%= hotel.name %>
+        </p>
+        <p class="">
+          <strong class="block font-medium mb-1">Description:</strong>
+          <%= hotel.description %>
+        </p>
+        <p class="">
+          <strong class="block font-medium mb-1">Rating:</strong>
+          <%= hotel.rating %>
+        </p>
+        <p>
+          <%= link_to t('hotel.show_hotel'), book_hotel_path(hotel, guests: @guests, rooms: @rooms_count, check_in: @check_in, check_out: @check_out), class: "text-center rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 dark:bg-zinc-800 dark:hover:bg-zinc-700 inline-block font-medium w-full" %>
+        </p>
+      </div>
+    <% end %>
+  </div>
+
+<% else %> <!-- If @hotels is nil or empty -->
+  <%= t('hotel.no_hotels_available') %>
+<% end %>

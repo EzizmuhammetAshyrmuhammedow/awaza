@@ -1,0 +1,42 @@
+<h1><%= t('booking.you_are_booking_in', hotel: @hotel.name) %></h1>
+
+<% if @room_combinations.is_a?(String) %>
+  <p class="text-red-500"><%= @room_combinations %></p>
+<% else %>
+  <div class="flex flex-row gap-1 text-lg font-semibold">
+    <p><%= t('booking.total_guests', count: @guests) %></p> |
+    <p><%= t('booking.total_rooms', count: @rooms_count) %></p> |
+    <p><%= t('booking.total_days', count: @total_days) %></p> |
+    <p><%= t('booking.total_price', count: @total_price) %> TMT</p>
+  </div>
+
+  <ul class="flex flex-row gap-3">
+    <% @room_combinations.each do |allocation| %>
+      <div class="flex flex-col p-4 shadow rounded-md max-w-72 min-h-64">
+        <%= image_tag allocation[:room].room_type.thumbnail if allocation[:room].room_type.thumbnail.attached? %>
+        <%= content_tag :p, allocation[:room].room_type.name, class: "text-2xl font-semibold" %>
+        <p><%= t('guests.plural') %> :<%= allocation[:room].room_type.capacity %></p>
+        <p class="text-lg text-green-600"><%= allocation[:room].room_type.price %> TMT / <%= t('night') %></p>
+      </div>
+    <% end %>
+  </ul>
+
+  <%= form_with model: Booking.new, url: bookings_path, method: :post, data: { turbo: false } do |f| %>
+    <%= f.hidden_field :check_in, value: @check_in %>
+    <%= f.hidden_field :check_out, value: @check_out %>
+    <%= f.hidden_field :guests, value: @guests %>
+    <%= f.hidden_field :hotel_id, value: @hotel.id %>
+    <%= f.hidden_field :total_price, value: @total_price %>
+    <%= f.hidden_field :is_cancelled, value: false %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+
+    <% @room_combinations.each do |allocation| %>
+      <input type="hidden" name="booking[booking_rooms_attributes][][room_id]" value="<%= allocation[:room].id %>">
+    <% end %>
+
+    <div class="mt-4">
+      <%= f.submit t('booking.book_now'), class: "bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" %>
+    </div>
+  <% end %>
+<% end %>
+

@@ -1,0 +1,11 @@
+<% content_for :title, "Editing hotel" %>
+
+<div class="md:w-2/3 w-full">
+  <h1 class="font-bold text-4xl">Editing hotel</h1>
+
+  <%= render "form", comment: @comment %>
+
+  <button class="btn btn-soft">
+    <%= link_to "Back to hotels", hotel_comments_path , class: "inline-block font-medium" %>
+  </button>
+</div>

@@ -1,0 +1,23 @@
+<div class="bg-blue-100 relative flex items-center justify-between h-[70vh] w-full px-10">
+  <!-- Left Side: Curved Image -->
+  <div class="relative w-1/2 h-full">
+    <%= image_tag asset_path('awaza.jpg'), class: "absolute inset-0 w-full h-full object-cover clip-curved" %>
+  </div>
+
+  <!-- Right Side: Text Content -->
+  <div class="w-1/2 pl-10 flex flex-col">
+    <h1 class="text2xl md:text-3xl lg:text-4xl font-bold text-gray-900 leading-tight h-full mb-5 italic">
+      Owazly tolkunlaryň mekany
+      <br />
+      <span class="text-blue-600 text-3xl lg:text-5xl md:text-3xl xl:text-6xl">“Awaza” syýahatçylyk zolagy</span>
+    </h1>
+    <h1 class="text-5xl font-bold italic">Dynç alyş günleriňizi täsirli geçiriň</h1>
+  </div>
+</div>
+
+<!-- Custom Styling -->
+<style>
+    .clip-curved {
+        clip-path: ellipse(90% 100% at left center);
+    }
+</style>

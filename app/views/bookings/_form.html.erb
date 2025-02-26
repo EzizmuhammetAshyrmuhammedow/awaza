@@ -1,0 +1,223 @@
+<%= form_with(model: [booking], class: "contents") do |form| %>
+  <% if booking.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-md mt-3">
+      <h2><%= pluralize(booking.errors.count, "error") %> prohibited this booking from being saved:</h2>
+      <ul class="list-disc ml-6">
+        <% booking.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="my-5">
+    <%= form.label t('booking.check_in') %>
+    <%= form.text_field :check_in, id: "checkin",class: ["block shadow-sm rounded-md border outline-hidden px-3 py-2 mt-2 w-full", { "border-gray-400 focus:outline-blue-600": booking.errors[:check_in].none?, "border-red-400 focus:outline-red-600": booking.errors[:check_in].any? }] %>
+  </div>
+  <div class="my-5">
+    <%= form.label t('booking.check_out') %>
+    <%= form.text_field :check_out, id: "checkout", class: ["block shadow-sm rounded-md border outline-hidden px-3 py-2 mt-2 w-full", { "border-gray-400 focus:outline-blue-600": booking.errors[:check_out].none?, "border-red-400 focus:outline-red-600": booking.errors[:check_out].any? }] %>
+  </div>
+
+    <%= form.hidden_field :user_id, value: current_user, class: ["block shadow-sm rounded-md border outline-hidden px-3 py-2 mt-2 w-full", { "border-gray-400 focus:outline-blue-600": booking.errors[:user_id].none?, "border-red-400 focus:outline-red-600": booking.errors[:user_id].any? }] %>
+  <div class="my-5">
+    <%= form.label t('hotel.hotel_id') %>
+    <%= form.select :hotel_id, Hotel.all.collect { |r| [r.name, r.id] }, { prompt: 'Select Hotel' }, class: ["block shadow-sm rounded-md border outline-hidden px-3 py-2 mt-2 w-full", { "border-gray-400 focus:outline-blue-600": booking.errors[:hotel_id].none?, "border-red-400 focus:outline-red-600": booking.errors[:hotel_id].any? }] %>
+  </div>
+  <div class="space-y-4">
+    <!-- Room selection -->
+    <div class="flex items-center space-x-2">
+      <select id="roomSelect" class="block shadow-sm rounded-md border px-3 py-2">
+        <option value=""><%= t('select_room') %></option>
+        <% Room.all.where(available: true).each do |room| %>
+          <option
+            value="<%= room.id %>"
+            data-thumbnail-url="<%= room.room_type.thumbnail.attached? ? url_for(room.room_type.thumbnail) : '' %>"
+            data-name="<%= room.actual_room_id %>"
+            data-capacity="<%= room.room_type.capacity %>"
+            data-price="<%= room.room_type.price %>">
+            <%= room.actual_room_id %>
+          </option>
+        <% end %>
+      </select>
+
+      <button type="button" id="addRoomBtn" class="px-3 py-2 bg-blue-600 text-white rounded cursor-pointer">
+        Add
+      </button>
+    </div>
+
+    <div id="selectedRooms" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4"></div>
+
+
+
+    <%= form.hidden_field :total_price, class: ["block shadow-sm rounded-md border outline-hidden px-3 py-2 mt-2 w-full", { "border-gray-400 focus:outline-blue-600": booking.errors[:total_price].none?, "border-red-400 focus:outline-red-600": booking.errors[:total_price].any? }] %>
+    <div class="my-5">
+      <%= form.label :guests %>
+      <%= form.number_field :guests, min: 1, class: ["block shadow-sm rounded-md border outline-hidden px-3 py-2 mt-2 w-full", { "border-gray-400 focus:outline-blue-600": booking.errors[:guests].none?, "border-red-400 focus:outline-red-600": booking.errors[:guests].any? }] %>
+    </div>
+    <div class="my-5">
+      <%= form.label :is_cancelled %>
+      <%= form.checkbox :is_cancelled, class: ["block shadow-sm rounded-md border outline-hidden mt-2 h-5 w-5", { "border-gray-400 focus:outline-blue-600": booking.errors[:is_cancelled].none?, "border-red-400 focus:outline-red-600": booking.errors[:is_cancelled].any? }] %>
+    </div>
+    <p id="totalPriceDisplay" class="text-lg font-bold text-blue-600 mt-4"></p>
+
+    <%= form.fields_for :booking_rooms do |br| %>
+      <%= br.hidden_field :room_id, value: "" %>
+    <% end %>
+
+    <div class="inline">
+      <%= form.submit class: "rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white inline-block font-medium cursor-pointer" %>
+    </div>
+<% end %>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const select = document.getElementById("roomSelect");
+        const addRoomBtn = document.getElementById("addRoomBtn");
+        const selectedRoomsDiv = document.getElementById("selectedRooms");
+        const guestsInput = document.querySelector("input[name='booking[guests]']");
+        const totalPriceInput = document.querySelector("input[name='booking[total_price]']");
+        const checkInInput = document.querySelector("input[name='booking[check_in]']");
+        const checkOutInput = document.querySelector("input[name='booking[check_out]']");
+        const bookingRoomsContainer = document.querySelector("[data-booking-rooms]");
+
+        let selectedRooms = [];
+
+        // Set min date for check_in to today
+        const today = new Date().toISOString().split("T")[0];
+        checkInInput.setAttribute("min", today);
+
+        // Update min date for check_out when check_in changes
+        checkInInput.addEventListener("change", function () {
+            const checkInDate = new Date(checkInInput.value);
+            const nextDay = new Date(checkInDate);
+            nextDay.setDate(checkInDate.getDate() + 1);
+            checkOutInput.setAttribute("min", nextDay.toISOString().split("T")[0]);
+
+            // If check_out is before the new min date, reset it
+            if (new Date(checkOutInput.value) < nextDay) {
+                checkOutInput.value = nextDay.toISOString().split("T")[0];
+            }
+
+            updateTotalPrice(); // Recalculate total price when dates change
+        });
+
+        // Recalculate total price when check_out changes
+        checkOutInput.addEventListener("change", updateTotalPrice);
+
+        function calculateNumberOfDays(checkIn, checkOut) {
+            const oneDay = 24 * 60 * 60 * 1000; // hours * minutes * seconds * milliseconds
+            const diffDays = Math.round(Math.abs((new Date(checkOut) - new Date(checkIn)) / oneDay));
+            return diffDays;
+        }
+
+        function updateTotalPrice() {
+            let guests = parseInt(guestsInput.value) || 0;
+            let totalCapacity = 0;
+            let totalBasePrice = 0;
+            let extraCharge = 120;
+
+            selectedRooms.forEach(room => {
+                totalCapacity += room.capacity; // Toplam kapasite
+                totalBasePrice += room.price; // Odaların toplam fiyatı
+            });
+
+            let extraGuests = Math.max(0, guests - totalCapacity); // Kapasiteyi aşan kişi sayısı
+            let totalPrice = totalBasePrice + (extraCharge * extraGuests); // Toplam fiyat
+
+            // Calculate number of days
+            const checkIn = checkInInput.value;
+            const checkOut = checkOutInput.value;
+            if (checkIn && checkOut) {
+                const numberOfDays = calculateNumberOfDays(checkIn, checkOut);
+                totalPrice *= numberOfDays; // Multiply total price by number of days
+            }
+
+            totalPriceInput.value = totalPrice; // Input'a yaz
+            document.getElementById("totalPriceDisplay").textContent = `Jemi Bahasy: ${totalPrice} TMT`; // HTML'de göster
+        }
+
+        addRoomBtn.addEventListener("click", function () {
+            const selectedOption = select.options[select.selectedIndex];
+            if (!selectedOption.value) return;
+
+            const roomId = selectedOption.value;
+
+            // Check if the room is already selected
+            if (selectedRooms.some(room => room.id === roomId)) {
+                alert("This room has already been selected.");
+                return; // Stop execution if the room is already selected
+            }
+
+            let roomData = {
+                id: roomId,
+                name: selectedOption.dataset.name,
+                capacity: parseInt(selectedOption.dataset.capacity),
+                price: parseInt(selectedOption.dataset.price)
+            };
+
+            selectedRooms.push(roomData);
+            updateTotalPrice();
+
+            // Oda bileşeni oluştur
+            const roomDiv = document.createElement("div");
+            roomDiv.classList.add("relative", "p-4", "shadow", "rounded-md", "max-w-72", "min-h-64", "flex", "flex-col");
+
+            // Thumbnail ekleme (Rails URL ile)
+            if (selectedOption.dataset.thumbnailUrl) {
+                const img = document.createElement("img");
+                img.src = selectedOption.dataset.thumbnailUrl;
+                img.alt = selectedOption.dataset.name;
+                img.classList.add("w-full", "h-40", "object-cover", "rounded-md");
+                roomDiv.appendChild(img);
+            }
+            const title = document.createElement("p");
+            title.textContent = roomData.name;
+            title.classList.add("text-lg", "font-semibold", "mt-2");
+            roomDiv.appendChild(title);
+
+            const capacity = document.createElement("p");
+            capacity.innerHTML = `<strong>Myhmanlar:</strong> ${roomData.capacity}`;
+            roomDiv.appendChild(capacity);
+
+            const price = document.createElement("p");
+            price.innerHTML = `<strong class="text-green-600">${roomData.price} TMT / Night</strong>`;
+            roomDiv.appendChild(price);
+
+            // Silme butonu
+            const removeBtn = document.createElement("button");
+            removeBtn.innerHTML = "X";
+            removeBtn.classList.add("absolute", "top-0", "right-0", "m-2", "text-red-600", "font-bold", "remove-room");
+            removeBtn.addEventListener("click", function () {
+                // Remove the room from the selectedRooms array
+                selectedRooms = selectedRooms.filter(r => r.id !== roomData.id);
+                roomDiv.remove(); // Remove the room card from the UI
+
+                // Re-enable the option in the dropdown
+                const optionToEnable = Array.from(select.options).find(option => option.value === roomData.id);
+                if (optionToEnable) {
+                    optionToEnable.disabled = false; // Re-enable the option
+                    optionToEnable.hidden = false; // Make it visible again
+                }
+
+                updateTotalPrice(); // Update the total price
+            });
+
+            const hiddenInput = document.createElement("input");
+            hiddenInput.type = "hidden";
+            hiddenInput.name = "booking[booking_rooms_attributes][][room_id]";
+            hiddenInput.value = roomId;
+            roomDiv.appendChild(hiddenInput);
+
+            roomDiv.appendChild(removeBtn);
+            roomDiv.appendChild(hiddenInput);
+            selectedRoomsDiv.appendChild(roomDiv);
+
+            // Disable and hide the selected option in the dropdown
+            selectedOption.disabled = true;
+            selectedOption.hidden = true;
+        });
+
+        // Kişi sayısı değiştiğinde fiyatı güncelle
+        guestsInput.addEventListener("input", updateTotalPrice);
+    });
+</script>
