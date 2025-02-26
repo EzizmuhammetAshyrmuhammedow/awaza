@@ -5,7 +5,10 @@ gem "rails", "~> 8.0.1"
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
 gem "propshaft"
 # Use sqlite3 as the database for Active Record
-gem "sqlite3", ">= 2.1"
+gem 'pg', '~> 1.5' # Add this
+group :development, :test do
+  gem 'sqlite3', '~> 1.4'
+end
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", ">= 5.0"
 # Bundle and transpile JavaScript [https://github.com/rails/jsbundling-rails]
@@ -63,7 +66,6 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
-gem "pg"
 gem "http_accept_language"
 gem "view_component"
 gem "image_processing", "~> 1.2"
