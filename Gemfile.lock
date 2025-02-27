@@ -162,7 +162,6 @@ GEM
       benchmark
       logger
     mini_mime (1.1.5)
-    mini_portile2 (2.8.8)
     minitest (5.25.4)
     msgpack (1.8.0)
     net-imap (0.5.6)
@@ -297,8 +296,12 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
-    sqlite3 (1.7.3)
-      mini_portile2 (~> 2.8.0)
+    sqlite3 (2.6.0-aarch64-linux-gnu)
+    sqlite3 (2.6.0-aarch64-linux-musl)
+    sqlite3 (2.6.0-arm-linux-gnu)
+    sqlite3 (2.6.0-arm-linux-musl)
+    sqlite3 (2.6.0-x86_64-linux-gnu)
+    sqlite3 (2.6.0-x86_64-linux-musl)
     sshkit (1.24.0)
       base64
       logger
@@ -371,7 +374,7 @@ DEPENDENCIES
   rails (~> 8.0.1)
   rubocop-rails-omakase
   selenium-webdriver
-  sqlite3 (~> 1.4)
+  sqlite3 (~> 2.6)
   stimulus-rails
   thruster
   turbo-rails
