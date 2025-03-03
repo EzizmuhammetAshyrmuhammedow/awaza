@@ -5,6 +5,7 @@ class Dashboard::RoomTypesController < ApplicationController
   # GET /room_types or /room_types.json
   def index
     @room_types = RoomType.all
+    render layout: "dashboard"
   end
 
   # GET /room_types/1 or /room_types/1.json

@@ -3,7 +3,6 @@ class ApplicationController < ActionController::Base
   include HttpAcceptLanguage::AutoLocale
   helper_method :current_user # Expose current_user to the views
   # Only allow modern browsers supporting webp images, web push, badges, import maps, CSS nesting, and CSS :has.
-  allow_browser versions: :modern
   before_action :set_locale
 
   def current_user

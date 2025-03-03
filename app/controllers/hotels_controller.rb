@@ -1,12 +1,11 @@
 class HotelsController < ApplicationController
   before_action :set_hotel, only: %i[ show edit update destroy ]
   before_action :require_admin, only: [ :destroy, :edit, :create,  :new ]
-  allow_unauthenticated_access only: [:show, :index]
+  allow_unauthenticated_access only: [ :show, :index ]
   # GET /hotels or /hotels.json
   def index
     @hotels = Hotel.all
     @user = current_user
-
   end
 
   def book
@@ -116,7 +115,7 @@ class HotelsController < ApplicationController
     available_rooms.first(room_count).each do |room|
       break if remaining_guests <= 0
 
-      assigned_guests = [room.room_type.capacity, (remaining_guests / room_count.to_f).ceil].min
+      assigned_guests = [ room.room_type.capacity, (remaining_guests / room_count.to_f).ceil ].min
       selected_rooms << { room: room, guests: assigned_guests }
       remaining_guests -= assigned_guests
       room_count -= 1

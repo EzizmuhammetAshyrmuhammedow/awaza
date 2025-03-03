@@ -1,37 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="dataSourceStorageLocal" created-in="RM-251.21418.43">
-    <data-source name="awaza: development" uuid="f177e3bd-6faa-44e7-8f22-297073396bb3">
-      <database-info product="SQLite" version="3.45.1" jdbc-version="4.2" driver-name="SQLite JDBC" driver-version="3.45.1.0" dbms="SQLITE" exact-version="3.45.1" exact-driver-version="3.45">
-        <identifier-quote-string>&quot;</identifier-quote-string>
-      </database-info>
-      <case-sensitivity plain-identifiers="mixed" quoted-identifiers="mixed" />
-      <auth-provider>no-auth</auth-provider>
-      <schema-mapping>
-        <introspection-scope>
-          <node kind="schema" qname="@" />
-        </introspection-scope>
-      </schema-mapping>
-    </data-source>
-    <data-source name="rails_dev@localhost" uuid="4ca879a4-8064-4a04-b72e-cf8a245bc73b">
-      <database-info product="PostgreSQL" version="16.6 (Ubuntu 16.6-0ubuntu0.24.04.1)" jdbc-version="4.2" driver-name="PostgreSQL JDBC Driver" driver-version="42.7.3" dbms="POSTGRES" exact-version="16.6" exact-driver-version="42.7">
+    <data-source name="awaza: development" uuid="e36805b4-5aa6-4a5f-9036-deeec4e836c4">
+      <database-info product="PostgreSQL" version="16.3" jdbc-version="4.2" driver-name="PostgreSQL JDBC Driver" driver-version="42.7.3" dbms="POSTGRES" exact-version="16.3" exact-driver-version="42.7">
         <identifier-quote-string>&quot;</identifier-quote-string>
       </database-info>
       <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
-      <secret-storage>master_key</secret-storage>
       <user-name>eziz</user-name>
       <schema-mapping>
         <introspection-scope>
-          <node negative="1">
-            <node kind="database" qname="@">
-              <node kind="schema" qname="@" />
-            </node>
-            <node kind="database" qname="rails_dev">
-              <node kind="schema" qname="public" />
-            </node>
+          <node kind="database" qname="@">
+            <node kind="schema" qname="@" />
           </node>
         </introspection-scope>
       </schema-mapping>
+    </data-source>
+    <data-source name="awaza: test" uuid="3cd9eb6d-6b6f-4cf7-83ae-053ceb7b703a">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="POSTGRES" />
+      <user-name>eziz</user-name>
+      <schema-mapping />
+    </data-source>
+    <data-source name="awaza: production" uuid="3371f7c9-aaa8-4926-a2bf-5e8d343aef6c">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="POSTGRES" />
+      <user-name>eziz</user-name>
+      <schema-mapping />
     </data-source>
   </component>
 </project>

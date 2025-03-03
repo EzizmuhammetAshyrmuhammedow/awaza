@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_25_144811) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_01_115653) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -108,6 +108,19 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_25_144811) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
+  create_table "employees", force: :cascade do |t|
+    t.string "employee_id"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_employees_on_user_id"
+  end
+
+  create_table "employees_tables", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "hotels", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -184,6 +197,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_25_144811) do
   add_foreign_key "bookings", "users"
   add_foreign_key "comments", "hotels"
   add_foreign_key "comments", "users"
+  add_foreign_key "employees", "users"
   add_foreign_key "hotels", "room_types"
   add_foreign_key "hotels", "rooms"
   add_foreign_key "hotels", "users"

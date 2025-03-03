@@ -1,11 +1,12 @@
 class Dashboard::HotelsController < ApplicationController
   before_action :set_hotel, only: %i[ show edit update destroy ]
   before_action :require_admin
-  allow_unauthenticated_access only: [:show, :index]
+  allow_unauthenticated_access only: [ :show, :index ]
   # GET /hotels or /hotels.json
   def index
     @hotels = Hotel.all
     @user = current_user
+    render layout: "dashboard"
   end
 
   # GET /hotels/1 or /hotels/1.json

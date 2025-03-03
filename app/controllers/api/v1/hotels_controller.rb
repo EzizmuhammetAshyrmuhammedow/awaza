@@ -1,19 +1,20 @@
 class Api::V1::HotelsController < Api::V1::BaseController
-  before_action :set_hotel, only: [:show, :update, :destroy]
+  before_action :set_hotel, only: [ :show, :update, :destroy ]
+  allow_unauthenticated_access
 
   def index
     hotels = Hotel.all
-    render json: hotels
+    render json: hotels, methods: [ :thumbnail_url, :photos_urls ]
   end
 
   def show
-    render json: @hotel, include: [:rooms, :room_types]
+    render json: @hotel, methods: [ :thumbnail_url, :photos_urls ]
   end
 
   def create
     hotel = Hotel.new(hotel_params)
     if hotel.save
-      render json: hotel, status: :created
+      render json: hotel, methods: [ :thumbnail_url, :photos_urls ], status: :created
     else
       render json: { errors: hotel.errors.full_messages }, status: :unprocessable_entity
     end
@@ -21,7 +22,7 @@ class Api::V1::HotelsController < Api::V1::BaseController
 
   def update
     if @hotel.update(hotel_params)
-      render json: @hotel
+      render json: @hotel, methods: [ :thumbnail_url, :photos_urls ]
     else
       render json: { errors: @hotel.errors.full_messages }, status: :unprocessable_entity
     end
@@ -43,5 +44,4 @@ class Api::V1::HotelsController < Api::V1::BaseController
   def hotel_params
     params.require(:hotel).permit(:name, :location, :rating, :description, :user_id)
   end
-
 end

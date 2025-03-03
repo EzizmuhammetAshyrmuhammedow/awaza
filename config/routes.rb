@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   resources :rooms
   resources :hotels do
     resources :room_types
-    resources :comments, only: [:index, :create, :update, :edit, :destroy, :edit, :new] do
+    resources :comments, only: [ :index, :create, :update, :edit, :destroy, :edit, :new ] do
       member do
         post :like
         post :dislike
@@ -48,5 +48,6 @@ Rails.application.routes.draw do
     resources :hotels
     resources :rooms
     resources :room_types
+    resources :employees, only: [ :create, :index ]
   end
 end

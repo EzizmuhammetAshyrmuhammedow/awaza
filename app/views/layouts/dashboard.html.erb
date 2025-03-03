@@ -1,0 +1,25 @@
+<html lang="tk" style="height: 100dvh">
+<!DOCTYPE html>
+<head>
+  <title><%= content_for(:title) || "Awaza" %></title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <%= favicon_link_tag 'icon.png' %>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= yield :head %>
+  <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
+  <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
+  <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
+  <%= javascript_include_tag 'application.js', defer: true, type: "module" %>
+
+</head>
+<body>
+<%= render (NavBarComponent.new(user_id: cookies[:user_id])) %>
+<main class="mt-28 flex flex-row">
+  <%= render(SidebarComponent.new) %>
+  <%= yield %>
+</main>
+</body>
+</html>

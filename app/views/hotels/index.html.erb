@@ -5,14 +5,14 @@
   <% end %>
 
   <% if @user && (@user.hotel_owner? || @user.admin?) %>
-    <div class="flex justify-between items-center">
+    <div class="flex justify-between items-center flex-wrap">
       <h1 class="font-bold text-4xl"><%= t('hotel.hotels.plural') %></h1>
       <button class="btn btn-secondary">
         <%= link_to t('hotel.new_hotel'), new_hotel_path, class: "font-medium" %>
       </button>
     </div>
   <% end %>
-  <div id="hotels" class="flex flex-row gap-3">
+  <div id="hotels" class="flex flex-row gap-3 flex-wrap">
     <% if @hotels.any? %>
       <% @hotels.each do |hotel| %>
         <%= render hotel %>

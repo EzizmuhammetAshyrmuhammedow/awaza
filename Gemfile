@@ -6,9 +6,6 @@ gem "rails", "~> 8.0.1"
 gem "propshaft"
 # Use sqlite3 as the database for Active Record
 gem 'pg', '~> 1.5' # Add this
-group :development, :test do
-  gem 'sqlite3', '~> 1.4'
-end
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", ">= 5.0"
 # Bundle and transpile JavaScript [https://github.com/rails/jsbundling-rails]
@@ -17,8 +14,6 @@ gem "jsbundling-rails"
 gem "turbo-rails"
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "stimulus-rails"
-# Bundle and process CSS [https://github.com/rails/cssbundling-rails]
-gem "cssbundling-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
@@ -65,3 +60,5 @@ gem "http_accept_language"
 gem "view_component"
 gem "image_processing", "~> 1.2"
 gem "mini_magick" # Required for image processing
+gem 'tailwindcss-rails'
+gem 'tailwindcss-ruby'

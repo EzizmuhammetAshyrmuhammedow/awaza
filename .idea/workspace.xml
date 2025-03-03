@@ -4,7 +4,363 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a4e52cec-c29d-4d6a-9a46-77d4010d6413" name="Changes" comment="aha" />
+    <list default="true" id="a4e52cec-c29d-4d6a-9a46-77d4010d6413" name="Changes" comment="aha">
+      <change afterPath="$PROJECT_DIR$/app/views/layouts/dashboard.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.dockerignore" beforeDir="false" afterPath="$PROJECT_DIR$/.dockerignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitattributes" beforeDir="false" afterPath="$PROJECT_DIR$/.gitattributes" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/dependabot.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/dependabot.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/ci.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/ci.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/awaza.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/awaza.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/4ca879a4-8064-4a04-b72e-cf8a245bc73b.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/4ca879a4-8064-4a04-b72e-cf8a245bc73b/storage_v2/_src_/database/rails_dev.92EG1A.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/4ca879a4-8064-4a04-b72e-cf8a245bc73b/storage_v2/_src_/database/rails_dev.92EG1A/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/4ca879a4-8064-4a04-b72e-cf8a245bc73b/storage_v2/_src_/database/rails_dev.92EG1A/schema/pg_catalog.0S1ZNQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/4ca879a4-8064-4a04-b72e-cf8a245bc73b/storage_v2/_src_/database/rails_dev.92EG1A/schema/public.abK9xQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.kamal/secrets" beforeDir="false" afterPath="$PROJECT_DIR$/.kamal/secrets" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.node-version" beforeDir="false" afterPath="$PROJECT_DIR$/.node-version" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.rubocop.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.rubocop.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.ruby-version" beforeDir="false" afterPath="$PROJECT_DIR$/.ruby-version" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gemfile" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gemfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Procfile.dev" beforeDir="false" afterPath="$PROJECT_DIR$/Procfile.dev" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Rakefile" beforeDir="false" afterPath="$PROJECT_DIR$/Rakefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/builds/.keep" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/builds/.keep" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/images/.keep" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/images/.keep" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/images/awaza-pan.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/images/awaza-pan.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/images/awaza-pan.jpg:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/images/awaza.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/images/awaza.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/images/awaza_logo.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/images/awaza_logo.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/images/awaza_logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/images/awaza_logo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/images/awaza_logo.png:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/images/flags/en.svg.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/images/flags/en.svg.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/images/flags/en.svg.png:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/images/flags/ru.svg.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/images/flags/ru.svg.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/images/flags/ru.svg.png:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/images/flags/tk.svg.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/images/flags/tk.svg.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/images/flags/tk.svg.png:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/images/icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/images/icon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/application.postcss.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/awaza_stats_component.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/awaza_stats_component.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/awaza_stats_component.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/awaza_stats_component.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/hotels_component.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/hotels_component.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/hotels_component.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/hotels_component.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/nav_bar_component.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/nav_bar_component.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/nav_bar_component.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/nav_bar_component.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/room_card_component.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/room_card_component.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/room_card_component.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/room_card_component.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/api/v1/base_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/api/v1/base_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/api/v1/base_controller.rb:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/api/v1/hotels_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/api/v1/hotels_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/api/v1/hotels_controller.rb:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/api/v1/registrations_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/api/v1/registrations_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/api/v1/registrations_controller.rb:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/api/v1/sessions_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/api/v1/sessions_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/api/v1/sessions_controller.rb:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/application_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/application_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/application_controller.rb:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/bookings_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/bookings_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/bookings_controller.rb:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/comments_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/comments_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/comments_controller.rb:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/concerns/.keep" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/concerns/.keep" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/concerns/.keep:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/concerns/authentication.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/concerns/authentication.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/concerns/authentication.rb:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/dashboard/hotels_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/dashboard/hotels_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/dashboard/hotels_controller.rb:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/dashboard/room_types_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/dashboard/room_types_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/dashboard/room_types_controller.rb:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/dashboard/rooms_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/dashboard/rooms_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/dashboard/rooms_controller.rb:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/dashboard_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/dashboard_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/dashboard_controller.rb:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/hotels_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/hotels_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/hotels_controller.rb:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/index_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/index_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/index_controller.rb:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/passwords_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/passwords_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/passwords_controller.rb:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/registrations_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/registrations_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/registrations_controller.rb:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/room_types_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/room_types_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/room_types_controller.rb:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/rooms_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/rooms_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/rooms_controller.rb:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/sessions_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/sessions_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/sessions_controller.rb:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/helpers/application_helper.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/helpers/application_helper.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/javascript/application.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/application.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/javascript/controllers/application.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/controllers/application.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/javascript/controllers/hello_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/controllers/hello_controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/javascript/controllers/hotel_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/controllers/hotel_controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/javascript/controllers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/controllers/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/javascript/controllers/theme_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/controllers/theme_controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/jobs/application_job.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/jobs/application_job.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/mailers/application_mailer.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/mailers/application_mailer.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/application_record.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/application_record.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/booking.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/booking.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/booking_room.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/booking_room.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/comment.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/comment.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/concerns/.keep" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/concerns/.keep" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/concerns/.keep:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/current.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/current.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/hotel.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/hotel.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/like_dislike_relation.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/like_dislike_relation.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/room.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/room.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/room_type.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/room_type.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/session.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/session.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/user.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/user.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/active_storage/blobs/_blob.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/active_storage/blobs/_blob.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/active_storage/blobs/_blob.html.erb:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/base.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/base.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/base.rb:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/bookings/_booking.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/bookings/_booking.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/bookings/_booking.html.erb:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/bookings/_booking.json.jbuilder" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/bookings/_booking.json.jbuilder" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/bookings/_booking.json.jbuilder:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/bookings/_form.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/bookings/_form.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/bookings/_form.html.erb:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/bookings/edit.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/bookings/edit.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/bookings/edit.html.erb:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/bookings/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/bookings/index.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/bookings/index.html.erb:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/bookings/index.json.jbuilder" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/bookings/index.json.jbuilder" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/bookings/index.json.jbuilder:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/bookings/new.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/bookings/new.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/bookings/new.html.erb:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/bookings/show.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/bookings/show.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/bookings/show.html.erb:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/bookings/show.json.jbuilder" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/bookings/show.json.jbuilder" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/bookings/show.json.jbuilder:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/comments/_comment.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/comments/_comment.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/comments/_form.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/comments/_form.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/comments/edit.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/comments/edit.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/comments/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/comments/index.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/comments/new.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/comments/new.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/dashboard/hotels/_form.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/dashboard/hotels/_form.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/dashboard/hotels/_form.html.erb:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/dashboard/hotels/edit.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/dashboard/hotels/edit.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/dashboard/hotels/edit.html.erb:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/dashboard/hotels/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/dashboard/hotels/index.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/dashboard/hotels/index.html.erb:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/dashboard/hotels/new.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/dashboard/hotels/new.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/dashboard/hotels/new.html.erb:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/dashboard/hotels/show.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/dashboard/hotels/show.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/dashboard/hotels/show.html.erb:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/dashboard/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/dashboard/index.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/dashboard/room_types/_form.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/dashboard/room_types/_form.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/dashboard/room_types/_form.html.erb:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/dashboard/room_types/edit.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/dashboard/room_types/edit.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/dashboard/room_types/edit.html.erb:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/dashboard/room_types/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/dashboard/room_types/index.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/dashboard/room_types/index.html.erb:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/dashboard/room_types/new.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/dashboard/room_types/new.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/dashboard/room_types/new.html.erb:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/dashboard/room_types/show.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/dashboard/room_types/show.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/dashboard/room_types/show.html.erb:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/dashboard/rooms/_form.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/dashboard/rooms/_form.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/dashboard/rooms/_form.html.erb:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/dashboard/rooms/edit.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/dashboard/rooms/edit.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/dashboard/rooms/edit.html.erb:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/dashboard/rooms/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/dashboard/rooms/index.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/dashboard/rooms/index.html.erb:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/dashboard/rooms/new.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/dashboard/rooms/new.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/dashboard/rooms/new.html.erb:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/hotels/_form.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/hotels/_form.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/hotels/_hotel.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/hotels/_hotel.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/hotels/_hotel.json.jbuilder" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/hotels/_hotel.json.jbuilder" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/hotels/book.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/hotels/book.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/hotels/edit.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/hotels/edit.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/hotels/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/hotels/index.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/hotels/index.json.jbuilder" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/hotels/index.json.jbuilder" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/hotels/new.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/hotels/new.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/hotels/search.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/hotels/search.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/hotels/show.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/hotels/show.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/hotels/show.json.jbuilder" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/hotels/show.json.jbuilder" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/index/_book.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/index/_book.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/index/_landing_image.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/index/_landing_image.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/index/_lang_switch.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/index/_lang_switch.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/index/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/index/index.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/layouts/action_text/contents/_content.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/layouts/action_text/contents/_content.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/layouts/action_text/contents/_content.html.erb:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/layouts/application.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/layouts/application.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/layouts/auth.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/layouts/auth.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/layouts/mailer.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/layouts/mailer.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/layouts/mailer.text.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/layouts/mailer.text.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/partials/_nav.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/partials/_nav.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/partials/_nav.html.erb:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/passwords/edit.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/passwords/edit.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/passwords/edit.html.erb:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/passwords/new.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/passwords/new.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/passwords/new.html.erb:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/passwords_mailer/reset.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/passwords_mailer/reset.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/passwords_mailer/reset.html.erb:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/passwords_mailer/reset.text.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/passwords_mailer/reset.text.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/passwords_mailer/reset.text.erb:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/pwa/manifest.json.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/pwa/manifest.json.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/pwa/manifest.json.erb:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/pwa/service-worker.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/pwa/service-worker.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/pwa/service-worker.js:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/registrations/new.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/registrations/new.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/registrations/new.html.erb:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/room_types/_form.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/room_types/_form.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/room_types/_form.html.erb:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/room_types/_room_type.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/room_types/_room_type.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/room_types/_room_type.html.erb:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/room_types/_room_type.json.jbuilder" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/room_types/_room_type.json.jbuilder" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/room_types/_room_type.json.jbuilder:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/room_types/edit.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/room_types/edit.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/room_types/edit.html.erb:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/room_types/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/room_types/index.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/room_types/index.html.erb:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/room_types/index.json.jbuilder" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/room_types/index.json.jbuilder" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/room_types/index.json.jbuilder:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/room_types/new.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/room_types/new.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/room_types/new.html.erb:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/room_types/show.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/room_types/show.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/room_types/show.html.erb:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/room_types/show.json.jbuilder" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/room_types/show.json.jbuilder" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/room_types/show.json.jbuilder:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/rooms/_form.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/rooms/_form.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/rooms/_form.html.erb:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/rooms/_room.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/rooms/_room.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/rooms/_room.html.erb:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/rooms/_room.json.jbuilder" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/rooms/_room.json.jbuilder" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/rooms/_room.json.jbuilder:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/rooms/edit.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/rooms/edit.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/rooms/edit.html.erb:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/rooms/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/rooms/index.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/rooms/index.html.erb:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/rooms/index.json.jbuilder" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/rooms/index.json.jbuilder" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/rooms/index.json.jbuilder:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/rooms/new.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/rooms/new.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/rooms/new.html.erb:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/rooms/show.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/rooms/show.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/rooms/show.html.erb:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/rooms/show.json.jbuilder" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/rooms/show.json.jbuilder" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/rooms/show.json.jbuilder:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/sessions/new.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/sessions/new.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/sessions/new.html.erb:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/dev" beforeDir="false" afterPath="$PROJECT_DIR$/bin/dev" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.ru" beforeDir="false" afterPath="$PROJECT_DIR$/config.ru" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/application.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/application.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/boot.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/boot.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/cable.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config/cable.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/cache.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config/cache.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/credentials.yml.enc" beforeDir="false" afterPath="$PROJECT_DIR$/config/credentials.yml.enc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/database.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config/database.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/deploy.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config/deploy.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/environment.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/environment.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/environments/development.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/environments/development.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/environments/production.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/environments/production.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/environments/test.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/environments/test.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/initializers/assets.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/initializers/assets.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/initializers/content_security_policy.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/initializers/content_security_policy.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/initializers/filter_parameter_logging.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/initializers/filter_parameter_logging.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/initializers/inflections.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/initializers/inflections.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/locales/en.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config/locales/en.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/locales/en.yml:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/locales/ru.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config/locales/ru.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/locales/ru.yml:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/locales/tk.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config/locales/tk.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/locales/tk.yml:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/puma.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/puma.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/queue.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config/queue.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/recurring.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config/recurring.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/routes.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/storage.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config/storage.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/cable_schema.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/cable_schema.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/cache_schema.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/cache_schema.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20250215181855_create_users.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/migrate/20250215181855_create_users.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20250215181855_create_users.rb:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20250215181856_create_sessions.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/migrate/20250215181856_create_sessions.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20250215181856_create_sessions.rb:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20250216103536_create_hotels.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/migrate/20250216103536_create_hotels.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20250216103536_create_hotels.rb:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20250216104143_create_active_storage_tables.active_storage.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/migrate/20250216104143_create_active_storage_tables.active_storage.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20250216104143_create_active_storage_tables.active_storage.rb:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20250216133745_add_roles_to_users.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/migrate/20250216133745_add_roles_to_users.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20250216133745_add_roles_to_users.rb:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20250216184526_add_user_id_to_hotels.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/migrate/20250216184526_add_user_id_to_hotels.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20250216184526_add_user_id_to_hotels.rb:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20250216185344_add_username.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/migrate/20250216185344_add_username.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20250216185344_add_username.rb:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20250217140113_create_room_types.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/migrate/20250217140113_create_room_types.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20250217140113_create_room_types.rb:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20250217140240_create_rooms.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/migrate/20250217140240_create_rooms.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20250217140240_create_rooms.rb:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20250217153640_add_room_type_id.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/migrate/20250217153640_add_room_type_id.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20250217153640_add_room_type_id.rb:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20250217172640_create_action_text_tables.action_text.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/migrate/20250217172640_create_action_text_tables.action_text.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20250217172640_create_action_text_tables.action_text.rb:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20250217174751_remove_room_id_not_null.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/migrate/20250217174751_remove_room_id_not_null.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20250217174751_remove_room_id_not_null.rb:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20250217184736_add_actual_room_id.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/migrate/20250217184736_add_actual_room_id.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20250217184736_add_actual_room_id.rb:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20250217192308_create_comments.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/migrate/20250217192308_create_comments.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20250217192308_create_comments.rb:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20250218133100_add_like_dislike_relation_user.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/migrate/20250218133100_add_like_dislike_relation_user.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20250218133100_add_like_dislike_relation_user.rb:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20250218133333_create_like_dislike_relations.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/migrate/20250218133333_create_like_dislike_relations.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20250218133333_create_like_dislike_relations.rb:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20250218141253_add_is_review.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/migrate/20250218141253_add_is_review.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20250218141253_add_is_review.rb:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20250218143515_add_deleted_at_to_comments.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/migrate/20250218143515_add_deleted_at_to_comments.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20250218143515_add_deleted_at_to_comments.rb:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20250219062009_create_bookings.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/migrate/20250219062009_create_bookings.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20250219062009_create_bookings.rb:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20250219145519_create_active_admin_comments.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/migrate/20250219145519_create_active_admin_comments.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20250219145519_create_active_admin_comments.rb:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20250219191506_add_hotel_id_room_type.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/migrate/20250219191506_add_hotel_id_room_type.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20250219191506_add_hotel_id_room_type.rb:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20250220102645_add_room_id_and_room_type_id_to_hotels.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/migrate/20250220102645_add_room_id_and_room_type_id_to_hotels.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20250220102645_add_room_id_and_room_type_id_to_hotels.rb:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20250220150921_change_rooms_id_to_room_ids_in_bookings.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/migrate/20250220150921_change_rooms_id_to_room_ids_in_bookings.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20250220150921_change_rooms_id_to_room_ids_in_bookings.rb:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20250221034005_remove_room_id_from_booking.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/migrate/20250221034005_remove_room_id_from_booking.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20250221034005_remove_room_id_from_booking.rb:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20250221035655_create_booking_rooms.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/migrate/20250221035655_create_booking_rooms.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20250221035655_create_booking_rooms.rb:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20250225144811_rename_is_review_tois_review.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/migrate/20250225144811_rename_is_review_tois_review.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20250225144811_rename_is_review_tois_review.rb:Zone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/queue_schema.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/queue_schema.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/schema.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/schema.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/seeds.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/seeds.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/tasks/.keep" beforeDir="false" afterPath="$PROJECT_DIR$/lib/tasks/.keep" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/.keep" beforeDir="false" afterPath="$PROJECT_DIR$/log/.keep" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postcss.config.mjs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/400.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/400.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/404.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/404.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/406-unsupported-browser.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/406-unsupported-browser.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/422.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/422.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/500.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/500.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/icon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/icon.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/icon.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/robots.txt" beforeDir="false" afterPath="$PROJECT_DIR$/public/robots.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/script/.keep" beforeDir="false" afterPath="$PROJECT_DIR$/script/.keep" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/.keep" beforeDir="false" afterPath="$PROJECT_DIR$/storage/.keep" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/application_system_test_case.rb" beforeDir="false" afterPath="$PROJECT_DIR$/test/application_system_test_case.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/components/awaza_stats_component_test.rb" beforeDir="false" afterPath="$PROJECT_DIR$/test/components/awaza_stats_component_test.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/controllers/.keep" beforeDir="false" afterPath="$PROJECT_DIR$/test/controllers/.keep" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/fixtures/files/.keep" beforeDir="false" afterPath="$PROJECT_DIR$/test/fixtures/files/.keep" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/helpers/.keep" beforeDir="false" afterPath="$PROJECT_DIR$/test/helpers/.keep" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/integration/.keep" beforeDir="false" afterPath="$PROJECT_DIR$/test/integration/.keep" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/mailers/.keep" beforeDir="false" afterPath="$PROJECT_DIR$/test/mailers/.keep" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/models/.keep" beforeDir="false" afterPath="$PROJECT_DIR$/test/models/.keep" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/system/.keep" beforeDir="false" afterPath="$PROJECT_DIR$/test/system/.keep" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/test_helper.rb" beforeDir="false" afterPath="$PROJECT_DIR$/test/test_helper.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tmp/.keep" beforeDir="false" afterPath="$PROJECT_DIR$/tmp/.keep" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tmp/pids/.keep" beforeDir="false" afterPath="$PROJECT_DIR$/tmp/pids/.keep" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tmp/storage/.keep" beforeDir="false" afterPath="$PROJECT_DIR$/tmp/storage/.keep" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/.keep" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/.keep" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -16,8 +372,8 @@
         <option value="HTML File" />
         <option value="JavaScript File" />
         <option value="Ruby File" />
-        <option value="CSS File" />
         <option value="ERB File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -44,32 +400,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "/home/eziz/rails/awaza/app/assets/tailwind",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "ruby.i18n.create.property.last_used_locale": "iňlis dili [en.yml]",
-    "ruby.structure.view.model.defaults.configured": "true",
-    "settings.editor.selected.configurable": "com.maddyhome.idea.vim.ui.VimEmulationConfigurable",
-    "ts.external.directory.path": "/home/eziz/.local/share/JetBrains/Toolbox/apps/rubymine/plugins/javascript-plugin/jsLanguageServicesImpl/external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/eziz/Desktop/awaza&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ruby.i18n.create.property.last_used_locale&quot;: &quot;iňlis dili [en.yml]&quot;,
+    &quot;ruby.structure.view.model.defaults.configured&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.maddyhome.idea.vim.ui.VimEmulationConfigurable&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/home/eziz/.local/share/JetBrains/Toolbox/apps/rubymine/plugins/javascript-plugin/jsLanguageServicesImpl/external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "postgresql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/app/assets/tailwind" />
@@ -79,11 +435,11 @@
       <recent name="$PROJECT_DIR$/app/views/dashboard/rooms" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/assets/tailwind" />
+      <recent name="$PROJECT_DIR$/app/assets/builds" />
       <recent name="$PROJECT_DIR$/app/frontend/stylesheets" />
       <recent name="$PROJECT_DIR$/app/frontend/entrypoints" />
       <recent name="$PROJECT_DIR$/app/assets/stylesheets" />
-      <recent name="$PROJECT_DIR$/app/assets/builds" />
-      <recent name="$PROJECT_DIR$/app/javascript/components" />
     </key>
   </component>
   <component name="RunManager" selected="Rails.awaza">
@@ -96,7 +452,7 @@
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="ALTERN_SDK_NAME" VALUE="" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
       <EXTENSION ID="BundlerRunConfigurationExtension" BUNDLE_MODE="AUTO" bundleExecEnabled="true" />
-      <EXTENSION ID="RubyCoverageRunConfigurationExtension" track_test_folders="true" runner="rcov" ENABLE_BRANCH_COVERAGE="true" ENABLE_FORKED_COVERAGE="true">
+      <EXTENSION ID="RubyCoverageRunConfigurationExtension" runner="rcov">
         <COVERAGE_PATTERN ENABLED="true">
           <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
         </COVERAGE_PATTERN>
@@ -120,7 +476,7 @@
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="ALTERN_SDK_NAME" VALUE="" />
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
       <EXTENSION ID="BundlerRunConfigurationExtension" BUNDLE_MODE="AUTO" bundleExecEnabled="true" />
-      <EXTENSION ID="RubyCoverageRunConfigurationExtension" track_test_folders="true" runner="rcov" ENABLE_BRANCH_COVERAGE="true" ENABLE_FORKED_COVERAGE="true">
+      <EXTENSION ID="RubyCoverageRunConfigurationExtension" runner="rcov">
         <COVERAGE_PATTERN ENABLED="true">
           <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
         </COVERAGE_PATTERN>
@@ -147,7 +503,7 @@
         <env name="RAILS_ENV" value="test" />
       </envs>
       <EXTENSION ID="BundlerRunConfigurationExtension" BUNDLE_MODE="AUTO" bundleExecEnabled="true" />
-      <EXTENSION ID="RubyCoverageRunConfigurationExtension" track_test_folders="true" runner="rcov" ENABLE_BRANCH_COVERAGE="true" ENABLE_FORKED_COVERAGE="true">
+      <EXTENSION ID="RubyCoverageRunConfigurationExtension" runner="rcov">
         <COVERAGE_PATTERN ENABLED="true">
           <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
         </COVERAGE_PATTERN>
@@ -189,7 +545,10 @@
       <workItem from="1740429974205" duration="9181000" />
       <workItem from="1740485984751" duration="10671000" />
       <workItem from="1740502557980" duration="1363000" />
-      <workItem from="1740504027714" duration="35692000" />
+      <workItem from="1740504027714" duration="36424000" />
+      <workItem from="1740590702846" duration="670000" />
+      <workItem from="1740797880001" duration="4011000" />
+      <workItem from="1740814496976" duration="1755000" />
     </task>
     <task id="LOCAL-00001" summary="uh">
       <option name="closed" value="true" />
