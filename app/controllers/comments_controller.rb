@@ -2,6 +2,7 @@
 class CommentsController < ApplicationController
   before_action :set_hotel
   before_action :set_comment, only: [:update, :destroy, :edit, :like, :dislike]
+  allow_unauthenticated_access only: [ :index ]
   # GET /hotels/:hotel_id/comments
   def index
     filter = params[:filter]

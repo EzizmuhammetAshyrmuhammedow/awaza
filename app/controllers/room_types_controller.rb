@@ -1,6 +1,7 @@
 class RoomTypesController < ApplicationController
   before_action :set_room_type, only: %i[ show edit update destroy ]
   before_action :set_hotel
+  allow_unauthenticated_access only: [ :index, :show ]
 
   # GET /room_types or /room_types.json
   def index

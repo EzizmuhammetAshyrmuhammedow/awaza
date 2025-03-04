@@ -1,5 +1,6 @@
 class RoomsController < ApplicationController
   before_action :set_room, only: %i[ show edit update destroy ]
+  allow_unauthenticated_access only: [ :index, :show ]
 
   # GET /rooms or /rooms.json
   def index

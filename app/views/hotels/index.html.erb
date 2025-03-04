@@ -12,7 +12,7 @@
       </button>
     </div>
   <% end %>
-  <div id="hotels" class="flex flex-row gap-3 flex-wrap">
+  <div id="hotels" class="flex flex-row gap-3 flex-wrap justify-center md">
     <% if @hotels.any? %>
       <% @hotels.each do |hotel| %>
         <%= render hotel %>
