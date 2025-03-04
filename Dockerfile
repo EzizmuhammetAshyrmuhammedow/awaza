@@ -28,8 +28,9 @@ RUN apt update && \
       jhead \
       libjpeg-progs \
       webp \
-      cargo  && \
-    ~/.cargo/bin/cargo install oxipng
+      cargo && \
+    cargo install oxipng
+
 
 
 RUN apt-get update -qq && \
