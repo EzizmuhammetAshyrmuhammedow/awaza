@@ -1,3 +1,6 @@
+<% content_for :hide_navbar, "true" %>
+<% content_for :title, "Login" %>
+
 <div class="flex justify-center items-center h-screen">
   <div class="card max-w-md shadow-md">
     <% if alert = flash[:alert] %>
@@ -7,7 +10,7 @@
       <p class="alert alert-success shadow-lg mb-5" id="notice"><%= notice %></p>
     <% end %>
     <h1 class="card-title font-bold text-4xl"><%= t('auth.log_in') %></h1>
-    <%= form_with url: session_path do |form| %>
+    <%= form_with url: session_path, data: { turbo: false } do |form| %>
       <div class="card-body">
         <div class="form-control my-5">
           <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "email", placeholder: t('auth.email'), value: params[:email_address], class: "input input-bordered w-full" %>

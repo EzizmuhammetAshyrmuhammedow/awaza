@@ -68,6 +68,7 @@
     <orderEntry type="library" scope="PROVIDED" name="http_accept_language (v2.1.1, ruby-3.3.7-p123) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="i18n (v1.14.7, ruby-3.3.7-p123) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="image_optim (v0.31.4, ruby-3.3.7-p123) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="image_optim_pack (v0.12.0.20250227, ruby-3.3.7-p123) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="image_optim_rails (v0.5.0, ruby-3.3.7-p123) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="image_processing (v1.14.0, ruby-3.3.7-p123) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="image_size (v3.4.0, ruby-3.3.7-p123) [gem]" level="application" />
