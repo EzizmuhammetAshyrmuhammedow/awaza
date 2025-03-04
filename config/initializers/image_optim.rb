@@ -1,7 +1,8 @@
+# config/initializers/image_optim.rb
 if defined?(ImageOptim)
-  ImageOptim.new(
+  Rails.application.config.assets.image_optim = {
     pngout: false,
     svgo: false,
-    oxipng: false
-  )
+    # Add other optimizers you wish to disable
+  }
 end
