@@ -5,10 +5,10 @@
       <!-- Single Date Picker Field -->
       <div class="form-control w-full sm:flex-1">
         <%= f.text_field :date_range, id: "daterange", autocomplete: "off",
-                         data: { action: "change->hotel#updateDates" },
-                         class: "input input-bordered w-full",
-                         required: true,
-                         placeholder: t('booking.date_range') %>
+          data: { action: "change->hotel#updateDates" },
+          class: "input input-bordered w-full",
+          required: true,
+          placeholder: t('booking.date_range') %>
       </div>
 
       <!-- Hidden Fields for Storing Check-in and Check-out -->
@@ -22,7 +22,7 @@
       <!-- Popover Trigger Button -->
       <div class="relative w-full sm:w-auto">
         <button type="button"
-                popovertarget="popover"
+                onclick="modal.showModal()"
                 class="btn btn-outline w-full sm:w-auto"
                 data-hotel-target="guests">
           <span data-hotel-target="guestCount"><%= t('guests.one') %></span>
@@ -30,39 +30,41 @@
         </button>
 
         <!-- Popover -->
-        <div id="popover" popover data-hotel-target="popover"
-             class="absolute left-0 sm:left-1/2 transform sm:-translate-x-1/2 mt-2 w-full sm:w-56 p-4 shadow-lg rounded border border-base-300 bg-base-100 z-10">
-
-          <!-- Adults -->
-          <div class="flex justify-between items-center mt-2">
-            <%= t('adults.plural') %>
-            <div class="flex items-center gap-2">
-              <button type="button" data-action="hotel#decrementAdults" class="btn btn-sm btn-outline">-</button>
-              <input type="number" name="adults" min="1" value="1" data-hotel-target="adults" class="input input-bordered w-12 text-center">
-              <button type="button" data-action="hotel#incrementAdults" class="btn btn-sm btn-outline">+</button>
+        <dialog id="modal" data-hotel-target="popover"
+                           class="modal">
+          <main class="modal-box">
+            <!-- Adults -->
+            <div class="flex justify-between items-center mt-2">
+              <%= t('adults.plural') %>
+              <div class="flex items-center gap-2">
+                <button type="button" data-action="hotel#decrementAdults" class="btn btn-sm btn-outline">-</button>
+                <input type="number" name="adults" min="1" value="1" data-hotel-target="adults" class="input input-bordered w-12 text-center">
+                <button type="button" data-action="hotel#incrementAdults" class="btn btn-sm btn-outline">+</button>
+              </div>
             </div>
-          </div>
 
-          <!-- Children -->
-          <div class="flex justify-between items-center mt-2">
-            <%= t('children.plural') %>
-            <div class="flex items-center gap-2">
-              <button type="button" data-action="hotel#decrementChildren" class="btn btn-sm btn-outline">-</button>
-              <input type="number" name="children" min="0" value="0" data-hotel-target="children" class="input input-bordered w-12 text-center">
-              <button type="button" data-action="hotel#incrementChildren" class="btn btn-sm btn-outline">+</button>
+            <!-- Children -->
+            <div class="flex justify-between items-center mt-2">
+              <%= t('children.plural') %>
+              <div class="flex items-center gap-2">
+                <button type="button" data-action="hotel#decrementChildren" class="btn btn-sm btn-outline">-</button>
+                <input type="number" name="children" min="0" value="0" data-hotel-target="children" class="input input-bordered w-12 text-center">
+                <button type="button" data-action="hotel#incrementChildren" class="btn btn-sm btn-outline">+</button>
+              </div>
             </div>
-          </div>
 
-          <!-- Rooms -->
-          <div class="flex justify-between items-center mt-2">
-            <%= t('rooms.rooms.plural') %>
-            <div class="flex items-center gap-2">
-              <button type="button" data-action="hotel#decrementRooms" class="btn btn-sm btn-outline">-</button>
-              <input type="number" name="rooms_input" min="1" value="1" data-hotel-target="rooms" class="input input-bordered w-12 text-center">
-              <button type="button" data-action="hotel#incrementRooms" class="btn btn-sm btn-outline">+</button>
+            <!-- Rooms -->
+            <div class="flex justify-between items-center mt-2">
+              <%= t('rooms.rooms.plural') %>
+              <div class="flex items-center gap-2">
+                <button type="button" data-action="hotel#decrementRooms" class="btn btn-sm btn-outline">-</button>
+                <input type="number" name="rooms_input" min="1" value="1" data-hotel-target="rooms" class="input input-bordered w-12 text-center">
+                <button type="button" data-action="hotel#incrementRooms" class="btn btn-sm btn-outline">+</button>
+              </div>
             </div>
-          </div>
-        </div>
+          </main>
+          <button type="button" onclick="modal.close()" class="modal-backdrop"></button>
+        </dialog>
       </div>
 
       <!-- Search Button -->

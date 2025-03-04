@@ -1,5 +1,15 @@
-<div class="relative w-full overflow-hidden flex flex-col gap-5" x-data="{
-  scrollTo: (id) => {
+<div class="relative w-full overflow-hidden flex flex-col gap-4" x-data="{
+  currentIndex: 0,
+  hotelIds: [<%= @hotels.map(&:id).join(',') %>],
+  next() {
+    this.currentIndex = Math.min(this.currentIndex + 1, this.hotelIds.length - 1);
+    this.scrollTo('hotel-' + this.hotelIds[this.currentIndex]);
+  },
+  prev() {
+    this.currentIndex = Math.max(this.currentIndex - 1, 0);
+    this.scrollTo('hotel-' + this.hotelIds[this.currentIndex]);
+  },
+  scrollTo(id) {
     document.getElementById(id)?.scrollIntoView({
       behavior: 'smooth',
       block: 'nearest',
@@ -7,49 +17,50 @@
     });
   }
 }">
-  <h1 class="text-4xl font-bold text-center"><%= t('hotel.hotels.plural') %></h1>
+  <h1 class="text-3xl font-bold text-center md:text-4xl lg:text-5xl"><%= t('hotel.hotels.plural') %></h1>
 
   <!-- Carousel Container -->
-  <div class="carousel carousel-start gap-4 w-full p-4 space-x-4 rounded-box"
-       style="scroll-snap-type: x mandatory;">
+  <div class="carousel carousel-start gap-4 w-full p-2 md:p-4 overflow-x-auto whitespace-nowrap scroll-snap-x rounded-lg"
+       style="scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;">
     <% if @hotels.any? %>
-      <% @hotels.each_with_index do |hotel, index| %>
+      <% @hotels.each do |hotel| %>
         <div id="hotel-<%= hotel.id %>"
-             class="carousel-item relative rounded-lg overflow-hidden shrink-0"
-             style="scroll-snap-align: start;">
-          <%= link_to hotel_path(hotel), class: "card image-full h-80 w-80 rounded-lg" do %>
+             class="carousel-item relative rounded-lg overflow-hidden shrink-0 snap-start
+                    sm:w-[60vw] md:w-56 lg:w-80
+                    h-[50vw] sm:h-[40vw] md:h-64 lg:h-80">
+          <%= link_to hotel_path(hotel), class: "card image-full h-full w-40 rounded-lg touch-pan-y rounded-lg" do %>
             <div class="relative h-full w-full">
-              <%= image_tag hotel.thumbnail, class: "object-cover w-full h-full" %>
-              <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+              <%= image_tag hotel.thumbnail, class: "object-cover w-full h-full touch-callout-none", alt: hotel.name %>
+              <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent"></div>
             </div>
-            <div class="card-body self-end">
-              <h3 class="text-3xl font-semibold"><%= hotel.name %></h3>
+            <div class="card-body self-end p-4">
+              <h3 class="text-xl md:text-2xl lg:text-3xl font-semibold text-white"><%= hotel.name %></h3>
             </div>
           <% end %>
         </div>
       <% end %>
     <% else %>
-      <div class="text-center">
+      <div class="w-full text-center text-lg md:text-xl py-8">
         No hotels available.
       </div>
     <% end %>
   </div>
 
-  <!-- DaisyUI Navigation Buttons -->
+  <!-- Navigation Buttons -->
   <% if @hotels.any? %>
-    <div class="flex justify-center gap-4 w-full">
-      <button class="btn btn-circle btn-secondary"
-              @click="scrollTo('hotel-<%= @hotels.first.id %>')">
+    <div class="flex justify-center gap-4 w-full px-4">
+      <button class="btn btn-circle btn-secondary btn-sm md:btn-md"
+              @click="prev()"
+              :disabled="currentIndex === 0"
+              aria-label="Previous hotel">
         ❮
       </button>
-      <button class="btn btn-circle btn-secondary"
-              @click="scrollTo('hotel-<%= @hotels.last.id %>')">
+      <button class="btn btn-circle btn-secondary btn-sm md:btn-md"
+              @click="next()"
+              :disabled="currentIndex === <%= @hotels.size - 1 %>"
+              aria-label="Next hotel">
         ❯
       </button>
-    </div>
-  <% else %>
-    <div class="text-center">
-      No hotels available.
     </div>
   <% end %>
 </div>

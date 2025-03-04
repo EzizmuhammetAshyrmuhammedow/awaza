@@ -1,23 +1,32 @@
-<div class="relative flex items-center justify-between h-[70vh] w-full px-10">
-  <!-- Left Side: Curved Image -->
-  <div class="relative w-1/2 h-full">
-    <%= image_tag asset_path('awaza.jpg'), class: "absolute inset-0 w-full h-full object-cover clip-curved" %>
+<div class="relative flex flex-col md:flex-row items-center justify-between min-h-[70vh] md:h-full w-full px-5 md:px-10 py-10 gap-5">
+  
+  <!-- Image -->
+  <div class="relative w-full md:w-1/2 h-64 md:h-full">
+    <%= image_tag asset_path('awaza.jpg'), class: "absolute inset-0 w-full h-full object-cover clip-curved rounded-lg" %>
   </div>
 
-  <!-- Right Side: Text Content -->
-  <div class="w-1/2 pl-10 flex flex-col">
-    <h1 class="text-2xl md:text-3xl lg:text-4xl font-bold leading-tight h-full mb-5 italic">
+  <!-- Text -->
+  <div class="w-full md:w-1/2 md:pl-10 flex flex-col text-center md:text-left">
+    <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold leading-tight mb-5 italic">
       Owazly tolkunlaryň mekany
       <br />
-      <span class="text-blue-600 text-3xl lg:text-5xl md:text-3xl xl:text-6xl">“Awaza” milli syýahatçylyk zolagy</span>
+      <span class="text-blue-600 text-3xl sm:text-4xl md:text-5xl xl:text-6xl">“Awaza” milli syýahatçylyk zolagy</span>
     </h1>
-    <h1 class="text-5xl font-bold italic">Dynç alyş günleriňizi täsirli geçiriň</h1>
+    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold italic">
+      Dynç alyş günleriňizi täsirli geçiriň
+    </h2>
   </div>
+
 </div>
 
-<!-- Custom Styling -->
 <style>
+  .clip-curved {
+    clip-path: ellipse(90% 100% at left center);
+  }
+
+  @media (max-width: 768px) {
     .clip-curved {
-        clip-path: ellipse(90% 100% at left center);
+      clip-path: none; /* Remove curve on small screens */
     }
+  }
 </style>
