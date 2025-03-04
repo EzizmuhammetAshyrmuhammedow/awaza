@@ -87,6 +87,7 @@ Rails.application.configure do
     pngout: false, # Optional: disable slow optimizers
     svgo: false,
     jpegtran: false,
+    oxipng: false,
     jpegoptim: { max_quality: 80 },
     optipng: { level: 3 }
   }
