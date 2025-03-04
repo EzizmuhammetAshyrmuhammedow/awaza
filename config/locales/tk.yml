@@ -124,6 +124,9 @@ tk:
     employee_id: "Işçi ID-ňiz"
     forgot_password: "Parol ýatdan çyktymy?"
     submit: "Iber"
+    try_again: "Soňrak synap görüň."
+    not_employee: "Siz işgär hökmünde hasaba alynmadyk."
+    invalid_employee_id: "Nädogry işgär ID-si."
   flash:
     success: "Üstünlikli!"
     error: "Säwlik!"

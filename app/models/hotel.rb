@@ -23,4 +23,11 @@ class Hotel < ApplicationRecord
   def photos_urls
     photos.map { |photo| Rails.application.routes.url_helpers.rails_blob_url(photo, only_path: true) if photo.attached? }
   end
+  # hotel.rb
+  after_commit :convert_thumbnail_to_avif_later, on: [:create, :update]
+
+  def convert_thumbnail_to_avif_later
+    ConvertThumbnailJob.perform_later(id)
+  end
+
 end

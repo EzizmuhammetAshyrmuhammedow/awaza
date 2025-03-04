@@ -152,6 +152,9 @@ ru:
     employee_id: "Ваш идентификатор сотрудника"
     forgot_password: "Забыли пароль?"
     submit: "Подать"
+    try_again: "Попробуйте позже."
+    not_employee: "Вы не зарегистрированы как сотрудник."
+    invalid_employee_id: "Неверный ID сотрудника."
   general:
     name: "Имя"
     description: "Описание"

@@ -153,6 +153,9 @@ en:
     employee_id: "Your Employee ID"
     forgot_password: "Forgot password?"
     submit: "Submit"
+    try_again: "Try again later."
+    not_employee: "You are not registered as an employee."
+    invalid_employee_id: "Invalid Employee ID"
   general:
     name: "Name"
     description: "Description"

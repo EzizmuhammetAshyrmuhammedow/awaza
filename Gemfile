@@ -59,7 +59,7 @@ end
 gem "http_accept_language"
 gem "view_component"
 gem "image_processing", "~> 1.2"
-gem "mini_magick" # Required for image processing
+gem "mini_magick"
 gem "tailwindcss-rails"
 gem "tailwindcss-ruby"
 gem "image_optim"
