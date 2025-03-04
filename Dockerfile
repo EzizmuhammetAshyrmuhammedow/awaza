@@ -14,19 +14,6 @@ FROM docker.io/library/ruby:$RUBY_VERSION-slim AS base
 # Rails app lives here
 WORKDIR /rails
 
-# install image_optim libraries
-RUN apt update && \
-    apt install -y \
-      advancecomp \
-      gifsicle \
-      jpegoptim \
-      optipng \
-      pngquant \
-      pngcrush \
-      jhead \
-      libjpeg-progs \
-      webp
-
 RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y curl libjemalloc2 libvips sqlite3 libpq-dev && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
