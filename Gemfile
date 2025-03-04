@@ -5,7 +5,7 @@ gem "rails", "~> 8.0.1"
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
 gem "propshaft"
 # Use sqlite3 as the database for Active Record
-gem 'pg', '~> 1.5' # Add this
+gem "pg", "~> 1.5" # Add this
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", ">= 5.0"
 # Bundle and transpile JavaScript [https://github.com/rails/jsbundling-rails]
@@ -60,5 +60,7 @@ gem "http_accept_language"
 gem "view_component"
 gem "image_processing", "~> 1.2"
 gem "mini_magick" # Required for image processing
-gem 'tailwindcss-rails'
-gem 'tailwindcss-ruby'
+gem "tailwindcss-rails"
+gem "tailwindcss-ruby"
+gem "image_optim"
+gem "image_optim_rails"

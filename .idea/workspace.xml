@@ -6,33 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="83e2e8a1-0a15-4dc0-9757-e5d5daf52eeb" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/awaza.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/awaza.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e36805b4-5aa6-4a5f-9036-deeec4e836c4.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e36805b4-5aa6-4a5f-9036-deeec4e836c4/storage_v2/_src_/database/rails_dev.92EG1A.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e36805b4-5aa6-4a5f-9036-deeec4e836c4/storage_v2/_src_/database/rails_dev.92EG1A/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e36805b4-5aa6-4a5f-9036-deeec4e836c4/storage_v2/_src_/database/rails_dev.92EG1A/schema/pg_catalog.0S1ZNQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e36805b4-5aa6-4a5f-9036-deeec4e836c4/storage_v2/_src_/database/rails_dev.92EG1A/schema/public.abK9xQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/hotels_component.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/hotels_component.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/nav_bar_component.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/nav_bar_component.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/comments_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/comments_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/room_types_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/room_types_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/rooms_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/rooms_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/hotels/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/hotels/index.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/passwords/edit.html.erbZone.Identifier" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/passwords/new.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/passwords/new.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/passwords/new.html.erbZone.Identifier" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/passwords_mailer/reset.html.erbZone.Identifier" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/passwords_mailer/reset.text.erbZone.Identifier" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/registrations/new.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/registrations/new.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/registrations/new.html.erbZone.Identifier" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/sessions/new.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/sessions/new.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/locales/en.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config/locales/en.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/locales/ru.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config/locales/ru.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/locales/tk.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config/locales/tk.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gemfile" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gemfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/images/awaza-pan.jpgZone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/images/awaza_logo.pngZone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/environments/production.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/environments/production.rb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,22 +30,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
-    &quot;ruby.i18n.create.property.last_used_locale&quot;: &quot;English [en.yml]&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "yarn",
+    "ruby.i18n.create.property.last_used_locale": "English [en.yml]",
+    "ruby.structure.view.model.defaults.configured": "true",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Rails.awaza">
     <configuration name="awaza" type="RailsRunConfigurationType" factoryName="Rails">
       <module name="awaza" />
@@ -163,7 +143,7 @@
       <workItem from="1741082381789" duration="33000" />
       <workItem from="1741082430258" duration="13000" />
       <workItem from="1741082459771" duration="1012000" />
-      <workItem from="1741088101855" duration="602000" />
+      <workItem from="1741088101855" duration="1426000" />
     </task>
     <servers />
   </component>
