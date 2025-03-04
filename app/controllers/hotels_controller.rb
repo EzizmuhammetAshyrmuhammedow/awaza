@@ -1,11 +1,15 @@
 class HotelsController < ApplicationController
   before_action :set_hotel, only: %i[ show edit update destroy ]
   before_action :require_admin, only: [ :destroy, :edit, :create,  :new ]
-  allow_unauthenticated_access only: [ :show, :index ]
+  allow_unauthenticated_access only: [ :show, :index, :lazy ]
   # GET /hotels or /hotels.json
   def index
     @hotels = Hotel.all
     @user = current_user
+  end
+
+  def lazy
+    render turbo_stream: turbo_stream.replace("hotels", HotelsComponent.new.render_in(view_context))
   end
 
   def book

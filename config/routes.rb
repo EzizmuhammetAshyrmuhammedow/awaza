@@ -50,4 +50,5 @@ Rails.application.routes.draw do
     resources :room_types
     resources :employees, only: [ :create, :index ]
   end
+  get "/hotels_lazy", to: "hotels#lazy"
 end

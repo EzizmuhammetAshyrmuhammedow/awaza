@@ -10,8 +10,32 @@
   <%= render 'index/book' %>
 </div>
 
-<%= image_tag asset_path('awaza-pan.jpg.gz'), class: "w-3/4 mx-auto mb-2" %>
+<!-- Comment -->
+<div>
+  <%= image_tag asset_path('awaza-pan.avif'), class: "w-3/4 mx-auto mb-2" %>
+</div>
 
 <div class="w-full h-auto bg-base-200 px-20 pt-10">
-  <%= render(HotelsComponent.new) %>
+  <turbo-frame id="hotels">
+    <div class="text-center py-20">
+      <span class="loading loading-spinner loading-lg"></span>
+    </div>
+  </turbo-frame>
 </div>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.setAttribute("src", "/hotels_lazy");
+                    observer.unobserve(entry.target);
+                }
+            });
+        });
+
+        const frame = document.querySelector("turbo-frame#hotels");
+        if (frame) {
+            observer.observe(frame);
+        }
+    });
+</script>zz
