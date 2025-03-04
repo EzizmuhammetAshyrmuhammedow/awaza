@@ -15,8 +15,8 @@ FROM docker.io/library/ruby:$RUBY_VERSION-slim AS base
 WORKDIR /rails
 
 # install image_optim libraries
-RUN sudo apt update && \
-    sudo apt install -y \
+RUN apt update && \
+    apt install -y \
       advancecomp \
       gifsicle \
       jpegoptim \
@@ -27,9 +27,10 @@ RUN sudo apt update && \
       jpegtran \
       libjpeg-progs \
       webp \
-      cargo && \
-    cargo install oxipng && \
-    export PATH="$HOME/.cargo/bin:$PATH"
+      cargo \
+      npm && \
+    npm install -g svgo && \
+    ~/.cargo/bin/cargo install oxipng
 
 
 RUN apt-get update -qq && \
