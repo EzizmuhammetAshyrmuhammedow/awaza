@@ -27,9 +27,7 @@ RUN sudo apt update && \
       jpegtran \
       libjpeg-progs \
       webp \
-      cargo \
-      npm && \
-    sudo npm install -g svgo && \
+      cargo && \
     cargo install oxipng && \
     export PATH="$HOME/.cargo/bin:$PATH"
 
