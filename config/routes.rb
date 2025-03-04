@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  # Localized routes
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
       resources :hotels
