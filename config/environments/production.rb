@@ -86,6 +86,7 @@ Rails.application.configure do
   config.assets.image_optim_rails = {
     pngout: false, # Optional: disable slow optimizers
     svgo: false,
+    jpgetran: false,
     jpegoptim: { max_quality: 80 },
     optipng: { level: 3 }
   }
