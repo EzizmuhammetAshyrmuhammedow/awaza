@@ -18,9 +18,9 @@ local:
 # Remember not to checkin your GCS keyfile to a repository
 google:
   service: GCS
-  project: vivid-plateau-452816-r9
-  credentials: <%= ENV['GOOGLE_APPLICATION_CREDENTIALS'] %>
-  bucket: your-bucket-name
+  project: <%= Rails.application.credentials.google_cloud[:storage][:project_id] %>
+  bucket: <%= Rails.application.credentials.google_cloud[:storage][:bucket_name] %>
+  credentials: <%= Rails.application.credentials.google_cloud[:storage][:credentials] %>
 
 
 # Use bin/rails credentials:edit to set the Azure Storage secret (as azure_storage:storage_access_key)
