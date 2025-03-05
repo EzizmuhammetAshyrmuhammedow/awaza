@@ -1,5 +1,7 @@
 <div class="flex flex-col p-4 shadow rounded-md max-w-72 min-h-64" id="<%= dom_id room_type %>">
-  <%= image_tag room_type.thumbnail, class: "max-w-full" if room_type.thumbnail.attached? %>
+  <% if room_type.thumbnail.attached? %>
+    <%= image_tag room_type.thumbnail.variant(resize_to_fill: [300, 200]), class: "object-cover w-full h-48" %>
+  <% end %>
   <p class="">
     <strong class="block font-medium mb-1"><%= t('general.name') %>:</strong>
     <%= room_type.name %>
@@ -13,6 +15,6 @@
     <%= room_type.capacity %>
   </p>
   <p class="h-full flex items-end justify-center">
-    <%= link_to t('room_types.show_room_type'), hotel_room_type_path(@hotel.id, room_type.id), class: "rounded-md w-full text-center px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 dark:bg-zinc-800 dark:hover:bg-zinc-700 inline-block font-medium" %>
+    <%= link_to t('room_types.show_room_type'), hotel_room_type_path(@hotel.id, room_type.id), class: "btn btn-soft" %>
   </p>
 </div>

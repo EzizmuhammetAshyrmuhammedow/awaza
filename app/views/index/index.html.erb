@@ -15,7 +15,7 @@
   <%= image_tag asset_path('awaza-pan-1920.avif'), class: "w-3/4 mx-auto mb-2" %>
 </div>
 
-<div class="w-full h-auto bg-base-200 px-10 pt-10">
+<div class="w-full h-full bg-base-200 px-10 pt-10">
   <turbo-frame id="hotels">
     <div class="text-center py-20">
       <span class="loading loading-spinner loading-lg"></span>
@@ -23,7 +23,7 @@
   </turbo-frame>
 </div>
 <script>
-    document.addEventListener("DOMContentLoaded", () => {
+    document.addEventListener("turbo:load", () => {
         const observer = new IntersectionObserver(entries => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {

@@ -20,16 +20,16 @@
   <h1 class="text-xl font-bold text-center md:text-4xl lg:text-5xl"><%= t('hotel.hotels.plural') %></h1>
 
   <!-- Carousel Container -->
-  <div class="carousel carousel-start gap-4 w-full p-2 md:p-4 overflow-x-auto whitespace-nowrap scroll-snap-x rounded-lg"
+  <div class="carousel carousel-start gap-4 w-full h-full p-2 md:p-4 overflow-x-auto whitespace-nowrap scroll-snap-x rounded-lg"
        style="scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;">
     <% if @hotels.any? %>
       <% @hotels.each do |hotel| %>
         <div id="hotel-<%= hotel.id %>"
              class="carousel-item relative rounded-lg overflow-hidden shrink-0 snap-start
-                    sm:w-[60vw] md:w-56 lg:w-80
-                    h-[50vw] sm:h-[40vw] md:h-64 lg:h-80">
-          <%= link_to hotel_path(hotel), class: "card image-full h-full w-full rounded-lg touch-pan-y rounded-lg" do %>
-            <div class="relative h-full w-full">
+                    sm:w-[80vw] md:w-56 lg:w-80
+                    h-[65vw] sm:h-[50vw] md:h-64 lg:h-96">
+          <%= link_to hotel_path(hotel), class: "card image-full w-full h-full rounded-lg touch-pan-y" do %>
+            <div class="relative w-auto h-full">
               <%= image_tag hotel.thumbnail, class: "object-cover w-full h-full touch-callout-none", alt: hotel.name %>
               <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent"></div>
             </div>

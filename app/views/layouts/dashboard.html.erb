@@ -1,2 +1,140 @@
-<%= render SidebarComponent.new %>
-<%= yield %>
+<!DOCTYPE html>
+<html lang="tk" style="height: 100dvh">
+<head>
+  <title><%= content_for(:title) || "Awaza" %></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0; user-scalable=0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <%= favicon_link_tag 'icon.png' %>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= yield :head %>
+  <%# Enable PWA manifest for installable apps %>
+  <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
+  <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
+  <%= javascript_include_tag "application.js", "data-turbo-track": "reload", defer: true, type: "module" %>
+</head>
+
+<body>
+<!-- Top Navigation Bar -->
+<%= render NavBarComponent.new(user_id: cookies[:user_id]) %>
+
+<!-- Mobile Drawer (Small screens) -->
+<div class="drawer md:hidden">
+  <input id="mobile-drawer" type="checkbox" class="drawer-toggle peer" />
+  <div class="drawer-content p-4 transform transition-transform duration-300 peer-checked:translate-x-60">
+    <!-- Your mobile page content -->
+    <label for="mobile-drawer" class="btn btn-primary drawer-button">
+      Open Menu
+    </label>
+  </div>
+  <div class="drawer-side absolute left-0 w-screen h-screen rounded-lg bg-transparent">
+    <label for="mobile-drawer" class="drawer-overlay bg-transparent"></label>
+    <ul class="menu p-4 w-60 h-screen bg-base-200 text-base-content">
+      <li>
+        <%= link_to dashboard_hotels_path, class: "flex items-center gap-2" do %>
+          <i class="fa-solid fa-hotel"></i>
+          <span><%= t('hotel.hotels.plural') %></span>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to dashboard_rooms_path, class: "flex items-center gap-2" do %>
+          <i class="fa-solid fa-door-closed"></i>
+          <span><%= t('rooms.rooms.plural') %></span>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to dashboard_room_types_path, class: "flex items-center gap-2" do %>
+          <i class="fa-solid fa-bed"></i>
+          <span><%= t('room_types.room_types.plural') %></span>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!-- Desktop Layout: Sidebar and Content -->
+<div class="flex">
+  <!-- Desktop Sidebar (Visible on md and larger screens) -->
+  <div id="sidebar" class="hidden md:flex flex-col fixed top-28 left-0 h-screen bg-base-200 shadow-lg transition-all duration-300 w-80 rounded-lg">
+    <!-- Sidebar header with toggle button -->
+    <div class="flex items-center justify-between p-4 border-b border-base-300">
+      <h2 class="text-xl font-bold sidebar-text">Dashboard</h2>
+      <button id="toggle-sidebar" class="btn btn-square btn-ghost">
+        <svg id="toggle-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
+    </div>
+    <!-- Sidebar Menu Items -->
+    <ul class="menu flex-grow p-4">
+      <li>
+        <%= link_to dashboard_hotels_path, class: "flex items-center gap-3 p-2 hover:bg-base-300 rounded-md transition-colors text-2xl" do %>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M4 2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm3.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5z"/>
+            <path d="M2 1a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1zm11 0H3v14h3v-2.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5V15h3z"/>
+          </svg>
+          <span class="sidebar-text"><%= t('hotel.hotels.plural') %></span>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to dashboard_rooms_path, class: "flex items-center gap-3 p-2 hover:bg-base-300 rounded-md transition-colors text-2xl" do %>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M3 2a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v13h1.5a.5.5 0 0 1 0 1h-13a.5.5 0 0 1 0-1H3zm1 13h8V2H4z"/>
+            <path d="M9 9a1 1 0 1 0 2 0 1 1 0 0 0-2 0"/>
+          </svg>
+          <span class="sidebar-text"><%= t('rooms.rooms.plural') %></span>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to dashboard_room_types_path, class: "flex items-center gap-3 p-2 hover:bg-base-300 rounded-md transition-colors text-2xl" do %>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5zM2.5 2a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zm6.5.5A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zM1 10.5A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zm6.5.5A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5z"/>
+          </svg>
+          <span class="sidebar-text"><%= t('room_types.room_types.plural') %></span>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Main Content Container -->
+  <div id="content" class="flex-1 transition-all duration-300 ml-80 mt-28">
+    <%= yield %>
+  </div>
+</div>
+
+<!-- Sidebar Toggle Script -->
+<script>
+    document.addEventListener("turbo:load", function() {
+        const toggleButton = document.getElementById('toggle-sidebar');
+        if (!toggleButton) return;
+        const sidebar = document.getElementById('sidebar');
+        const content = document.getElementById('content');
+        const toggleIcon = document.getElementById('toggle-icon');
+
+        toggleButton.addEventListener('click', () => {
+            // Toggle sidebar width classes
+            sidebar.classList.toggle('w-80');
+            sidebar.classList.toggle('w-20');
+
+            // Update main content's left margin to match sidebar width
+            if (sidebar.classList.contains('w-20')) {
+                content.classList.remove('ml-80');
+                content.classList.add('ml-20');
+            } else {
+                content.classList.remove('ml-20');
+                content.classList.add('ml-80');
+            }
+
+            // Rotate toggle icon
+            toggleIcon.classList.toggle('rotate-180');
+
+            // Toggle visibility of sidebar text
+            document.querySelectorAll('.sidebar-text').forEach(span => {
+                span.classList.toggle('hidden');
+            });
+        });
+    });
+</script>
+</body>
+</html>

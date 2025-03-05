@@ -5,6 +5,6 @@
 
   <%= render "form", room_type: @room_type, form_action: "edit" %>
 
-  <%= link_to t('room_types.edit_room_type'), hotel_room_type_path(@hotel.id, @room_type.id), class: "ml-2 rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
+  <%= link_to t('room_types.edit_room_type'), hotel_room_type_path(params[:hotel_id], @room_type.id), class: "ml-2 rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
   <%= link_to t('room_types.back_to_room_types'), hotel_room_types_path, class: "ml-2 rounded-md px-3.5 py-2.5 bg-gray-100 hover:bg-gray-50 inline-block font-medium" %>
 </div>

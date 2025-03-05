@@ -10,7 +10,11 @@ Rails.application.routes.draw do
   resources :bookings
   resources :rooms
   resources :hotels do
-    resources :room_types
+    resources :room_types do
+      collection do
+        get :rooms_for_hotel
+      end
+    end
     resources :comments, only: [ :index, :create, :update, :edit, :destroy, :edit, :new ] do
       member do
         post :like
@@ -46,7 +50,11 @@ Rails.application.routes.draw do
   namespace :dashboard do
     resources :hotels
     resources :rooms
-    resources :room_types
+    resources :room_types do
+      collection do
+        get :rooms_for_hotel
+      end
+    end
     resources :employees, only: [ :create, :index ]
   end
   get "/hotels_lazy", to: "hotels#lazy"

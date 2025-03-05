@@ -77,4 +77,5 @@ Rails.application.configure do
     jpegoptim: { max_quality: 80 },
     optipng: { level: 3 }
   }
+  config.log_level = :debug # In any environment initializer, or
 end

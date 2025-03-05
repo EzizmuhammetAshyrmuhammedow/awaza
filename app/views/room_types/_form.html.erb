@@ -1,7 +1,7 @@
-<%= form_with(model: [@hotel, @room_type], local: true, class: "contents") do |form| %>
+<%= form_with(model: [@room_type.hotel, @room_type], local: true, class: "contents", data: { controller: "room-select" }) do |form| %>
   <% if room_type.errors.any? %>
     <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-md mt-3">
-      <h2><%= pluralize(room_type.errors.count, "error") %> prohibited this room_type from being saved:</h2>
+      <h2><%= pluralize(room_type.errors.count, "error") %> <%= t('activerecord.errors.messages.record_invalid', errors: room_type.errors.count) %>:</h2>
       <ul class="list-disc ml-6">
         <% room_type.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -9,39 +9,64 @@
       </ul>
     </div>
   <% end %>
-  <div class="my-5">
-    <%= form.label t('general.name') %>
-    <%= form.text_field :name, class: ["block shadow-sm rounded-md border outline-hidden px-3 py-2 mt-2 w-full", { "border-gray-400 focus:outline-blue-600": room_type.errors[:name].none?, "border-red-400 focus:outline-red-600": room_type.errors[:name].any? }] %>
+
+  <div class="my-5 flex flex-col">
+    <%= form.label t('general.name'), class: "" %>
+    <%= form.text_field :name, class: ["input", {"border-gray-400 focus:outline-blue-600": room_type.errors[:name].none?, "border-red-400 focus:outline-red-600": room_type.errors[:name].any?}] %>
   </div>
-  <div class="my-5">
-    <%= form.label t('general.price') %>
-    <%= form.number_field :price, class: ["block shadow-sm rounded-md border outline-hidden px-3 py-2 mt-2 w-full", { "border-gray-400 focus:outline-blue-600": room_type.errors[:price].none?, "border-red-400 focus:outline-red-600": room_type.errors[:price].any? }] %>
+
+  <div class="my-5 flex flex-col">
+    <%= form.label t('general.price'), class: "" %>
+    <%= form.number_field :price, class: ["input", {"border-gray-400 focus:outline-blue-600": room_type.errors[:price].none?, "border-red-400 focus:outline-red-600": room_type.errors[:price].any?}] %>
   </div>
-  <div class="my-5">
-    <%= form.label t('general.features') %>
-    <%= form.rich_text_area :features, rows: 4, class: ["block shadow-sm rounded-md border outline-hidden px-3 py-2 mt-2 w-full", { "border-gray-400 focus:outline-blue-600": room_type.errors[:features].none?, "border-red-400 focus:outline-red-600": room_type.errors[:features].any? }] %>
+
+  <div class="my-5 flex flex-col">
+    <%= form.label t('general.features'), class: "" %>
+    <%= form.rich_text_area :features, rows: 4, class: ["", {"border-gray-400 focus:outline-blue-600": room_type.errors[:features].none?, "border-red-400 focus:outline-red-600": room_type.errors[:features].any?}] %>
   </div>
-  <div class="my-5">
-    <%= form.label t('general.extra_info') %>
-    <%= form.rich_text_area :extra_info, rows: 4, class: ["block shadow-sm rounded-md border outline-hidden px-3 py-2 mt-2 w-full", { "border-gray-400 focus:outline-blue-600": room_type.errors[:extra_info].none?, "border-red-400 focus:outline-red-600": room_type.errors[:extra_info].any? }] %>
+
+  <div class="my-5 flex flex-col">
+    <%= form.label t('general.extra_info'), class: "" %>
+    <%= form.rich_text_area :extra_info, rows: 4, class: ["", {"border-gray-400 focus:outline-blue-600": room_type.errors[:extra_info].none?, "border-red-400 focus:outline-red-600": room_type.errors[:extra_info].any?}] %>
   </div>
-  <div class="my-5">
-    <%= form.label t('hotel.hotel_id') %>
-    <%= form.select :hotel_id, @hotels.collect { |r| [r.name, r.id] }, { prompt: 'Select Hotel' }, class: 'form-control' %>
+
+  <div class="my-5 flex flex-col">
+    <%= form.label t('hotel.hotel_id'), class: "" %>
+    <%= form.select :hotel_id,
+                    @hotels.collect { |r| [r.name, r.id] },
+                    { prompt: t('hotel.select_hotel') },
+                    class: ["input", {
+                      "border-gray-400 focus:outline-blue-600": @room_type.errors[:hotel_id].none?,
+                      "border-red-400 focus:outline-red-600": @room_type.errors[:hotel_id].any?
+                    }],
+                    data: { "room-select-target": "hotel", action: "change->room-select#updateRooms" } %>
   </div>
-  <div class="my-5">
-    <%= form.label t('rooms.room_id') %>
-    <%= form.select :room_id, @rooms.collect { |r| [r.actual_room_id, r.id] }, { prompt: 'Select Room' }, class: 'form-control' %>
+
+  <!-- Rooms Select -->
+  <div class="my-5 flex flex-col">
+    <%= form.label t('rooms.room_id'), class: "" %>
+    <%= form.select :room_id,
+                    (@rooms.present? ? @rooms.collect { |r| [r.actual_room_id, r.id] } : []),
+                    { prompt: t('rooms.select_room') },
+                    class: ["input", {
+                      "border-gray-400 focus:outline-blue-600": @room_type.errors[:room_id].none?,
+                      "border-red-400 focus:outline-red-600": @room_type.errors[:room_id].any?
+                    }],
+                    data: { "room-select-target": "rooms" } %>
   </div>
-  <div class="my-5">
-    <%= form.label t('room_types.capacity') %>
-    <%= form.number_field :capacity, class: ["block shadow-sm rounded-md border outline-hidden px-3 py-2 mt-2 w-full", { "border-gray-400 focus:outline-blue-600": room_type.errors[:capacity].none?, "border-red-400 focus:outline-red-600": room_type.errors[:capacity].any? }] %>
+
+
+  <div class="my-5 flex flex-col">
+    <%= form.label t('room_types.capacity'), class: "" %>
+    <%= form.number_field :capacity, class: ["input", {"border-gray-400 focus:outline-blue-600": room_type.errors[:capacity].none?, "border-red-400 focus:outline-red-600": room_type.errors[:capacity].any?}] %>
   </div>
-  <div class="my-5">
-    <%= form.label t('general.thumbnail'), style: "display: block" %>
-    <%= form.file_field :thumbnail, accept: "image/*" %>
+
+  <div class="my-5  flex flex-col">
+    <%= form.label t('general.thumbnail'), style: "display: block", class: "" %>
+    <%= form.file_field :thumbnail, accept: "image/*", class: "file-input" %>
   </div>
+
   <div class="inline">
-    <%= form.submit t("room_types.form.submit.#{form_action}"), class: "rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white inline-block font-medium cursor-pointer" %>
+    <%= form.submit class: "btn btn-primary" %>
   </div>
 <% end %>

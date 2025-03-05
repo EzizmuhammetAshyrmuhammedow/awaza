@@ -38,7 +38,7 @@
               <%= t('adults.plural') %>
               <div class="flex items-center gap-2">
                 <button type="button" data-action="hotel#decrementAdults" class="btn btn-sm btn-outline">-</button>
-                <input type="number" name="adults" min="1" value="1" data-hotel-target="adults" class="input input-bordered w-12 text-center">
+                <input type="number" name="adults" min="1" value="1" data-hotel-target="adults" class="input input-bordered w-20 text-center">
                 <button type="button" data-action="hotel#incrementAdults" class="btn btn-sm btn-outline">+</button>
               </div>
             </div>
@@ -48,7 +48,7 @@
               <%= t('children.plural') %>
               <div class="flex items-center gap-2">
                 <button type="button" data-action="hotel#decrementChildren" class="btn btn-sm btn-outline">-</button>
-                <input type="number" name="children" min="0" value="0" data-hotel-target="children" class="input input-bordered w-12 text-center">
+                <input type="number" name="children" min="0" value="0" data-hotel-target="children" class="input input-bordered w-20 text-center">
                 <button type="button" data-action="hotel#incrementChildren" class="btn btn-sm btn-outline">+</button>
               </div>
             </div>
@@ -58,7 +58,7 @@
               <%= t('rooms.rooms.plural') %>
               <div class="flex items-center gap-2">
                 <button type="button" data-action="hotel#decrementRooms" class="btn btn-sm btn-outline">-</button>
-                <input type="number" name="rooms_input" min="1" value="1" data-hotel-target="rooms" class="input input-bordered w-12 text-center">
+                <input type="number" name="rooms_input" min="1" value="1" data-hotel-target="rooms" class="input input-bordered w-20 text-center">
                 <button type="button" data-action="hotel#incrementRooms" class="btn btn-sm btn-outline">+</button>
               </div>
             </div>

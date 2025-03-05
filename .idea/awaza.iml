@@ -57,15 +57,29 @@
     <orderEntry type="library" scope="PROVIDED" name="crass (v1.0.6, ruby-3.3.7-p123) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="date (v3.4.1, ruby-3.3.7-p123) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="debug (v1.10.0, ruby-3.3.7-p123) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="declarative (v0.0.20, ruby-3.3.7-p123) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="digest-crc (v0.7.0, ruby-3.3.7-p123) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="dotenv (v3.1.7, ruby-3.3.7-p123) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="drb (v2.2.1, ruby-3.3.7-p123) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="ed25519 (v1.3.0, ruby-3.3.7-p123) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="erubi (v1.13.1, ruby-3.3.7-p123) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="exifr (v1.4.1, ruby-3.3.7-p123) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="faraday (v2.12.2, ruby-3.3.7-p123) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="faraday-net_http (v3.4.0, ruby-3.3.7-p123) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="ffi (v1.17.1, ruby-3.3.7-p123) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="fspath (v3.1.2, ruby-3.3.7-p123) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="globalid (v1.2.1, ruby-3.3.7-p123) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="google-apis-core (v0.16.0, ruby-3.3.7-p123) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="google-apis-iamcredentials_v1 (v0.22.0, ruby-3.3.7-p123) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="google-apis-storage_v1 (v0.50.0, ruby-3.3.7-p123) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="google-cloud-core (v1.7.1, ruby-3.3.7-p123) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="google-cloud-env (v2.2.1, ruby-3.3.7-p123) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="google-cloud-errors (v1.5.0, ruby-3.3.7-p123) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="google-cloud-storage (v1.55.0, ruby-3.3.7-p123) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="google-logging-utils (v0.1.0, ruby-3.3.7-p123) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="googleauth (v1.13.1, ruby-3.3.7-p123) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="http_accept_language (v2.1.1, ruby-3.3.7-p123) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="httpclient (v2.9.0, ruby-3.3.7-p123) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="i18n (v1.14.7, ruby-3.3.7-p123) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="image_optim (v0.31.4, ruby-3.3.7-p123) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="image_optim_pack (v0.12.0.20250227, ruby-3.3.7-p123) [gem]" level="application" />
@@ -78,6 +92,7 @@
     <orderEntry type="library" scope="PROVIDED" name="jbuilder (v2.13.0, ruby-3.3.7-p123) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="jsbundling-rails (v1.3.1, ruby-3.3.7-p123) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="json (v2.10.1, ruby-3.3.7-p123) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="jwt (v2.10.1, ruby-3.3.7-p123) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="kamal (v2.5.3, ruby-3.3.7-p123) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="language_server-protocol (v3.17.0.4, ruby-3.3.7-p123) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="lint_roller (v1.1.0, ruby-3.3.7-p123) [gem]" level="application" />
@@ -91,6 +106,9 @@
     <orderEntry type="library" scope="PROVIDED" name="mini_mime (v1.1.5, ruby-3.3.7-p123) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="minitest (v5.25.4, ruby-3.3.7-p123) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="msgpack (v1.8.0, ruby-3.3.7-p123) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="multi_json (v1.15.0, ruby-3.3.7-p123) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="mutex_m (v0.3.0, ruby-3.3.7-p123) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="net-http (v0.6.0, ruby-3.3.7-p123) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="net-imap (v0.5.6, ruby-3.3.7-p123) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="net-pop (v0.1.2, ruby-3.3.7-p123) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="net-protocol (v0.2.2, ruby-3.3.7-p123) [gem]" level="application" />
@@ -100,6 +118,7 @@
     <orderEntry type="library" scope="PROVIDED" name="net-ssh (v7.3.0, ruby-3.3.7-p123) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="nio4r (v2.7.4, ruby-3.3.7-p123) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="nokogiri (v1.18.3, ruby-3.3.7-p123) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="os (v1.1.4, ruby-3.3.7-p123) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="ostruct (v0.6.1, ruby-3.3.7-p123) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="parallel (v1.26.3, ruby-3.3.7-p123) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="parser (v3.3.7.1, ruby-3.3.7-p123) [gem]" level="application" />
@@ -125,6 +144,8 @@
     <orderEntry type="library" scope="PROVIDED" name="rdoc (v6.12.0, ruby-3.3.7-p123) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="regexp_parser (v2.10.0, ruby-3.3.7-p123) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="reline (v0.6.0, ruby-3.3.7-p123) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="representable (v3.2.0, ruby-3.3.7-p123) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="retriable (v3.1.2, ruby-3.3.7-p123) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rexml (v3.4.1, ruby-3.3.7-p123) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rubocop (v1.73.1, ruby-3.3.7-p123) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rubocop-ast (v1.38.1, ruby-3.3.7-p123) [gem]" level="application" />
@@ -136,6 +157,7 @@
     <orderEntry type="library" scope="PROVIDED" name="rubyzip (v2.4.1, ruby-3.3.7-p123) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="securerandom (v0.4.1, ruby-3.3.7-p123) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="selenium-webdriver (v4.29.1, ruby-3.3.7-p123) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="signet (v0.19.0, ruby-3.3.7-p123) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sprockets (v4.2.1, ruby-3.3.7-p123) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sshkit (v1.24.0, ruby-3.3.7-p123) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="stimulus-rails (v1.3.4, ruby-3.3.7-p123) [gem]" level="application" />
@@ -145,8 +167,10 @@
     <orderEntry type="library" scope="PROVIDED" name="thor (v1.3.2, ruby-3.3.7-p123) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="thruster (v0.1.11, ruby-3.3.7-p123) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="timeout (v0.4.3, ruby-3.3.7-p123) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="trailblazer-option (v0.1.2, ruby-3.3.7-p123) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="turbo-rails (v2.0.13, ruby-3.3.7-p123) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="tzinfo (v2.0.6, ruby-3.3.7-p123) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="uber (v0.1.0, ruby-3.3.7-p123) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="unicode-display_width (v3.1.4, ruby-3.3.7-p123) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="unicode-emoji (v4.0.4, ruby-3.3.7-p123) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="uri (v1.0.3, ruby-3.3.7-p123) [gem]" level="application" />

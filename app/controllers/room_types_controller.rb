@@ -25,6 +25,13 @@ class RoomTypesController < ApplicationController
     @hotels = Hotel.all
   end
 
+  def rooms_for_hotel
+    @rooms = Room.where(hotel_id: params[:hotel_id])
+    respond_to do |format|
+      format.json { render json: @rooms.select(:id, :actual_room_id) }
+    end
+  end
+
   # POST /room_types or /room_types.json
   def create
     @room_type = RoomType.new(room_type_params)
@@ -42,16 +49,19 @@ class RoomTypesController < ApplicationController
 
   # PATCH/PUT /room_types/1 or /room_types/1.json
   def update
-    respond_to do |format|
-      if @room_type.update(room_type_params)
-        format.html { redirect_to hotel_room_type_path(@hotel.id, @room_type.id), notice: I18n.t("flash.room_updated") }
-        format.json { render :show, status: :ok, location: @room_type }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @room_type.errors, status: :unprocessable_entity }
-      end
+    Rails.logger.debug "=== Update Action Called ==="
+    Rails.logger.debug "Params: #{params.inspect}"
+    Rails.logger.debug "Permitted Params: #{room_type_params.inspect}"
+
+    if @room_type.update(room_type_params)
+      Rails.logger.debug "RoomType updated successfully: #{@room_type.inspect}"
+      redirect_to hotel_room_types_path(@room_type.hotel_id), notice: I18n.t("flash.room_updated")
+    else
+      Rails.logger.debug "RoomType update failed: #{@room_type.errors.full_messages.join(', ')}"
+      render :edit, status: :unprocessable_entity
     end
   end
+
 
   # DELETE /room_types/1 or /room_types/1.json
   def destroy

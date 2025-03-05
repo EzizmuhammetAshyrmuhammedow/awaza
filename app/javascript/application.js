@@ -6,10 +6,16 @@ import flatpickr from "flatpickr"
 import Alpine from "alpinejs"
 import { themeChange } from 'theme-change'
 import "@hotwired/turbo-rails"
+import "./chart"
 
 themeChange()
-window.Alpine = Alpine
-Alpine.start()
+
+document.addEventListener('turbo:load', () => {
+    if (!window.Alpine) {
+        window.Alpine = Alpine
+        Alpine.start()
+    }
+})
 
 const turkmenLocale = {
     firstDayOfWeek: 1,

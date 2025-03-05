@@ -5,9 +5,13 @@
 import { application } from "./application"
 
 import HelloController from "./hello_controller"
-import Hotel_controller from "./hotel_controller";
-import Theme_controller from "./theme_controller";
-
 application.register("hello", HelloController)
-application.register("hotel", Hotel_controller)
-application.register("theme", Theme_controller)
+
+import HotelController from "./hotel_controller"
+application.register("hotel", HotelController)
+
+import RoomSelectController from "./room_select_controller"
+application.register("room-select", RoomSelectController)
+
+import ThemeController from "./theme_controller"
+application.register("theme", ThemeController)

@@ -1,6 +1,7 @@
 class RoomsController < ApplicationController
+  before_action :set_hotel_and_room_types, only: %i[ new edit ]
   before_action :set_room, only: %i[ show edit update destroy ]
-  allow_unauthenticated_access only: [ :index, :show ]
+  allow_unauthenticated_access only: [:index, :show]
 
   # GET /rooms or /rooms.json
   def index
@@ -59,13 +60,19 @@ class RoomsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_room
-      @room = Room.find(params.expect(:id))
-    end
 
-    # Only allow a list of trusted parameters through.
-    def room_params
-      params.expect(room: [ :actual_room_id, :available, :hotel_id, :room_type_id, :thumbnail])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_room
+    @room = Room.find(params.expect(:id))
+  end
+
+  def set_hotel_and_room_types
+    @room_types = RoomType.all
+    @hotels = Hotel.all
+  end
+
+  # Only allow a list of trusted parameters through.
+  def room_params
+    params.expect(room: [:actual_room_id, :available, :hotel_id, :room_type_id, :thumbnail])
+  end
 end

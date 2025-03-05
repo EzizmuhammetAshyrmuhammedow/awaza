@@ -206,5 +206,10 @@ tk:
   room_types:
     room_types:
       plural: "Otag Gornusleri"
-    show_room_type: ""
+    show_room_type: "Otag görnüşini gör"
     room_type: "Otag Gornusi"
+    capacity: "Çäk"
+  awaza:
+    1: "Owazly tolkunlaryň mekany"
+    2: "“Awaza” milli syýahatçylyk zolagy"
+    3: "Dynç alyş günleriňizi täsirli geçiriň"

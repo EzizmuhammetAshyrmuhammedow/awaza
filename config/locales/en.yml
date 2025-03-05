@@ -200,3 +200,7 @@ en:
       password_reset_successful: "Password was successfully reset."
   toggle_dark_mode: "Toggle Theme"
   select_room: "Select Room"
+  awaza:
+    1: "The Land of Singing Waves"
+    2: "The National Tourist Zone “Awaza”"
+    3: "Have an impressive holiday!"

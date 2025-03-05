@@ -5,14 +5,68 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="83e2e8a1-0a15-4dc0-9757-e5d5daf52eeb" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/awaza.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/awaza.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gemfile" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gemfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/hotels_component.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/hotels_component.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/sidebar_component.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/sidebar_component.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/dashboard/room_types_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/dashboard/room_types_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/room_types_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/room_types_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/rooms_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/rooms_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/javascript/application.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/application.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/javascript/controllers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/controllers/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/javascript/controllers/theme_controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/controllers/theme_controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/dashboard/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/dashboard/index.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/dashboard/room_types/_form.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/dashboard/room_types/_form.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/dashboard/room_types/new.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/dashboard/room_types/new.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/dashboard/room_types/show.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/dashboard/room_types/show.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/dashboard/rooms/_form.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/dashboard/rooms/_form.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/hotels/_hotel.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/hotels/_hotel.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/hotels/book.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/hotels/book.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/hotels/search.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/hotels/search.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/index/_book.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/index/_book.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/index/_landing_image.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/index/_landing_image.html.erb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/index/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/index/index.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/layouts/auth.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/layouts/auth.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/layouts/dashboard.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/layouts/dashboard.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/room_types/_form.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/room_types/_form.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/room_types/_form.html.erbZone.Identifier" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/chart.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/room_types/_room_type.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/room_types/_room_type.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/room_types/_room_type.html.erbZone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/room_types/_room_type.json.jbuilderZone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/room_types/edit.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/room_types/edit.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/room_types/edit.html.erbZone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/room_types/index.html.erbZone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/room_types/index.json.jbuilderZone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/room_types/new.html.erbZone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/room_types/show.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/room_types/show.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/room_types/show.html.erbZone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/room_types/show.json.jbuilderZone.Identifier" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/rooms/_form.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/rooms/_form.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/rooms/_room.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/rooms/_room.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/rooms/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/rooms/index.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/rooms/new.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/rooms/new.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/environments/development.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/environments/development.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/locales/en.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config/locales/en.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/locales/ru.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config/locales/ru.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/locales/tk.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config/locales/tk.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/routes.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/storage.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config/storage.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -26,24 +80,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "/home/eziz/Desktop/awaza",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "yarn",
-    "ruby.i18n.create.property.last_used_locale": "English [en.yml]",
-    "ruby.structure.view.model.defaults.configured": "true",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/eziz/Desktop/awaza&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
+    &quot;ruby.i18n.create.property.last_used_locale&quot;: &quot;Turkmen [tk.yml]&quot;,
+    &quot;ruby.structure.view.model.defaults.configured&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/home/eziz/.local/share/JetBrains/Toolbox/apps/rubymine/plugins/javascript-plugin/jsLanguageServicesImpl/external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Rails.awaza">
     <configuration name="awaza" type="RailsRunConfigurationType" factoryName="Rails">
       <module name="awaza" />
@@ -141,7 +196,11 @@
       <workItem from="1741082430258" duration="13000" />
       <workItem from="1741082459771" duration="1012000" />
       <workItem from="1741088101855" duration="8111000" />
-      <workItem from="1741098247677" duration="11143000" />
+      <workItem from="1741098247677" duration="15645000" />
+      <workItem from="1741162227911" duration="1818000" />
+      <workItem from="1741168777183" duration="10611000" />
+      <workItem from="1741190714784" duration="1365000" />
+      <workItem from="1741198265677" duration="615000" />
     </task>
     <servers />
   </component>
