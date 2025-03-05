@@ -19,7 +19,7 @@ local:
 google:
   service: GCS
   project: vivid-plateau-452816-r9
-  credentials:
+  credentials: <%= ENV['GOOGLE_APPLICATION_CREDENTIALS'] %>
   bucket: your-bucket-name
 
 
