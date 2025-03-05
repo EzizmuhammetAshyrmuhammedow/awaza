@@ -19,7 +19,7 @@ local:
 google:
   service: GCS
   project: vivid-plateau-452816-r9
-  credentials: vivid-plateau-452816-r9-a84a88e1310c.json
+  credentials:
   bucket: your-bucket-name
 
 
