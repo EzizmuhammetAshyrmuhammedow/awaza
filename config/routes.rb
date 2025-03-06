@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :bookings
   resources :rooms
   resources :hotels do
-    resources :room_types do
+    resources :room_types, module: :hotels do
       collection do
         get :rooms_for_hotel
       end

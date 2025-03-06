@@ -5,7 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="83e2e8a1-0a15-4dc0-9757-e5d5daf52eeb" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/app/views/hotels/show.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/hotels/show.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/hotels_component.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/hotels_component.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/room_types_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/hotels/room_types_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/room_types/_form.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/hotels/room_types/_form.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/room_types/_room_type.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/hotels/room_types/_room_type.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/room_types/_room_type.json.jbuilder" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/hotels/room_types/_room_type.json.jbuilder" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/room_types/edit.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/hotels/room_types/edit.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/room_types/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/hotels/room_types/index.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/room_types/index.json.jbuilder" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/hotels/room_types/index.json.jbuilder" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/room_types/new.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/hotels/room_types/new.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/room_types/show.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/hotels/room_types/show.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/room_types/show.json.jbuilder" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/hotels/room_types/show.json.jbuilder" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/routes.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.rb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,6 +62,12 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/views/hotels" />
+      <recent name="$PROJECT_DIR$/app/controllers/hotels" />
+    </key>
+  </component>
   <component name="RunManager" selected="Rails.awaza">
     <configuration name="awaza" type="RailsRunConfigurationType" factoryName="Rails">
       <module name="awaza" />
@@ -152,6 +170,7 @@
       <workItem from="1741168777183" duration="10611000" />
       <workItem from="1741190714784" duration="1365000" />
       <workItem from="1741198265677" duration="1686000" />
+      <workItem from="1741220237248" duration="2264000" />
     </task>
     <servers />
   </component>

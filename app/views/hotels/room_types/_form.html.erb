@@ -1,4 +1,4 @@
-<%= form_with(model: [@room_type.hotel, @room_type], local: true, class: "contents", data: { controller: "room-select" }) do |form| %>
+<%= form_with(model: [@hotel, @room_type], local: true, class: "contents", data: { controller: "room-select" }) do |form| %>
   <% if room_type.errors.any? %>
     <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-md mt-3">
       <h2><%= pluralize(room_type.errors.count, "error") %> <%= t('activerecord.errors.messages.record_invalid', errors: room_type.errors.count) %>:</h2>
@@ -42,7 +42,6 @@
                     data: { "room-select-target": "hotel", action: "change->room-select#updateRooms" } %>
   </div>
 
-  <!-- Rooms Select -->
   <div class="my-5 flex flex-col">
     <%= form.label t('rooms.room_id'), class: "" %>
     <%= form.select :room_id,
@@ -54,7 +53,6 @@
                     }],
                     data: { "room-select-target": "rooms" } %>
   </div>
-
 
   <div class="my-5 flex flex-col">
     <%= form.label t('room_types.capacity'), class: "" %>
