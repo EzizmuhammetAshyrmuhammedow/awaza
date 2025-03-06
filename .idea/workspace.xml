@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="83e2e8a1-0a15-4dc0-9757-e5d5daf52eeb" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/hotel.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/hotel.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/nav_bar_component.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/nav_bar_component.html.erb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -159,7 +158,7 @@
       <workItem from="1741168777183" duration="10611000" />
       <workItem from="1741190714784" duration="1365000" />
       <workItem from="1741198265677" duration="1686000" />
-      <workItem from="1741220237248" duration="3161000" />
+      <workItem from="1741220237248" duration="3560000" />
     </task>
     <servers />
   </component>
